@@ -1,0 +1,5 @@
+project(GameHomework1)
+add_executable(GameHomework1 main.cpp)
+include_directories(tinyxml)
+target_link_libraries(GameHomework1 ${SDL2_LIBRARY})
+install(TARGETS  RUNTIME DESTINATION ${BIN_DIR})
