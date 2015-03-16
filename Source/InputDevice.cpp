@@ -1,12 +1,6 @@
 #include "InputDevice.h"
 #include <iostream>
 
-#ifdef _WIN32
-#include "SDL2.h"
-#else
-#include <SDL2.h>
-#endif
-
 InputDevice::InputDevice() {
     gEvent = GAME_NA;
 }

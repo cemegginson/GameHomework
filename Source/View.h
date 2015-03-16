@@ -1,9 +1,11 @@
 #pragma once
 
-class View {
+#include "Object.h"
+#include "InputDevice.h"
+#include "Definitions.h"
+
+class View : Object{
       protected:
-	InputDevice* iDevice;
-	GAME_VEC position;
 
       public:
 	View();

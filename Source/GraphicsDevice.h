@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef _WIN32
+#include "SDL2.h"
+#else
+#include <SDL2.h>
+#endif
+
 class GraphicsDevice {
       protected:
     int Width;

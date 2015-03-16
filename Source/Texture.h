@@ -1,7 +1,16 @@
 #pragma once
 
-class Texture {
+#include "Definitions.h"
+
+#ifdef _WIN32
+#include "SDL2.h"
+#else
+#include <SDL2.h>
+#endif
+
+class Texture{
       protected:
+    SDL_Texture* tex;
       public:
 	Texture();
 	~Texture();

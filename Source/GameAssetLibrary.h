@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class GameAssetLibrary {
       protected:
 	map<std::string, ObjectFactory*> library;

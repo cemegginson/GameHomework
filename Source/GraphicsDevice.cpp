@@ -1,12 +1,6 @@
 #include "GraphicsDevice.h"
 #include <iostream>
 
-#ifdef _WIN32
-#include "SDL2.h"
-#else
-#include <SDL2.h>
-#endif
-
 GraphicsDevice::GraphicsDevice() {
     window = nullptr;
     renderer = nullptr;

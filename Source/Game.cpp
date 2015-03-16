@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <iostream>
-#include <vector>
 
 Game::Game() {
     gLibrary = nullptr;

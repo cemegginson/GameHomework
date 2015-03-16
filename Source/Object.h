@@ -1,5 +1,10 @@
 #pragma once
 
+#include "GraphicsDevice.h"
+#include "InputDevice.h"
+#include "Texture.h"
+#include "Definitions.h"
+
 class Object {
       protected:
 	GraphicsDevice* gDevice;

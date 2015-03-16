@@ -1,6 +1,9 @@
 #pragma once
 
-class Game {
+#include "Object.h"
+#include <vector>
+
+class Game : Object {
       protected:
 	GameAssetLibrary* gLibrary;
 	ArtAssetLibrary* aLibrary;
