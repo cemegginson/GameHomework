@@ -15,10 +15,11 @@ class Game {
       public:
 	Game();
 	~Game();
-	bool Initialize(GraphicsDevice* gDevice, InputDevice* iDevice,
+	bool Initialize(GraphicsDevice* graphics, InputDevice* input,
 			GAME_INT fps);
 	void Reset();
-	bool LoadLevel(string file) void Run();
+	bool LoadLevel(std::string file);
+    void Run();
 	void Update();
 	void Draw();
 };

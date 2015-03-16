@@ -21,9 +21,9 @@
 
 // Media Libraries
 #ifdef _WIN32
-#include "SDL.h"
+#include "SDL2.h"
 #else
-#include <SDL.h>
+#include <SDL2.h>
 #endif
 
 // Media Library Wrappers
@@ -121,17 +121,17 @@ int main(int argc, char* argv[]) {
 	//========================================
 	if (game) {
 		delete game;
-		game = NULL;
+		game = nullptr;
 	}
 
 	if (iDevice) {
 		delete iDevice;
-		iDevice = NULL;
+		iDevice = nullptr;
 	}
 
 	if (gDevice) {
 		delete gDevice;
-		gDevice = NULL;
+		gDevice = nullptr;
 	}
 
 	return 0;

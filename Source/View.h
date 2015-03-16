@@ -8,6 +8,6 @@ class View {
       public:
 	View();
 	~View();
-	bool Initialize(InputDevice*, GAME_FLT x, GAME_FLT y);
+	bool Initialize(InputDevice* input, GAME_FLT x, GAME_FLT y);
 	void Update(GAME_FLT gameTime);
 }

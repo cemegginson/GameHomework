@@ -2,7 +2,7 @@
 
 class InputDevice {
       protected:
-	GAME_Event gEvent;
+	GAME_EVENT gEvent;
 
       public:
 	InputDevice();

@@ -5,3 +5,4 @@ BreakBeforeBraces: Attach
 AllowShortIfStatementsOnASingleLine: false
 IndentCaseLabels: false
 PointerAlignment: Left
+AccessModifierOffset: -2

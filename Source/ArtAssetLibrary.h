@@ -7,5 +7,5 @@ class ArtAssetLibrary {
       public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
-	Texture* Search(std::string);
+	Texture* Search(std::string key);
 }

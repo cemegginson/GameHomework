@@ -9,6 +9,8 @@ class Object {
 	GAME_FLT angle;
 
       public:
+    Object();
+    ~Object();
 	virtual void Update(GAME_FLT gameTime) = 0;
 	virtual void Draw(GAME_FLT gameTime, View* view) = 0;
 }
