@@ -21,17 +21,22 @@ GraphicsDevice::~GraphicsDevice() {
 }
 
 bool GraphicsDevice::Initialize() {
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
+        logSDLError(std::cerr, "SDL_Init");
+        return 1;
+    }
+    
     window = SDL_CreateWindow(“Game Homework 1”, SDL_WINDOWS_UNDEFINED,
 				  SDL_WINDOWS_UNDEFINED, Width,
 				  Height, SDL_WINDOW_SHOWN);
     if(window == nullptr) {
-        LogSDLError(std::cerr, "CreateWindow");
+        LogSDLError(std::cerr, "SDL_CreateWindow");
         return false;
     }
 
     renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
     if(renderer == nullptr) {
-        LogSDLError(std::cerr, "CreateRenderer");
+        LogSDLError(std::cerr, "SDL_CreateRenderer");
         return false;
     }
 
