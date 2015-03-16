@@ -23,7 +23,7 @@ GraphicsDevice::~GraphicsDevice() {
 bool GraphicsDevice::Initialize() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
         logSDLError(std::cerr, "SDL_Init");
-        return 1;
+        return false;
     }
     
     window = SDL_CreateWindow(“Game Homework 1”, SDL_WINDOWS_UNDEFINED,
@@ -34,7 +34,7 @@ bool GraphicsDevice::Initialize() {
         return false;
     }
 
-    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_SOFTWARE);
     if(renderer == nullptr) {
         LogSDLError(std::cerr, "SDL_CreateRenderer");
         return false;
