@@ -7,5 +7,5 @@ class GameAssetLibrary {
       public:
 	GameAssetLibrary();
 	~GameAssetLibrary();
-	Object* Search(std::string);
+	Object* Search(std::string obj);
 }

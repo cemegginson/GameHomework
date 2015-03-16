@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <iostream>
+#include <vector>
 
 Game::Game() {
     gLibrary = nullptr;
@@ -29,7 +30,11 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 }
 
 void Game::Reset() {
-
+    delete view;
+    for(iterator iter = objects.begin(); iter <= objects.end(); iter++) {
+        delete objects[iter];
+    }
+    objects.erase(objects.begin(), objects.end());
 }
 
 bool Game::LoadLevel(string file) {
