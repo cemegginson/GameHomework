@@ -1,9 +1,9 @@
 #pragma once
 
 #ifdef _WIN32
-#include "SDL2.h"
+#include "SDL.h"
 #else
-#include <SDL2.h>
+#include <SDL.h>
 #endif
 
 class InputDevice {
