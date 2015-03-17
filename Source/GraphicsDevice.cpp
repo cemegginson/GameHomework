@@ -1,4 +1,5 @@
 #include "GraphicsDevice.h"
+#include "GameUtils.h"
 #include <iostream>
 
 GraphicsDevice::GraphicsDevice() {
@@ -22,10 +23,10 @@ GraphicsDevice::~GraphicsDevice() {
 
 bool GraphicsDevice::Initialize() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
-        logSDLError(std::cerr, "SDL_Init");
+        LogSDLError(std::cerr, "SDL_Init");
         return false;
     }
-    
+
     window = SDL_CreateWindow(“Game Homework 1”, SDL_WINDOWS_UNDEFINED,
 				  SDL_WINDOWS_UNDEFINED, Width,
 				  Height, SDL_WINDOW_SHOWN);
