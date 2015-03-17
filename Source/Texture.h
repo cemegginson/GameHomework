@@ -9,9 +9,9 @@
 #endif
 
 class Texture{
-      protected:
+protected:
     SDL_Texture* tex;
-      public:
+public:
 	Texture();
 	~Texture();
 	Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,

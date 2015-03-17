@@ -9,7 +9,6 @@ Texture::Texture() {
 }
 
 Texture::~Texture() {
-    delete tex;
 }
 
 bool Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,

@@ -1,10 +1,9 @@
 #pragma once
 
-#include "Object.h"
 #include <vector>
 
-class Game : Object {
-      protected:
+class Game {
+protected:
 	GameAssetLibrary* gLibrary;
 	ArtAssetLibrary* aLibrary;
 	GraphicsDevice* gDevice;
@@ -15,7 +14,7 @@ class Game : Object {
 	View* view;
 	vector<Object*> objects;
 
-      public:
+public:
 	Game();
 	~Game();
 	bool Initialize(GraphicsDevice* graphics, InputDevice* input,

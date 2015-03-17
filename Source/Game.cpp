@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "pugixml.hpp"
 #include <iostream>
 
 Game::Game() {
@@ -37,7 +38,14 @@ void Game::Reset() {
 }
 
 bool Game::LoadLevel(string file) {
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(file);
+    if(result) {
+        pugi::xml_node Level = doc.child("Level");
+        for(pugi::xml_node child : Level.children("GameAsset")) {
 
+        }
+    }
 }
 
 void Game::Run() {

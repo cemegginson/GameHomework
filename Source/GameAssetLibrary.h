@@ -3,11 +3,21 @@
 #include <iostream>
 
 class GameAssetLibrary {
-      protected:
+protected:
 	map<std::string, ObjectFactory*> library;
 
-      public:
+public:
 	GameAssetLibrary();
-	~GameAssetLibrary();
-	Object* Search(std::string obj);
+	~GameAssetLibrary() {
+        delete library;
+    }
+
+    void AddFactory(std::string name, ObjectFactory* factory) {
+        library.insert(std::pair<std::string, ObjectFactory*> (name,factory));
+        return;
+    }
+
+	ObjectFactory* Search(std::string obj){ // Spec was jacked
+        return library[obj];
+    }
 }
