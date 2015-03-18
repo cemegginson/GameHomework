@@ -4,11 +4,11 @@ Texture::Texture() {
     tex = nullptr;
 }
 
-Texture::Texture() {
-    tex = loadTexture();
+Texture::~Texture() {
 }
 
-Texture::~Texture() {
+Texture::Initialize() {
+    tex = loadTexture();
 }
 
 bool Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,

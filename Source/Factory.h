@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "pugixml.hpp"
 
 class ObjectFactory {
 protected:
@@ -8,7 +9,7 @@ protected:
 public:
     ObjectFactory();
     ~ObjectFactory();
-    virtual void Create(std::string xmlfile) = 0;
+    virtual void Create(pugi::xml_node) = 0;
 }
 
 class InfantryFactory : ObjectFactory {
@@ -17,7 +18,7 @@ protected:
 public:
     InfantryFactory();
     ~InfantryFactory();
-    void Create(std::string xmlfile);
+    void Create(pugi::xml_node);
 }
 
 class CarrierFactory : ObjectFactory {
@@ -26,5 +27,5 @@ protected:
 public:
     CarrierFactory();
     ~CarrierFactory();
-    void Create(std::string xmlfile);
+    void Create(pugi::xml_node);
 }

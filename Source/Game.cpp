@@ -43,9 +43,10 @@ bool Game::LoadLevel(string file) {
     if(result) {
         pugi::xml_node Level = doc.child("Level");
         for(pugi::xml_node child : Level.children("GameAsset")) {
-
+            gLibrary[child.attribute("name")].Create(child);
         }
     }
+    return true;
 }
 
 void Game::Run() {
@@ -53,7 +54,9 @@ void Game::Run() {
 }
 
 void Game::Update() {
-
+    for(auto obj : objects) {
+        obj.Update();
+    }
 }
 
 void Game::Draw() {
