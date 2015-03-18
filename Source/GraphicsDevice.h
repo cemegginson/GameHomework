@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Definitions.h"
+
 #ifdef _WIN32
 #include "SDL.h"
 #else
@@ -15,7 +17,7 @@ protected:
 
 public:
 	GraphicsDevice();
-	GraphicsDevice(int ScreenWidth, int ScreenHeight);
+	GraphicsDevice(GAME_INT ScreenWidth, GAME_INT ScreenHeight);
 	~GraphicsDevice();
 	bool Initialize();
     int getWidth();

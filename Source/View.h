@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Object.h"
 #include "InputDevice.h"
 #include "Definitions.h"
 

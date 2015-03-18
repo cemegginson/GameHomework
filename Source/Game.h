@@ -5,6 +5,7 @@
 #include "ArtAssetLibrary.h"
 #include "Timer.h"
 #include "View.h"
+#include "Object.h"
 
 class Game {
 protected:
