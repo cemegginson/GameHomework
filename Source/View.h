@@ -4,7 +4,7 @@
 #include "InputDevice.h"
 #include "Definitions.h"
 
-class View : Object{
+class View {
       protected:
 
       public:
@@ -12,4 +12,4 @@ class View : Object{
 	~View();
 	bool Initialize(InputDevice* input, GAME_FLT x, GAME_FLT y);
 	void Update(GAME_FLT gameTime);
-}
+};

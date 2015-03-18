@@ -5,15 +5,15 @@
 GraphicsDevice::GraphicsDevice() {
     window = nullptr;
     renderer = nullptr;
-    Width = 0;
-    Height = 0;
+    width = 0;
+    height = 0;
 }
 
 GraphicsDevice::GraphicsDevice(int ScreenWidth, int ScreenHeight) {
 	window = nullptr;
     renderer = nullptr;
-    Width = ScreenWidth;
-    Height = ScreenHeight;
+    width = ScreenWidth;
+    height = ScreenHeight;
 }
 
 GraphicsDevice::~GraphicsDevice() {
@@ -28,8 +28,8 @@ bool GraphicsDevice::Initialize() {
     }
 
     window = SDL_CreateWindow(“Game Homework 1”, SDL_WINDOWS_UNDEFINED,
-				  SDL_WINDOWS_UNDEFINED, Width,
-				  Height, SDL_WINDOW_SHOWN);
+				  SDL_WINDOWS_UNDEFINED, width,
+				  height, SDL_WINDOW_SHOWN);
     if(window == nullptr) {
         LogSDLError(std::cerr, "SDL_CreateWindow");
         return false;
@@ -44,10 +44,10 @@ bool GraphicsDevice::Initialize() {
     return true;
 }
 
-int GraphicsDevice::Width() {
+int GraphicsDevice::getWidth() {
     return width;
 }
 
-int GraphicsDevice::Height() {
+int GraphicsDevice::getHeight() {
     return Height;
 }

@@ -1,9 +1,11 @@
 #pragma once
 
+#include <string>
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
 #include "Texture.h"
 #include "Definitions.h"
+#include "View.h"
 
 class Object {
 protected:
@@ -19,4 +21,4 @@ public:
 	virtual void Update(GAME_FLT gameTime) = 0;
 	virtual void Draw(GAME_FLT gameTime, View* view) = 0;
     virtual void Initialize(std::string tex, GAME_VEC pos, GAME_FLT ang) = 0;
-}
+};

@@ -1,6 +1,10 @@
 #pragma once
 
 #include <vector>
+#include "GameAssetLibrary.h"
+#include "ArtAssetLibrary.h"
+#include "Timer.h"
+#include "View.h"
 
 class Game {
 protected:
@@ -12,7 +16,7 @@ protected:
 	GAME_INT fps;
 	GAME_FLT gameTime;
 	View* view;
-	vector<Object*> objects;
+	std::vector<Object*> objects;
 
 public:
 	Game();

@@ -8,16 +8,16 @@
 
 class GraphicsDevice {
 protected:
-    int Width;
-    int Height;
+    int hidth;
+    int height;
     SDL_Window* window;
     SDL_Renderer* renderer;
 
 public:
 	GraphicsDevice();
-	GraphicsDevice(int ScreenWidth, int Screen Height);
+	GraphicsDevice(int ScreenWidth, int ScreenHeight);
 	~GraphicsDevice();
 	bool Initialize();
-    int Width();
-    int Height();
-}
+    int getWidth();
+    int getHeight();
+};

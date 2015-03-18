@@ -33,7 +33,10 @@
 // Game
 #include "Game.h"
 
-int main(int argc, char* argv[]) {
+#include "Definitions.h"
+
+//int main(int argc, char* argv[]) { Clang gripes about unused arguments
+int main() {
 
 	//========================================
 	// Initialize the random number generator
@@ -52,7 +55,8 @@ int main(int argc, char* argv[]) {
 	//========================================
 	GraphicsDevice* gDevice =
 	    new GraphicsDevice(SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!gDevice->Initialize(true)) {
+	//if (!gDevice->Initialize(true)) { Not sure what this true is about
+	if (!gDevice->Initialize()) {
 		printf("Graphics Device could not initialize!");
 		exit(1);
 	}
@@ -90,7 +94,7 @@ int main(int argc, char* argv[]) {
 	game->Reset();
 	std::string levelConfigFile = "./Assets/Config/level1.xml";
 	if (!game->LoadLevel(levelConfigFile)) {
-		printf("Game could not load level %s: ", levelConfigFile);
+		printf("Game could not load level %s: ", levelConfigFile.c_str());
 		exit(1);
 	}
 

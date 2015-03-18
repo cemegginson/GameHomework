@@ -7,11 +7,10 @@ Game::Game() {
     aLibrary = nullptr;
     gDevice = nullptr;
     iDevice = nullptr;
-    timer;
-    fps;
-    gameTime;
+    timer = 0;
+    fps = 0;
+    gameTime = 0;
     view = nullptr;
-    vector<Object*> objects;
 }
 
 Game::~Game() {

@@ -1,16 +1,18 @@
 #pragma once
 
 #include <iostream>
+#include <map>
+#include <string>
 #include "Factory.h"
+
 
 class GameAssetLibrary {
 protected:
-	map<std::string, ObjectFactory*> library;
+	std::map<std::string, ObjectFactory*> library;
 
 public:
 	GameAssetLibrary();
 	~GameAssetLibrary() {
-        delete library;
     }
 
     void AddFactory(std::string name, ObjectFactory* factory) {
@@ -21,4 +23,4 @@ public:
 	ObjectFactory* Search(std::string obj){ // Spec was jacked
         return library[obj];
     }
-}
+};

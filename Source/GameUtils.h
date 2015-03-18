@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#inclide <string>
 
 #ifdef _WIN32
 #include "SDL.h"
