@@ -10,7 +10,7 @@
 
 class GraphicsDevice {
 protected:
-    int hidth;
+    int width;
     int height;
     SDL_Window* window;
     SDL_Renderer* renderer;

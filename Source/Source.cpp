@@ -35,7 +35,7 @@
 
 #include "Definitions.h"
 
-//int main(int argc, char* argv[]) { Clang gripes about unused arguments
+/*int main(int argc, char* argv[]) { Clang gripes about unused arguments */
 int main() {
 
 	//========================================

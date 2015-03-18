@@ -4,9 +4,11 @@
 #include "Definitions.h"
 
 class View {
-      protected:
-
-      public:
+protected:
+    GAME_FLT x;
+    GAME_FLT y;
+    InputDevice* iDevice;
+public:
 	View();
 	~View();
 	bool Initialize(InputDevice* input, GAME_FLT x, GAME_FLT y);

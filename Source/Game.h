@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "GameAssetLibrary.h"
 #include "ArtAssetLibrary.h"
 #include "Timer.h"

@@ -10,10 +10,10 @@ InputDevice::~InputDevice() {
 }
 
 bool InputDevice::Initialize(SDL_Event* event) {
-    gEvent = event;
+    //gEvent = *event; //unnecessary for this assignment ::TODO
 }
 
-Void InputDevice::Update(SDL_Event* event) {
+void InputDevice::Update(SDL_Event* event) {
     SDL_PollEvent(event);
 }
 

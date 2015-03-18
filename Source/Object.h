@@ -17,7 +17,7 @@ protected:
 
 public:
     Object();
-    ~Object();
+    virtual ~Object();
 	virtual void Update(GAME_FLT gameTime) = 0;
 	virtual void Draw(GAME_FLT gameTime, View* view) = 0;
     virtual void Initialize(std::string tex, GAME_VEC pos, GAME_FLT ang) = 0;

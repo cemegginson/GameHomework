@@ -6,10 +6,12 @@
 
 class ArtAssetLibrary {
 protected:
-	std::map<std::string, Texture*> library;
+	static std::map<std::string, Texture*> library;
 
 public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
-	Texture* Search(std::string key);
+	static Texture* Search(std::string key) {
+	    return library[key];
+	}
 };

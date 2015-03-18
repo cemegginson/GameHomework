@@ -7,11 +7,12 @@ Texture::Texture() {
 Texture::~Texture() {
 }
 
-Texture::Initialize() {
-    tex = loadTexture();
+bool Texture::Initialize() {
+    //tex = loadTexture();
+    return true;
 }
 
-bool Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
-     GAME_FLT angle, SDL_Rect* clip = NULL) {
+void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
+     GAME_FLT angle, SDL_Rect* clip) {
 
 }

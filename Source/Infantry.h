@@ -4,7 +4,7 @@
 #include "Definitions.h"
 #include "Object.h"
 
-class Infantry : Object {
+class Infantry : public Object {
 protected:
 
 public:

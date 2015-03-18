@@ -1,6 +1,9 @@
+#include <stdlib.h>
+#include <string>
 #include "Factory.h"
 #include "pugixml.hpp"
-#include <stdlib.h>
+#include "Infantry.h"
+#include "Carrier.h"
 
 ObjectFactory::ObjectFactory() {
 
@@ -19,14 +22,16 @@ InfantryFactory::~InfantryFactory() {
 
 }
 
-Object::Object* InfantryFactory::Create(pugi::xml_node tag) {
+Object* InfantryFactory::Create(pugi::xml_node tag) {
     Object* infantry = new Infantry();
     GAME_VEC vec;
     GAME_FLT ang;
-    vec.x = atof(tag.attribute("x"));
-    vec.y = atof(tag.attribute("y"));
-    ang = atof(tag.attribute("angle"));
-    infantry->Initialize(tex, vec, ang);
+    std::string name;
+    name = tag.attribute("name").value();
+    vec.x = atof(tag.attribute("x").value());
+    vec.y = atof(tag.attribute("y").value());
+    ang = atof(tag.attribute("angle").value());
+    infantry->Initialize(name, vec, ang);
     return infantry;
 }
 
@@ -39,13 +44,15 @@ CarrierFactory::~CarrierFactory() {
 
 }
 
-Object::Object* CarrierFactory::Create(pugi::xml_node tag) {
+Object* CarrierFactory::Create(pugi::xml_node tag) {
     Object* carrier = new Carrier();
     GAME_VEC vec;
     GAME_FLT ang;
-    vec.x = atof(tag.attribute("x"));
-    vec.y = atof(tag.attribute("y"));
-    ang = atof(tag.attribute("angle"));
-    carrier->Initialize(tex, vec, ang);
+    std::string name;
+    name = tag.attribute("name").value();
+    vec.x = atof(tag.attribute("x").value());
+    vec.y = atof(tag.attribute("y").value());
+    ang = atof(tag.attribute("angle").value());
+    carrier->Initialize(name, vec, ang);
     return carrier;
 }

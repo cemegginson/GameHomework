@@ -5,7 +5,7 @@
 #include "Object.h"
 #include "View.h"
 
-class Carrier : Object {
+class Carrier : public Object {
 protected:
 
 public:

@@ -7,7 +7,6 @@ Game::Game() {
     aLibrary = nullptr;
     gDevice = nullptr;
     iDevice = nullptr;
-    timer = 0;
     fps = 0;
     gameTime = 0;
     view = nullptr;
@@ -26,23 +25,25 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
     gDevice = graphics;
     iDevice = input;
     fps = framerate;
+    timer.Initialize(fps);
+    return true;
 }
 
 void Game::Reset() {
     delete view;
-    for(iterator iter = objects.begin(); iter <= objects.end(); iter++) {
-        delete objects[iter];
+    for(auto iter = objects.begin(); iter <= objects.end(); iter++) {
+        delete *iter;
     }
     objects.erase(objects.begin(), objects.end());
 }
 
-bool Game::LoadLevel(string file) {
+bool Game::LoadLevel(std::string file) {
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(file);
+    pugi::xml_parse_result result = doc.load_file(file.c_str());
     if(result) {
         pugi::xml_node Level = doc.child("Level");
         for(pugi::xml_node child : Level.children("GameAsset")) {
-            gLibrary[child.attribute("name")].Create(child);
+            gLibrary->Search(child.attribute("name").value())->Create(child);
         }
     }
     return true;
@@ -54,7 +55,7 @@ void Game::Run() {
 
 void Game::Update() {
     for(auto obj : objects) {
-        obj.Update();
+        obj->Update(timer.getTicks()/1000.0);
     }
 }
 
