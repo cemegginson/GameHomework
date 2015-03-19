@@ -23,6 +23,7 @@ endif()
 
 # Look up SDL2 and add the include directory to our include path
 find_package(SDL2 REQUIRED)
+find_package(SDL_image REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(Source)
 
