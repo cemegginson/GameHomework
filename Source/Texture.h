@@ -3,8 +3,15 @@
 #include <string>
 #include "Definitions.h"
 #include "View.h"
-
+/*
+#ifdef _WIN32
 #include "SDL.h"
+#include "SDL_image.h"
+#elif _LINUX
+*/
+#include <SDL.h>
+#include <SDL/SDL_image.h>
+//#endif
 
 class Texture {
 	protected:

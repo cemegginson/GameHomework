@@ -2,7 +2,11 @@
 
 #include "Definitions.h"
 
+#ifdef _WIN32
 #include "SDL.h"
+#else
+#include <SDL.h>
+#endif
 
 class GraphicsDevice {
 	protected:
