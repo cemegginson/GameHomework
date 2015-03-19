@@ -495,7 +495,7 @@ typedef enum {
  *  \return SDL_TRUE if the hint was set, SDL_FALSE otherwise
  */
 extern DECLSPEC SDL_bool SDLCALL
-    SDL_SetHintWithPriority(const char *name, const char *value,
+    SDL_SetHintWithPriority(const char* name, const char* value,
 			    SDL_HintPriority priority);
 
 /**
@@ -504,14 +504,14 @@ extern DECLSPEC SDL_bool SDLCALL
  *  \return SDL_TRUE if the hint was set, SDL_FALSE otherwise
  */
 extern DECLSPEC SDL_bool SDLCALL
-    SDL_SetHint(const char *name, const char *value);
+    SDL_SetHint(const char* name, const char* value);
 
 /**
  *  \brief Get a hint
  *
  *  \return The string value of a hint variable.
  */
-extern DECLSPEC const char *SDLCALL SDL_GetHint(const char *name);
+extern DECLSPEC const char* SDLCALL SDL_GetHint(const char* name);
 
 /**
  *  \brief Add a function to watch a particular hint
@@ -520,11 +520,11 @@ extern DECLSPEC const char *SDLCALL SDL_GetHint(const char *name);
  *  \param callback The function to call when the hint value changes
  *  \param userdata A pointer to pass to the callback function
  */
-typedef void (*SDL_HintCallback)(void *userdata, const char *name,
-				 const char *oldValue, const char *newValue);
-extern DECLSPEC void SDLCALL SDL_AddHintCallback(const char *name,
+typedef void (*SDL_HintCallback)(void* userdata, const char* name,
+				 const char* oldValue, const char* newValue);
+extern DECLSPEC void SDLCALL SDL_AddHintCallback(const char* name,
 						 SDL_HintCallback callback,
-						 void *userdata);
+						 void* userdata);
 
 /**
  *  \brief Remove a function watching a particular hint
@@ -533,9 +533,9 @@ extern DECLSPEC void SDLCALL SDL_AddHintCallback(const char *name,
  *  \param callback The function being called when the hint value changes
  *  \param userdata A pointer being passed to the callback function
  */
-extern DECLSPEC void SDLCALL SDL_DelHintCallback(const char *name,
+extern DECLSPEC void SDLCALL SDL_DelHintCallback(const char* name,
 						 SDL_HintCallback callback,
-						 void *userdata);
+						 void* userdata);
 
 /**
  *  \brief  Clear all hints

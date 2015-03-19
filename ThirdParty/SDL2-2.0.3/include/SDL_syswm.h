@@ -174,48 +174,48 @@ struct SDL_SysWMinfo {
 #endif
 #if defined(SDL_VIDEO_DRIVER_WINRT)
 		struct {
-			IInspectable *window; /**< The WinRT CoreWindow */
+			IInspectable* window; /**< The WinRT CoreWindow */
 		} winrt;
 #endif
 #if defined(SDL_VIDEO_DRIVER_X11)
 		struct {
-			Display *display; /**< The X11 display */
+			Display* display; /**< The X11 display */
 			Window window;    /**< The X11 window */
 		} x11;
 #endif
 #if defined(SDL_VIDEO_DRIVER_DIRECTFB)
 		struct {
-			IDirectFB *dfb; /**< The directfb main interface */
-			IDirectFBWindow *
+			IDirectFB* dfb; /**< The directfb main interface */
+			IDirectFBWindow*
 			    window; /**< The directfb window handle */
-			IDirectFBSurface *
+			IDirectFBSurface*
 			    surface; /**< The directfb client surface */
 		} dfb;
 #endif
 #if defined(SDL_VIDEO_DRIVER_COCOA)
 		struct {
-			NSWindow *window; /* The Cocoa window */
+			NSWindow* window; /* The Cocoa window */
 		} cocoa;
 #endif
 #if defined(SDL_VIDEO_DRIVER_UIKIT)
 		struct {
-			UIWindow *window; /* The UIKit window */
+			UIWindow* window; /* The UIKit window */
 		} uikit;
 #endif
 #if defined(SDL_VIDEO_DRIVER_WAYLAND)
 		struct {
-			struct wl_display *display; /**< Wayland display */
-			struct wl_surface *surface; /**< Wayland surface */
-			struct wl_shell_surface *
+			struct wl_display* display; /**< Wayland display */
+			struct wl_surface* surface; /**< Wayland surface */
+			struct wl_shell_surface*
 			    shell_surface; /**< Wayland shell_surface (window
 					      manager handle) */
 		} wl;
 #endif
 #if defined(SDL_VIDEO_DRIVER_MIR)
 		struct {
-			MirConnection *
+			MirConnection*
 			    connection; /**< Mir display server connection */
-			MirSurface *surface; /**< Mir surface */
+			MirSurface* surface; /**< Mir surface */
 		} mir;
 #endif
 
@@ -247,7 +247,7 @@ typedef struct SDL_SysWMinfo SDL_SysWMinfo;
  *  \endcode
  */
 extern DECLSPEC SDL_bool SDLCALL
-    SDL_GetWindowWMInfo(SDL_Window *window, SDL_SysWMinfo *info);
+    SDL_GetWindowWMInfo(SDL_Window* window, SDL_SysWMinfo* info);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

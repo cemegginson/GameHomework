@@ -80,7 +80,7 @@ typedef struct {
  * /returns 0 for OK, -1 on error
  *
  */
-int SDLTest_Crc32Init(SDLTest_Crc32Context *crcContext);
+int SDLTest_Crc32Init(SDLTest_Crc32Context* crcContext);
 
 /**
  * /brief calculate a crc32 from a data block
@@ -93,14 +93,14 @@ int SDLTest_Crc32Init(SDLTest_Crc32Context *crcContext);
  * /returns 0 for OK, -1 on error
  *
  */
-int SDLTest_crc32Calc(SDLTest_Crc32Context *crcContext, CrcUint8 *inBuf,
-		      CrcUint32 inLen, CrcUint32 *crc32);
+int SDLTest_crc32Calc(SDLTest_Crc32Context* crcContext, CrcUint8* inBuf,
+		      CrcUint32 inLen, CrcUint32* crc32);
 
 /* Same routine broken down into three steps */
-int SDLTest_Crc32CalcStart(SDLTest_Crc32Context *crcContext, CrcUint32 *crc32);
-int SDLTest_Crc32CalcEnd(SDLTest_Crc32Context *crcContext, CrcUint32 *crc32);
-int SDLTest_Crc32CalcBuffer(SDLTest_Crc32Context *crcContext, CrcUint8 *inBuf,
-			    CrcUint32 inLen, CrcUint32 *crc32);
+int SDLTest_Crc32CalcStart(SDLTest_Crc32Context* crcContext, CrcUint32* crc32);
+int SDLTest_Crc32CalcEnd(SDLTest_Crc32Context* crcContext, CrcUint32* crc32);
+int SDLTest_Crc32CalcBuffer(SDLTest_Crc32Context* crcContext, CrcUint8* inBuf,
+			    CrcUint32 inLen, CrcUint32* crc32);
 
 /**
  * /brief clean up CRC context
@@ -111,7 +111,7 @@ int SDLTest_Crc32CalcBuffer(SDLTest_Crc32Context *crcContext, CrcUint8 *inBuf,
  *
 */
 
-int SDLTest_Crc32Done(SDLTest_Crc32Context *crcContext);
+int SDLTest_Crc32Done(SDLTest_Crc32Context* crcContext);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

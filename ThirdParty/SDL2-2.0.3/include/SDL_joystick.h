@@ -85,7 +85,7 @@ extern DECLSPEC int SDLCALL SDL_NumJoysticks(void);
  *  This can be called before any joysticks are opened.
  *  If no name can be found, this function returns NULL.
  */
-extern DECLSPEC const char *SDLCALL SDL_JoystickNameForIndex(int device_index);
+extern DECLSPEC const char* SDLCALL SDL_JoystickNameForIndex(int device_index);
 
 /**
  *  Open a joystick for use.
@@ -95,13 +95,13 @@ extern DECLSPEC const char *SDLCALL SDL_JoystickNameForIndex(int device_index);
  *
  *  \return A joystick identifier, or NULL if an error occurred.
  */
-extern DECLSPEC SDL_Joystick *SDLCALL SDL_JoystickOpen(int device_index);
+extern DECLSPEC SDL_Joystick* SDLCALL SDL_JoystickOpen(int device_index);
 
 /**
  *  Return the name for this currently opened joystick.
  *  If no name can be found, this function returns NULL.
  */
-extern DECLSPEC const char *SDLCALL SDL_JoystickName(SDL_Joystick *joystick);
+extern DECLSPEC const char* SDLCALL SDL_JoystickName(SDL_Joystick* joystick);
 
 /**
  *  Return the GUID for the joystick at this index
@@ -113,7 +113,7 @@ extern DECLSPEC SDL_JoystickGUID SDLCALL
  *  Return the GUID for this opened joystick
  */
 extern DECLSPEC SDL_JoystickGUID SDLCALL
-    SDL_JoystickGetGUID(SDL_Joystick *joystick);
+    SDL_JoystickGetGUID(SDL_Joystick* joystick);
 
 /**
  *  Return a string representation for this guid. pszGUID must point to at least
@@ -121,31 +121,31 @@ extern DECLSPEC SDL_JoystickGUID SDLCALL
  *  (32 for the string plus a NULL terminator).
  */
 extern DECLSPEC void SDLCALL
-    SDL_JoystickGetGUIDString(SDL_JoystickGUID guid, char *pszGUID, int cbGUID);
+    SDL_JoystickGetGUIDString(SDL_JoystickGUID guid, char* pszGUID, int cbGUID);
 
 /**
  *  convert a string into a joystick formatted guid
  */
 extern DECLSPEC SDL_JoystickGUID SDLCALL
-    SDL_JoystickGetGUIDFromString(const char *pchGUID);
+    SDL_JoystickGetGUIDFromString(const char* pchGUID);
 
 /**
  *  Returns SDL_TRUE if the joystick has been opened and currently connected, or
  * SDL_FALSE if it has not.
  */
 extern DECLSPEC SDL_bool SDLCALL
-    SDL_JoystickGetAttached(SDL_Joystick *joystick);
+    SDL_JoystickGetAttached(SDL_Joystick* joystick);
 
 /**
  *  Get the instance ID of an opened joystick or -1 if the joystick is invalid.
  */
 extern DECLSPEC SDL_JoystickID SDLCALL
-    SDL_JoystickInstanceID(SDL_Joystick *joystick);
+    SDL_JoystickInstanceID(SDL_Joystick* joystick);
 
 /**
  *  Get the number of general axis controls on a joystick.
  */
-extern DECLSPEC int SDLCALL SDL_JoystickNumAxes(SDL_Joystick *joystick);
+extern DECLSPEC int SDLCALL SDL_JoystickNumAxes(SDL_Joystick* joystick);
 
 /**
  *  Get the number of trackballs on a joystick.
@@ -153,17 +153,17 @@ extern DECLSPEC int SDLCALL SDL_JoystickNumAxes(SDL_Joystick *joystick);
  *  Joystick trackballs have only relative motion events associated
  *  with them and their state cannot be polled.
  */
-extern DECLSPEC int SDLCALL SDL_JoystickNumBalls(SDL_Joystick *joystick);
+extern DECLSPEC int SDLCALL SDL_JoystickNumBalls(SDL_Joystick* joystick);
 
 /**
  *  Get the number of POV hats on a joystick.
  */
-extern DECLSPEC int SDLCALL SDL_JoystickNumHats(SDL_Joystick *joystick);
+extern DECLSPEC int SDLCALL SDL_JoystickNumHats(SDL_Joystick* joystick);
 
 /**
  *  Get the number of buttons on a joystick.
  */
-extern DECLSPEC int SDLCALL SDL_JoystickNumButtons(SDL_Joystick *joystick);
+extern DECLSPEC int SDLCALL SDL_JoystickNumButtons(SDL_Joystick* joystick);
 
 /**
  *  Update the current state of the open joysticks.
@@ -192,7 +192,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickEventState(int state);
  *  The axis indices start at index 0.
  */
 extern DECLSPEC Sint16 SDLCALL
-    SDL_JoystickGetAxis(SDL_Joystick *joystick, int axis);
+    SDL_JoystickGetAxis(SDL_Joystick* joystick, int axis);
 
 /**
  *  \name Hat positions
@@ -226,7 +226,7 @@ extern DECLSPEC Sint16 SDLCALL
  *           - ::SDL_HAT_LEFTDOWN
  */
 extern DECLSPEC Uint8 SDLCALL
-    SDL_JoystickGetHat(SDL_Joystick *joystick, int hat);
+    SDL_JoystickGetHat(SDL_Joystick* joystick, int hat);
 
 /**
  *  Get the ball axis change since the last poll.
@@ -236,7 +236,7 @@ extern DECLSPEC Uint8 SDLCALL
  *  The ball indices start at index 0.
  */
 extern DECLSPEC int SDLCALL
-    SDL_JoystickGetBall(SDL_Joystick *joystick, int ball, int *dx, int *dy);
+    SDL_JoystickGetBall(SDL_Joystick* joystick, int ball, int* dx, int* dy);
 
 /**
  *  Get the current state of a button on a joystick.
@@ -244,12 +244,12 @@ extern DECLSPEC int SDLCALL
  *  The button indices start at index 0.
  */
 extern DECLSPEC Uint8 SDLCALL
-    SDL_JoystickGetButton(SDL_Joystick *joystick, int button);
+    SDL_JoystickGetButton(SDL_Joystick* joystick, int button);
 
 /**
  *  Close a joystick previously opened with SDL_JoystickOpen().
  */
-extern DECLSPEC void SDLCALL SDL_JoystickClose(SDL_Joystick *joystick);
+extern DECLSPEC void SDLCALL SDL_JoystickClose(SDL_Joystick* joystick);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

@@ -360,7 +360,7 @@ Sint32 SDLTest_RandomIntegerInRange(Sint32 min, Sint32 max);
  * \returns Newly allocated random string; or NULL if length was invalid or
  *string could not be allocated.
  */
-char *SDLTest_RandomAsciiString();
+char* SDLTest_RandomAsciiString();
 
 /**
  * Generates random null-terminated string. The maximum length for
@@ -374,7 +374,7 @@ char *SDLTest_RandomAsciiString();
  * \returns Newly allocated random string; or NULL if maxLength was invalid or
  *string could not be allocated.
  */
-char *SDLTest_RandomAsciiStringWithMaximumLength(int maxLength);
+char* SDLTest_RandomAsciiStringWithMaximumLength(int maxLength);
 
 /**
  * Generates random null-terminated string. The length for
@@ -388,7 +388,7 @@ char *SDLTest_RandomAsciiStringWithMaximumLength(int maxLength);
  * \returns Newly allocated random string; or NULL if size was invalid or string
  *could not be allocated.
  */
-char *SDLTest_RandomAsciiStringOfSize(int size);
+char* SDLTest_RandomAsciiStringOfSize(int size);
 
 /**
  * Returns the invocation count for the fuzzer since last ...FuzzerInit.

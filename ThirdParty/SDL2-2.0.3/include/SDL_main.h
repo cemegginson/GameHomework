@@ -98,7 +98,7 @@
 /**
  *  The prototype for the application's main() function
  */
-extern C_LINKAGE int SDL_main(int argc, char *argv[]);
+extern C_LINKAGE int SDL_main(int argc, char* argv[]);
 
 #include "begin_code.h"
 #ifdef __cplusplus
@@ -120,7 +120,7 @@ extern DECLSPEC void SDLCALL SDL_SetMainReady(void);
  *  This can be called to set the application class at startup
  */
 extern DECLSPEC int SDLCALL
-    SDL_RegisterApp(char *name, Uint32 style, void *hInst);
+    SDL_RegisterApp(char* name, Uint32 style, void* hInst);
 extern DECLSPEC void SDLCALL SDL_UnregisterApp(void);
 
 #endif /* __WIN32__ */
@@ -139,8 +139,8 @@ extern DECLSPEC void SDLCALL SDL_UnregisterApp(void);
  *more
  *      information on the failure.
  */
-extern DECLSPEC int SDLCALL SDL_WinRTRunApp(int (*mainFunction)(int, char **),
-					    void *xamlBackgroundPanel);
+extern DECLSPEC int SDLCALL SDL_WinRTRunApp(int (*mainFunction)(int, char**),
+					    void* xamlBackgroundPanel);
 
 #endif /* __WINRT__ */
 

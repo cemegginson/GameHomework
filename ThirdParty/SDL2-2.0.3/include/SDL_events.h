@@ -307,13 +307,15 @@ typedef struct SDL_JoyHatEvent {
 	SDL_JoystickID which; /**< The joystick instance id */
 	Uint8 hat;	    /**< The joystick hat index */
 	Uint8 value;	  /**< The hat position value.
-			       *   \sa ::SDL_HAT_LEFTUP ::SDL_HAT_UP ::SDL_HAT_RIGHTUP
-			       *   \sa ::SDL_HAT_LEFT ::SDL_HAT_CENTERED ::SDL_HAT_RIGHT
-			       *   \sa ::SDL_HAT_LEFTDOWN ::SDL_HAT_DOWN
-			       *::SDL_HAT_RIGHTDOWN
-			       *
-			       *   Note that zero means the POV is centered.
-			       */
+					   *   \sa ::SDL_HAT_LEFTUP ::SDL_HAT_UP
+					*::SDL_HAT_RIGHTUP
+					   *   \sa ::SDL_HAT_LEFT ::SDL_HAT_CENTERED
+					*::SDL_HAT_RIGHT
+					   *   \sa ::SDL_HAT_LEFTDOWN ::SDL_HAT_DOWN
+					   *::SDL_HAT_RIGHTDOWN
+					   *
+					   *   Note that zero means the POV is centered.
+					   */
 	Uint8 padding1;
 	Uint8 padding2;
 } SDL_JoyHatEvent;
@@ -436,7 +438,7 @@ typedef struct SDL_DollarGestureEvent {
 typedef struct SDL_DropEvent {
 	Uint32 type; /**< ::SDL_DROPFILE */
 	Uint32 timestamp;
-	char *file; /**< The file name, which should be freed with SDL_free() */
+	char* file; /**< The file name, which should be freed with SDL_free() */
 } SDL_DropEvent;
 
 /**
@@ -463,8 +465,8 @@ typedef struct SDL_UserEvent {
 	Uint32 timestamp;
 	Uint32 windowID; /**< The associated window if any */
 	Sint32 code;     /**< User defined event code */
-	void *data1;     /**< User defined data pointer */
-	void *data2;     /**< User defined data pointer */
+	void* data1;     /**< User defined data pointer */
+	void* data2;     /**< User defined data pointer */
 } SDL_UserEvent;
 
 struct SDL_SysWMmsg;
@@ -480,7 +482,7 @@ typedef struct SDL_SysWMmsg SDL_SysWMmsg;
 typedef struct SDL_SysWMEvent {
 	Uint32 type; /**< ::SDL_SYSWMEVENT */
 	Uint32 timestamp;
-	SDL_SysWMmsg *msg; /**< driver dependent data, defined in SDL_syswm.h */
+	SDL_SysWMmsg* msg; /**< driver dependent data, defined in SDL_syswm.h */
 } SDL_SysWMEvent;
 
 /**
@@ -557,7 +559,7 @@ typedef enum { SDL_ADDEVENT, SDL_PEEKEVENT, SDL_GETEVENT } SDL_eventaction;
  *
  *  This function is thread-safe.
  */
-extern DECLSPEC int SDLCALL SDL_PeepEvents(SDL_Event *events, int numevents,
+extern DECLSPEC int SDLCALL SDL_PeepEvents(SDL_Event* events, int numevents,
 					   SDL_eventaction action,
 					   Uint32 minType, Uint32 maxType);
 /* @} */
@@ -582,7 +584,7 @@ extern DECLSPEC void SDLCALL SDL_FlushEvents(Uint32 minType, Uint32 maxType);
  *  \param event If not NULL, the next event is removed from the queue and
  *               stored in that area.
  */
-extern DECLSPEC int SDLCALL SDL_PollEvent(SDL_Event *event);
+extern DECLSPEC int SDLCALL SDL_PollEvent(SDL_Event* event);
 
 /**
  *  \brief Waits indefinitely for the next available event.
@@ -592,7 +594,7 @@ extern DECLSPEC int SDLCALL SDL_PollEvent(SDL_Event *event);
  *  \param event If not NULL, the next event is removed from the queue and
  *               stored in that area.
  */
-extern DECLSPEC int SDLCALL SDL_WaitEvent(SDL_Event *event);
+extern DECLSPEC int SDLCALL SDL_WaitEvent(SDL_Event* event);
 
 /**
  *  \brief Waits until the specified timeout (in milliseconds) for the next
@@ -604,7 +606,7 @@ extern DECLSPEC int SDLCALL SDL_WaitEvent(SDL_Event *event);
  *               stored in that area.
  *  \param timeout The timeout (in milliseconds) to wait for next event.
  */
-extern DECLSPEC int SDLCALL SDL_WaitEventTimeout(SDL_Event *event, int timeout);
+extern DECLSPEC int SDLCALL SDL_WaitEventTimeout(SDL_Event* event, int timeout);
 
 /**
  *  \brief Add an event to the event queue.
@@ -612,9 +614,9 @@ extern DECLSPEC int SDLCALL SDL_WaitEventTimeout(SDL_Event *event, int timeout);
  *  \return 1 on success, 0 if the event was filtered, or -1 if the event queue
  *          was full or there was some other error.
  */
-extern DECLSPEC int SDLCALL SDL_PushEvent(SDL_Event *event);
+extern DECLSPEC int SDLCALL SDL_PushEvent(SDL_Event* event);
 
-typedef int(SDLCALL *SDL_EventFilter)(void *userdata, SDL_Event *event);
+typedef int(SDLCALL* SDL_EventFilter)(void* userdata, SDL_Event* event);
 
 /**
  *  Sets up a filter to process all events before they change internal state and
@@ -642,33 +644,33 @@ typedef int(SDLCALL *SDL_EventFilter)(void *userdata, SDL_Event *event);
  *  internal queue and be delivered to the application at the next event poll.
  */
 extern DECLSPEC void SDLCALL
-    SDL_SetEventFilter(SDL_EventFilter filter, void *userdata);
+    SDL_SetEventFilter(SDL_EventFilter filter, void* userdata);
 
 /**
  *  Return the current event filter - can be used to "chain" filters.
  *  If there is no event filter set, this function returns SDL_FALSE.
  */
 extern DECLSPEC SDL_bool SDLCALL
-    SDL_GetEventFilter(SDL_EventFilter *filter, void **userdata);
+    SDL_GetEventFilter(SDL_EventFilter* filter, void** userdata);
 
 /**
  *  Add a function which is called when an event is added to the queue.
  */
 extern DECLSPEC void SDLCALL
-    SDL_AddEventWatch(SDL_EventFilter filter, void *userdata);
+    SDL_AddEventWatch(SDL_EventFilter filter, void* userdata);
 
 /**
  *  Remove an event watch function added with SDL_AddEventWatch()
  */
 extern DECLSPEC void SDLCALL
-    SDL_DelEventWatch(SDL_EventFilter filter, void *userdata);
+    SDL_DelEventWatch(SDL_EventFilter filter, void* userdata);
 
 /**
  *  Run the filter function on the current event queue, removing any
  *  events for which the filter returns 0.
  */
 extern DECLSPEC void SDLCALL
-    SDL_FilterEvents(SDL_EventFilter filter, void *userdata);
+    SDL_FilterEvents(SDL_EventFilter filter, void* userdata);
 
 /* @{ */
 #define SDL_QUERY -1

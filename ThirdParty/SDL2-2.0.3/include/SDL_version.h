@@ -128,7 +128,7 @@ typedef struct SDL_version {
  *
  *  \sa SDL_VERSION
  */
-extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version *ver);
+extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version* ver);
 
 /**
  *  \brief Get the code revision of SDL that is linked against your program.
@@ -137,7 +137,7 @@ extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version *ver);
  *  exact revision of the SDL library in use, and is only useful in comparing
  *  against other revisions. It is NOT an incrementing number.
  */
-extern DECLSPEC const char *SDLCALL SDL_GetRevision(void);
+extern DECLSPEC const char* SDLCALL SDL_GetRevision(void);
 
 /**
  *  \brief Get the revision number of SDL that is linked against your program.

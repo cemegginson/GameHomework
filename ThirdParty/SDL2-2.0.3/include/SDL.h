@@ -109,8 +109,9 @@ extern "C" {
 /* @{ */
 #define SDL_INIT_TIMER 0x00000001
 #define SDL_INIT_AUDIO 0x00000010
-#define SDL_INIT_VIDEO 0x00000020 /**< SDL_INIT_VIDEO implies SDL_INIT_EVENTS  \
-				     */
+#define SDL_INIT_VIDEO                                                         \
+	0x00000020 /**< SDL_INIT_VIDEO implies SDL_INIT_EVENTS                 \
+		      */
 #define SDL_INIT_JOYSTICK                                                      \
 	0x00000200 /**< SDL_INIT_JOYSTICK implies SDL_INIT_EVENTS */
 #define SDL_INIT_HAPTIC 0x00001000

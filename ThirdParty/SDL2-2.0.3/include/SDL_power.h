@@ -61,7 +61,7 @@ typedef enum {
  *
  *  \return The state of the battery (if any).
  */
-extern DECLSPEC SDL_PowerState SDLCALL SDL_GetPowerInfo(int *secs, int *pct);
+extern DECLSPEC SDL_PowerState SDLCALL SDL_GetPowerInfo(int* secs, int* pct);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

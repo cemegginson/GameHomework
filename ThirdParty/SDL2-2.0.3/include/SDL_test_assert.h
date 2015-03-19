@@ -59,7 +59,7 @@ extern "C" {
  *or pass (!=0).
  * \param assertDescription Message to log with the assert describing it.
  */
-void SDLTest_Assert(int assertCondition, const char *assertDescription, ...);
+void SDLTest_Assert(int assertCondition, const char* assertDescription, ...);
 
 /**
  * \brief Assert for test cases that logs but does not break execution flow on
@@ -72,7 +72,7 @@ void SDLTest_Assert(int assertCondition, const char *assertDescription, ...);
  * \returns Returns the assertCondition so it can be used to externally to break
  *execution flow if desired.
  */
-int SDLTest_AssertCheck(int assertCondition, const char *assertDescription,
+int SDLTest_AssertCheck(int assertCondition, const char* assertDescription,
 			...);
 
 /**
@@ -81,7 +81,7 @@ int SDLTest_AssertCheck(int assertCondition, const char *assertDescription,
  *
  * \param assertDescription Message to log with the assert describing it.
  */
-void SDLTest_AssertPass(const char *assertDescription, ...);
+void SDLTest_AssertPass(const char* assertDescription, ...);
 
 /**
  * \brief Resets the assert summary counters to zero.

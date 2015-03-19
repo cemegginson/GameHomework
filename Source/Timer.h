@@ -4,7 +4,7 @@
 #include "Definitions.h"
 
 class Timer {
-      public:
+	public:
 	// Initializes variables
 	Timer();
 	bool Initialize(GAME_INT);
@@ -25,7 +25,7 @@ class Timer {
 	// Regulate
 	void fpsRegulate();
 
-      private:
+	private:
 	// The clock time when the timer started
 	GAME_INT startTicks;
 	GAME_FLT mpf; // millisecond per frame

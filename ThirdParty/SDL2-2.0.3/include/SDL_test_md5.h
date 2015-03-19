@@ -86,7 +86,7 @@ typedef struct {
  *       mdContext. Call before each new use of the context -
  *       all fields are set to zero.
  */
-void SDLTest_Md5Init(SDLTest_Md5Context *mdContext);
+void SDLTest_Md5Init(SDLTest_Md5Context* mdContext);
 
 /**
  * /brief update digest from variable length data
@@ -100,7 +100,7 @@ void SDLTest_Md5Init(SDLTest_Md5Context *mdContext);
  *       in the message whose digest is being computed.
 */
 
-void SDLTest_Md5Update(SDLTest_Md5Context *mdContext, unsigned char *inBuf,
+void SDLTest_Md5Update(SDLTest_Md5Context* mdContext, unsigned char* inBuf,
 		       unsigned int inLen);
 
 /*
@@ -113,7 +113,7 @@ void SDLTest_Md5Update(SDLTest_Md5Context *mdContext, unsigned char *inBuf,
  *       Always call before using the digest[] variable.
 */
 
-void SDLTest_Md5Final(SDLTest_Md5Context *mdContext);
+void SDLTest_Md5Final(SDLTest_Md5Context* mdContext);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

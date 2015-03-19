@@ -54,8 +54,8 @@ extern DECLSPEC int SDLCALL SDL_Direct3D9GetAdapterIndex(int displayIndex);
    leak.
  */
 typedef struct IDirect3DDevice9 IDirect3DDevice9;
-extern DECLSPEC IDirect3DDevice9 *SDLCALL
-    SDL_RenderGetD3D9Device(SDL_Renderer *renderer);
+extern DECLSPEC IDirect3DDevice9* SDLCALL
+    SDL_RenderGetD3D9Device(SDL_Renderer* renderer);
 
 /* Returns the DXGI Adapter and Output indices for the specified display index.
    These can be passed to EnumAdapters and EnumOutputs respectively to get the
@@ -63,8 +63,8 @@ extern DECLSPEC IDirect3DDevice9 *SDLCALL
    required to create a DX10 or DX11 device and swap chain.
  */
 extern DECLSPEC void SDLCALL SDL_DXGIGetOutputInfo(int displayIndex,
-						   int *adapterIndex,
-						   int *outputIndex);
+						   int* adapterIndex,
+						   int* outputIndex);
 
 #endif /* __WIN32__ */
 
@@ -72,9 +72,9 @@ extern DECLSPEC void SDLCALL SDL_DXGIGetOutputInfo(int displayIndex,
 #if defined(__IPHONEOS__) && __IPHONEOS__
 
 extern DECLSPEC int SDLCALL
-    SDL_iPhoneSetAnimationCallback(SDL_Window *window, int interval,
-				   void (*callback)(void *),
-				   void *callbackParam);
+    SDL_iPhoneSetAnimationCallback(SDL_Window* window, int interval,
+				   void (*callback)(void*),
+				   void* callbackParam);
 extern DECLSPEC void SDLCALL SDL_iPhoneSetEventPump(SDL_bool enabled);
 
 #endif /* __IPHONEOS__ */
@@ -85,7 +85,7 @@ extern DECLSPEC void SDLCALL SDL_iPhoneSetEventPump(SDL_bool enabled);
 /* Get the JNI environment for the current thread
    This returns JNIEnv*, but the prototype is void* so we don't need jni.h
  */
-extern DECLSPEC void *SDLCALL SDL_AndroidGetJNIEnv();
+extern DECLSPEC void* SDLCALL SDL_AndroidGetJNIEnv();
 
 /* Get the SDL Activity object for the application
    This returns jobject, but the prototype is void* so we don't need jni.h
@@ -93,7 +93,7 @@ extern DECLSPEC void *SDLCALL SDL_AndroidGetJNIEnv();
    It is the caller's responsibility to properly release it
    (using env->Push/PopLocalFrame or manually with env->DeleteLocalRef)
  */
-extern DECLSPEC void *SDLCALL SDL_AndroidGetActivity();
+extern DECLSPEC void* SDLCALL SDL_AndroidGetActivity();
 
 /* See the official Android developer guide for more information:
    http://developer.android.com/guide/topics/data/data-storage.html
@@ -105,7 +105,7 @@ extern DECLSPEC void *SDLCALL SDL_AndroidGetActivity();
    This path is unique to your application and cannot be written to
    by other applications.
  */
-extern DECLSPEC const char *SDLCALL SDL_AndroidGetInternalStoragePath();
+extern DECLSPEC const char* SDLCALL SDL_AndroidGetInternalStoragePath();
 
 /* Get the current state of external storage, a bitmask of these values:
     SDL_ANDROID_EXTERNAL_STORAGE_READ
@@ -118,7 +118,7 @@ extern DECLSPEC int SDLCALL SDL_AndroidGetExternalStorageState();
    This path is unique to your application, but is public and can be
    written to by other applications.
  */
-extern DECLSPEC const char *SDLCALL SDL_AndroidGetExternalStoragePath();
+extern DECLSPEC const char* SDLCALL SDL_AndroidGetExternalStoragePath();
 
 #endif /* __ANDROID__ */
 
@@ -163,7 +163,7 @@ typedef enum {
  *      SDL_WinRT_Path for more information on which path types are
  *      supported where.
  */
-extern DECLSPEC const wchar_t *SDLCALL
+extern DECLSPEC const wchar_t* SDLCALL
     SDL_WinRTGetFSPathUNICODE(SDL_WinRT_Path pathType);
 
 /**
@@ -181,7 +181,7 @@ extern DECLSPEC const wchar_t *SDLCALL
  *      SDL_WinRT_Path for more information on which path types are
  *      supported where.
  */
-extern DECLSPEC const char *SDLCALL
+extern DECLSPEC const char* SDLCALL
     SDL_WinRTGetFSPathUTF8(SDL_WinRT_Path pathType);
 
 #endif /* __WINRT__ */

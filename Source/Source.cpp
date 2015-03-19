@@ -55,7 +55,7 @@ int main() {
 	//========================================
 	GraphicsDevice* gDevice =
 	    new GraphicsDevice(SCREEN_WIDTH, SCREEN_HEIGHT);
-	//if (!gDevice->Initialize(true)) { Not sure what this true is about
+	// if (!gDevice->Initialize(true)) { Not sure what this true is about
 	if (!gDevice->Initialize()) {
 		printf("Graphics Device could not initialize!");
 		exit(1);
@@ -94,7 +94,8 @@ int main() {
 	game->Reset();
 	std::string levelConfigFile = "./Assets/Config/level1.xml";
 	if (!game->LoadLevel(levelConfigFile)) {
-		printf("Game could not load level %s: ", levelConfigFile.c_str());
+		printf("Game could not load level %s: ",
+		       levelConfigFile.c_str());
 		exit(1);
 	}
 

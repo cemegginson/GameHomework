@@ -9,7 +9,7 @@
 #include "Object.h"
 
 class Game {
-protected:
+	protected:
 	GameAssetLibrary* gLibrary;
 	ArtAssetLibrary* aLibrary;
 	GraphicsDevice* gDevice;
@@ -20,14 +20,14 @@ protected:
 	View* view;
 	std::vector<Object*> objects;
 
-public:
+	public:
 	Game();
 	~Game();
 	bool Initialize(GraphicsDevice* graphics, InputDevice* input,
 			GAME_INT fps);
 	void Reset();
 	bool LoadLevel(std::string file);
-    void Run();
+	void Run();
 	void Update();
 	void Draw();
 };

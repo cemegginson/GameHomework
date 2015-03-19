@@ -50,15 +50,15 @@
 
 typedef struct {
 	/* SDL init flags */
-	char **argv;
+	char** argv;
 	Uint32 flags;
 	Uint32 verbose;
 
 	/* Video info */
-	const char *videodriver;
+	const char* videodriver;
 	int display;
-	const char *window_title;
-	const char *window_icon;
+	const char* window_title;
+	const char* window_icon;
 	Uint32 window_flags;
 	int window_x;
 	int window_y;
@@ -74,17 +74,17 @@ typedef struct {
 	int depth;
 	int refresh_rate;
 	int num_windows;
-	SDL_Window **windows;
+	SDL_Window** windows;
 
 	/* Renderer info */
-	const char *renderdriver;
+	const char* renderdriver;
 	Uint32 render_flags;
 	SDL_bool skip_renderer;
-	SDL_Renderer **renderers;
-	SDL_Texture **targets;
+	SDL_Renderer** renderers;
+	SDL_Texture** targets;
 
 	/* Audio info */
-	const char *audiodriver;
+	const char* audiodriver;
 	SDL_AudioSpec audiospec;
 
 	/* GL settings */
@@ -128,7 +128,7 @@ extern "C" {
  *
  * \returns Returns a newly allocated common state object.
  */
-SDLTest_CommonState *SDLTest_CommonCreateState(char **argv, Uint32 flags);
+SDLTest_CommonState* SDLTest_CommonCreateState(char** argv, Uint32 flags);
 
 /**
  * \brief Process one common argument.
@@ -139,7 +139,7 @@ SDLTest_CommonState *SDLTest_CommonCreateState(char **argv, Uint32 flags);
  * \returns The number of arguments processed (i.e. 1 for --fullscreen, 2 for
  *--video [videodriver], or -1 on error.
  */
-int SDLTest_CommonArg(SDLTest_CommonState *state, int index);
+int SDLTest_CommonArg(SDLTest_CommonState* state, int index);
 
 /**
  * \brief Returns common usage information
@@ -148,7 +148,7 @@ int SDLTest_CommonArg(SDLTest_CommonState *state, int index);
  *
  * \returns String with usage information
  */
-const char *SDLTest_CommonUsage(SDLTest_CommonState *state);
+const char* SDLTest_CommonUsage(SDLTest_CommonState* state);
 
 /**
  * \brief Open test window.
@@ -157,7 +157,7 @@ const char *SDLTest_CommonUsage(SDLTest_CommonState *state);
  *
  * \returns True if initialization succeeded, false otherwise
  */
-SDL_bool SDLTest_CommonInit(SDLTest_CommonState *state);
+SDL_bool SDLTest_CommonInit(SDLTest_CommonState* state);
 
 /**
  * \brief Common event handler for test windows.
@@ -167,8 +167,8 @@ SDL_bool SDLTest_CommonInit(SDLTest_CommonState *state);
  * \param done Flag indicating we are done.
  *
  */
-void SDLTest_CommonEvent(SDLTest_CommonState *state, SDL_Event *event,
-			 int *done);
+void SDLTest_CommonEvent(SDLTest_CommonState* state, SDL_Event* event,
+			 int* done);
 
 /**
  * \brief Close test window.
@@ -176,7 +176,7 @@ void SDLTest_CommonEvent(SDLTest_CommonState *state, SDL_Event *event,
  * \param state The common state used to create test window.
  *
  */
-void SDLTest_CommonQuit(SDLTest_CommonState *state);
+void SDLTest_CommonQuit(SDLTest_CommonState* state);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

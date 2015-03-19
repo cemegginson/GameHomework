@@ -158,7 +158,7 @@ typedef Uint16 SDL_AudioFormat;
  *  Once the callback returns, the buffer will no longer be valid.
  *  Stereo samples are stored in a LRLRLR ordering.
  */
-typedef void(SDLCALL *SDL_AudioCallback)(void *userdata, Uint8 *stream,
+typedef void(SDLCALL* SDL_AudioCallback)(void* userdata, Uint8* stream,
 					 int len);
 
 /**
@@ -173,11 +173,11 @@ typedef struct SDL_AudioSpec {
 	Uint16 padding; /**< Necessary for some compile environments */
 	Uint32 size;    /**< Audio buffer size in bytes (calculated) */
 	SDL_AudioCallback callback;
-	void *userdata;
+	void* userdata;
 } SDL_AudioSpec;
 
 struct SDL_AudioCVT;
-typedef void(SDLCALL *SDL_AudioFilter)(struct SDL_AudioCVT *cvt,
+typedef void(SDLCALL* SDL_AudioFilter)(struct SDL_AudioCVT* cvt,
 				       SDL_AudioFormat format);
 
 /**
@@ -199,7 +199,7 @@ typedef struct SDL_AudioCVT {
 	SDL_AudioFormat src_format; /**< Source audio format */
 	SDL_AudioFormat dst_format; /**< Target audio format */
 	double rate_incr;	   /**< Rate conversion increment */
-	Uint8 *buf;		    /**< Buffer to hold entire audio data */
+	Uint8* buf;		    /**< Buffer to hold entire audio data */
 	int len;		    /**< Length of original audio buffer */
 	int len_cvt;		    /**< Length of converted audio buffer */
 	int len_mult;		    /**< buffer must be len*len_mult big */
@@ -218,7 +218,7 @@ typedef struct SDL_AudioCVT {
  */
 /* @{ */
 extern DECLSPEC int SDLCALL SDL_GetNumAudioDrivers(void);
-extern DECLSPEC const char *SDLCALL SDL_GetAudioDriver(int index);
+extern DECLSPEC const char* SDLCALL SDL_GetAudioDriver(int index);
 /* @} */
 
 /**
@@ -229,7 +229,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetAudioDriver(int index);
  *            use.  You should normally use SDL_Init() or SDL_InitSubSystem().
  */
 /* @{ */
-extern DECLSPEC int SDLCALL SDL_AudioInit(const char *driver_name);
+extern DECLSPEC int SDLCALL SDL_AudioInit(const char* driver_name);
 extern DECLSPEC void SDLCALL SDL_AudioQuit(void);
 /* @} */
 
@@ -237,7 +237,7 @@ extern DECLSPEC void SDLCALL SDL_AudioQuit(void);
  *  This function returns the name of the current audio driver, or NULL
  *  if no driver has been initialized.
  */
-extern DECLSPEC const char *SDLCALL SDL_GetCurrentAudioDriver(void);
+extern DECLSPEC const char* SDLCALL SDL_GetCurrentAudioDriver(void);
 
 /**
  *  This function opens the audio device with the desired parameters, and
@@ -282,7 +282,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetCurrentAudioDriver(void);
  *  any local mixing buffers after you open the audio device.
  */
 extern DECLSPEC int SDLCALL
-    SDL_OpenAudio(SDL_AudioSpec *desired, SDL_AudioSpec *obtained);
+    SDL_OpenAudio(SDL_AudioSpec* desired, SDL_AudioSpec* obtained);
 
 /**
  *  SDL Audio Device IDs.
@@ -322,7 +322,7 @@ extern DECLSPEC int SDLCALL SDL_GetNumAudioDevices(int iscapture);
  *  string for any length of time, you should make your own copy of it, as it
  *  will be invalid next time any of several other SDL functions is called.
  */
-extern DECLSPEC const char *SDLCALL
+extern DECLSPEC const char* SDLCALL
     SDL_GetAudioDeviceName(int index, int iscapture);
 
 /**
@@ -339,8 +339,8 @@ extern DECLSPEC const char *SDLCALL
  *  SDL_OpenAudio(), unlike this function, always acts on device ID 1.
  */
 extern DECLSPEC SDL_AudioDeviceID SDLCALL
-    SDL_OpenAudioDevice(const char *device, int iscapture,
-			const SDL_AudioSpec *desired, SDL_AudioSpec *obtained,
+    SDL_OpenAudioDevice(const char* device, int iscapture,
+			const SDL_AudioSpec* desired, SDL_AudioSpec* obtained,
 			int allowed_changes);
 
 /**
@@ -394,9 +394,9 @@ extern DECLSPEC void SDLCALL
  *  wave file cannot be opened, uses an unknown data format, or is
  *  corrupt.  Currently raw and MS-ADPCM WAVE files are supported.
  */
-extern DECLSPEC SDL_AudioSpec *SDLCALL
-    SDL_LoadWAV_RW(SDL_RWops *src, int freesrc, SDL_AudioSpec *spec,
-		   Uint8 **audio_buf, Uint32 *audio_len);
+extern DECLSPEC SDL_AudioSpec* SDLCALL
+    SDL_LoadWAV_RW(SDL_RWops* src, int freesrc, SDL_AudioSpec* spec,
+		   Uint8** audio_buf, Uint32* audio_len);
 
 /**
  *  Loads a WAV from a file.
@@ -409,7 +409,7 @@ extern DECLSPEC SDL_AudioSpec *SDLCALL
 /**
  *  This function frees data previously allocated with SDL_LoadWAV_RW()
  */
-extern DECLSPEC void SDLCALL SDL_FreeWAV(Uint8 *audio_buf);
+extern DECLSPEC void SDLCALL SDL_FreeWAV(Uint8* audio_buf);
 
 /**
  *  This function takes a source format and rate and a destination format
@@ -420,7 +420,7 @@ extern DECLSPEC void SDLCALL SDL_FreeWAV(Uint8 *audio_buf);
  *  \return -1 if the format conversion is not supported, 0 if there's
  *  no conversion needed, or 1 if the audio filter is set up.
  */
-extern DECLSPEC int SDLCALL SDL_BuildAudioCVT(SDL_AudioCVT *cvt,
+extern DECLSPEC int SDLCALL SDL_BuildAudioCVT(SDL_AudioCVT* cvt,
 					      SDL_AudioFormat src_format,
 					      Uint8 src_channels, int src_rate,
 					      SDL_AudioFormat dst_format,
@@ -436,7 +436,7 @@ extern DECLSPEC int SDLCALL SDL_BuildAudioCVT(SDL_AudioCVT *cvt,
  *  \c cvt->buf should be allocated after the \c cvt structure is initialized by
  *  SDL_BuildAudioCVT(), and should be \c cvt->len*cvt->len_mult bytes long.
  */
-extern DECLSPEC int SDLCALL SDL_ConvertAudio(SDL_AudioCVT *cvt);
+extern DECLSPEC int SDLCALL SDL_ConvertAudio(SDL_AudioCVT* cvt);
 
 #define SDL_MIX_MAXVOLUME 128
 /**
@@ -447,14 +447,14 @@ extern DECLSPEC int SDLCALL SDL_ConvertAudio(SDL_AudioCVT *cvt);
  *  This is provided for convenience -- you can mix your own audio data.
  */
 extern DECLSPEC void SDLCALL
-    SDL_MixAudio(Uint8 *dst, const Uint8 *src, Uint32 len, int volume);
+    SDL_MixAudio(Uint8* dst, const Uint8* src, Uint32 len, int volume);
 
 /**
  *  This works like SDL_MixAudio(), but you specify the audio format instead of
  *  using the format of audio device 1. Thus it can be used when no audio
  *  device is open at all.
  */
-extern DECLSPEC void SDLCALL SDL_MixAudioFormat(Uint8 *dst, const Uint8 *src,
+extern DECLSPEC void SDLCALL SDL_MixAudioFormat(Uint8* dst, const Uint8* src,
 						SDL_AudioFormat format,
 						Uint32 len, int volume);
 

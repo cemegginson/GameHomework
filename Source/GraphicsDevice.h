@@ -5,18 +5,18 @@
 #include "SDL.h"
 
 class GraphicsDevice {
-protected:
-    int width;
-    int height;
-    SDL_Window* window;
+	protected:
+	int width;
+	int height;
+	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-public:
+	public:
 	GraphicsDevice();
 	GraphicsDevice(GAME_INT ScreenWidth, GAME_INT ScreenHeight);
 	~GraphicsDevice();
 	bool Initialize();
-    int getWidth();
-    int getHeight();
+	int getWidth();
+	int getHeight();
 	SDL_Renderer* getRenderer();
 };

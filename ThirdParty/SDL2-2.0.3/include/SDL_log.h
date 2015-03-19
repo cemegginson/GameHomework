@@ -132,72 +132,72 @@ extern DECLSPEC void SDLCALL SDL_LogResetPriorities(void);
  *  \brief Log a message with SDL_LOG_CATEGORY_APPLICATION and
  * SDL_LOG_PRIORITY_INFO
  */
-extern DECLSPEC void SDLCALL SDL_Log(const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_Log(const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_VERBOSE
  */
-extern DECLSPEC void SDLCALL SDL_LogVerbose(int category, const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_LogVerbose(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_DEBUG
  */
-extern DECLSPEC void SDLCALL SDL_LogDebug(int category, const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_LogDebug(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_INFO
  */
-extern DECLSPEC void SDLCALL SDL_LogInfo(int category, const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_LogInfo(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_WARN
  */
-extern DECLSPEC void SDLCALL SDL_LogWarn(int category, const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_LogWarn(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_ERROR
  */
-extern DECLSPEC void SDLCALL SDL_LogError(int category, const char *fmt, ...);
+extern DECLSPEC void SDLCALL SDL_LogError(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with SDL_LOG_PRIORITY_CRITICAL
  */
 extern DECLSPEC void SDLCALL
-    SDL_LogCritical(int category, const char *fmt, ...);
+    SDL_LogCritical(int category, const char* fmt, ...);
 
 /**
  *  \brief Log a message with the specified category and priority.
  */
 extern DECLSPEC void SDLCALL SDL_LogMessage(int category,
 					    SDL_LogPriority priority,
-					    const char *fmt, ...);
+					    const char* fmt, ...);
 
 /**
  *  \brief Log a message with the specified category and priority.
  */
 extern DECLSPEC void SDLCALL SDL_LogMessageV(int category,
 					     SDL_LogPriority priority,
-					     const char *fmt, va_list ap);
+					     const char* fmt, va_list ap);
 
 /**
  *  \brief The prototype for the log output function
  */
-typedef void (*SDL_LogOutputFunction)(void *userdata, int category,
+typedef void (*SDL_LogOutputFunction)(void* userdata, int category,
 				      SDL_LogPriority priority,
-				      const char *message);
+				      const char* message);
 
 /**
  *  \brief Get the current log output function.
  */
 extern DECLSPEC void SDLCALL
-    SDL_LogGetOutputFunction(SDL_LogOutputFunction *callback, void **userdata);
+    SDL_LogGetOutputFunction(SDL_LogOutputFunction* callback, void** userdata);
 
 /**
  *  \brief This function allows you to replace the default log output
  *         function with one of your own.
  */
 extern DECLSPEC void SDLCALL
-    SDL_LogSetOutputFunction(SDL_LogOutputFunction callback, void *userdata);
+    SDL_LogSetOutputFunction(SDL_LogOutputFunction callback, void* userdata);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

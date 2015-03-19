@@ -109,18 +109,18 @@ typedef enum {
 typedef struct SDL_assert_data {
 	int always_ignore;
 	unsigned int trigger_count;
-	const char *condition;
-	const char *filename;
+	const char* condition;
+	const char* filename;
 	int linenum;
-	const char *function;
-	const struct SDL_assert_data *next;
+	const char* function;
+	const struct SDL_assert_data* next;
 } SDL_assert_data;
 
 #if (SDL_ASSERT_LEVEL > 0)
 
 /* Never call this directly. Use the SDL_assert* macros. */
 extern DECLSPEC SDL_assert_state SDLCALL
-    SDL_ReportAssertion(SDL_assert_data *, const char *, const char *, int)
+    SDL_ReportAssertion(SDL_assert_data*, const char*, const char*, int)
 #if defined(__clang__)
 #if __has_feature(attribute_analyzer_noreturn)
     /* this tells Clang's static analysis that we're a custom assert function,
@@ -181,8 +181,8 @@ extern DECLSPEC SDL_assert_state SDLCALL
 /* this assertion is never disabled at any level. */
 #define SDL_assert_always(condition) SDL_enabled_assert(condition)
 
-typedef SDL_assert_state(SDLCALL *SDL_AssertionHandler)(
-    const SDL_assert_data *data, void *userdata);
+typedef SDL_assert_state(SDLCALL* SDL_AssertionHandler)(
+    const SDL_assert_data* data, void* userdata);
 
 /**
  *  \brief Set an application-defined assertion handler.
@@ -205,7 +205,7 @@ typedef SDL_assert_state(SDLCALL *SDL_AssertionHandler)(
  *  \param userdata A pointer passed to the callback as-is.
  */
 extern DECLSPEC void SDLCALL
-    SDL_SetAssertionHandler(SDL_AssertionHandler handler, void *userdata);
+    SDL_SetAssertionHandler(SDL_AssertionHandler handler, void* userdata);
 
 /**
  *  \brief Get the default assertion handler.
@@ -237,7 +237,7 @@ extern DECLSPEC SDL_AssertionHandler SDLCALL
  *  \return The SDL_AssertionHandler that is called when an assert triggers.
  */
 extern DECLSPEC SDL_AssertionHandler SDLCALL
-    SDL_GetAssertionHandler(void **puserdata);
+    SDL_GetAssertionHandler(void** puserdata);
 
 /**
  *  \brief Get a list of all assertion failures.
@@ -261,7 +261,7 @@ extern DECLSPEC SDL_AssertionHandler SDLCALL
  *  \return List of all assertions.
  *  \sa SDL_ResetAssertionReport
  */
-extern DECLSPEC const SDL_assert_data *SDLCALL SDL_GetAssertionReport(void);
+extern DECLSPEC const SDL_assert_data* SDLCALL SDL_GetAssertionReport(void);
 
 /**
  *  \brief Reset the list of all assertion failures.

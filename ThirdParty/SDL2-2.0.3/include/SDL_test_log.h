@@ -48,7 +48,7 @@ extern "C" {
  *
  * \param fmt Message to be logged
  */
-void SDLTest_Log(const char *fmt, ...);
+void SDLTest_Log(const char* fmt, ...);
 
 /**
  * \brief Prints given message with a timestamp in the TEST category and the
@@ -56,7 +56,7 @@ void SDLTest_Log(const char *fmt, ...);
  *
  * \param fmt Message to be logged
  */
-void SDLTest_LogError(const char *fmt, ...);
+void SDLTest_LogError(const char* fmt, ...);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

@@ -9,10 +9,10 @@
 #endif
 
 class InputDevice {
-protected:
+	protected:
 	GAME_EVENT gEvent;
 
-public:
+	public:
 	InputDevice();
 	~InputDevice();
 	bool Initialize(SDL_Event* event);

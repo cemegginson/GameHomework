@@ -71,7 +71,7 @@ extern DECLSPEC int SDLCALL SDL_GetNumTouchFingers(SDL_TouchID touchID);
 /**
  *  \brief Get the finger object of the given touch, with the given index.
  */
-extern DECLSPEC SDL_Finger *SDLCALL
+extern DECLSPEC SDL_Finger* SDLCALL
     SDL_GetTouchFinger(SDL_TouchID touchID, int index);
 
 /* Ends C function definitions when using C++ */

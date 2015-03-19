@@ -57,7 +57,7 @@ typedef struct {
 	Uint32 flags;     /**< ::SDL_MessageBoxButtonFlags */
 	int buttonid;     /**< User defined button id (value returned via
 			     SDL_ShowMessageBox) */
-	const char *text; /**< The UTF-8 button text */
+	const char* text; /**< The UTF-8 button text */
 } SDL_MessageBoxButtonData;
 
 /**
@@ -86,14 +86,14 @@ typedef struct {
  */
 typedef struct {
 	Uint32 flags;	/**< ::SDL_MessageBoxFlags */
-	SDL_Window *window;  /**< Parent window, can be NULL */
-	const char *title;   /**< UTF-8 title */
-	const char *message; /**< UTF-8 message text */
+	SDL_Window* window;  /**< Parent window, can be NULL */
+	const char* title;   /**< UTF-8 title */
+	const char* message; /**< UTF-8 message text */
 
 	int numbuttons;
-	const SDL_MessageBoxButtonData *buttons;
+	const SDL_MessageBoxButtonData* buttons;
 
-	const SDL_MessageBoxColorScheme *
+	const SDL_MessageBoxColorScheme*
 	    colorScheme; /**< ::SDL_MessageBoxColorScheme, can be NULL to use
 			    system settings */
 } SDL_MessageBoxData;
@@ -115,7 +115,7 @@ typedef struct {
  *        closes the messagebox.
  */
 extern DECLSPEC int SDLCALL
-    SDL_ShowMessageBox(const SDL_MessageBoxData *messageboxdata, int *buttonid);
+    SDL_ShowMessageBox(const SDL_MessageBoxData* messageboxdata, int* buttonid);
 
 /**
  *  \brief Create a simple modal message box
@@ -130,8 +130,8 @@ extern DECLSPEC int SDLCALL
  *  \sa SDL_ShowMessageBox
  */
 extern DECLSPEC int SDLCALL
-    SDL_ShowSimpleMessageBox(Uint32 flags, const char *title,
-			     const char *message, SDL_Window *window);
+    SDL_ShowSimpleMessageBox(Uint32 flags, const char* title,
+			     const char* message, SDL_Window* window);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
