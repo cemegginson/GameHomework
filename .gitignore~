@@ -1,5 +1,4 @@
-build
-temp
 *.o
+build
 *.exe
 <stdin>
