@@ -8,6 +8,6 @@ ArtAssetLibrary::~ArtAssetLibrary() {
 
 }
 
-Texture* Search(std::string key) {
+Texture* ArtAssetLibrary::Search(std::string key) {
     return library.at(key);
 }
