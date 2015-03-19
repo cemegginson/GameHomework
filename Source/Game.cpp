@@ -60,5 +60,7 @@ void Game::Update() {
 }
 
 void Game::Draw() {
-
+	for(auto obj : objects) {
+        obj->Draw(timer.getTicks()/1000.0, view);
+    }
 }

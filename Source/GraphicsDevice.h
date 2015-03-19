@@ -2,18 +2,14 @@
 
 #include "Definitions.h"
 
-#ifdef _WIN32
 #include "SDL.h"
-#else
-#include <SDL.h>
-#endif
 
 class GraphicsDevice {
 protected:
     int width;
     int height;
     SDL_Window* window;
-    SDL_Renderer* renderer;
+	SDL_Renderer* renderer;
 
 public:
 	GraphicsDevice();
@@ -22,4 +18,5 @@ public:
 	bool Initialize();
     int getWidth();
     int getHeight();
+	SDL_Renderer* getRenderer();
 };
