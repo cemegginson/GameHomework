@@ -1,5 +1,5 @@
-#include "InputDevice.h"
 #include <iostream>
+#include "InputDevice.h"
 
 InputDevice::InputDevice() { gEvent = GAME_NA; }
 

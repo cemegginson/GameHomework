@@ -1,5 +1,6 @@
-#include "GraphicsDevice.h"
 #include <iostream>
+#include "GraphicsDevice.h"
+#include "GameUtils.h"
 
 GraphicsDevice::GraphicsDevice() {
 	window = nullptr;
@@ -22,8 +23,7 @@ GraphicsDevice::~GraphicsDevice() {
 
 bool GraphicsDevice::Initialize() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		// LogSDLError(std::cerr, "SDL_Init");
-		std::cerr << "Something broke" << std::endl;
+		LogSDLError(std::cerr, "SDL_Init");
 		return false;
 	}
 
@@ -31,16 +31,13 @@ bool GraphicsDevice::Initialize() {
 				  SDL_WINDOWPOS_UNDEFINED, width, height,
 				  SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
-		// LogSDLError(std::cerr, "SDL_CreateWindow");
-		std::cerr << "Something broke" << std::endl;
+		LogSDLError(std::cerr, "SDL_CreateWindow");
 		return false;
 	}
 
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
-						      SDL_RENDERER_SOFTWARE);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if (renderer == nullptr) {
-		// LogSDLError(std::cerr, "SDL_CreateRenderer");
-		std::cerr << "Something broke" << std::endl;
+		LogSDLError(std::cerr, "SDL_CreateRenderer");
 		return false;
 	}
 

@@ -32,7 +32,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 void Game::Reset() {
 	delete view;
 	for (auto iter = objects.begin(); iter <= objects.end(); iter++) {
-		delete *iter;
+		//delete *iter;
 	}
 	objects.erase(objects.begin(), objects.end());
 }
@@ -43,8 +43,7 @@ bool Game::LoadLevel(std::string file) {
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
 		for (pugi::xml_node child : Level.children("GameAsset")) {
-			gLibrary->Search(child.attribute("name").value())
-			    ->Create(child);
+			gLibrary->Search(child.attribute("name").value())->Create(child);
 		}
 	}
 	return true;

@@ -1,5 +1,6 @@
-#include "Texture.h"
 #include <iostream>
+#include "Texture.h"
+//#include "GameUtils.h"
 
 Texture::Texture() { texture = nullptr; }
 
@@ -9,8 +10,7 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 	SDL_Surface* surface = nullptr;
 	surface = IMG_Load(image.c_str());
 	if (surface == nullptr) {
-		// LogSDLError(std::cerr, "LoadSurface");
-		std::cerr << "Something broke" << std::endl;
+		//LogSDLError(std::cerr, "LoadSurface");
 		return false;
 	}
 
@@ -18,8 +18,7 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 	SDL_FreeSurface(surface);
 
 	if (texture == nullptr) {
-		// LogSDLError(std::cerr, "LoadTexture");
-		std::cerr << "Something broke" << std::endl;
+		//LogSDLError(std::cerr, "LoadTexture");
 		return false;
 	}
 	return true;
