@@ -11,7 +11,7 @@ protected:
 public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
-	static Texture* Search(std::string key) {
+	Texture* Search(std::string key) {
 	    return library[key];
 	}
 };

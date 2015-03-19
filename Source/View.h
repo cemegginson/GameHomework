@@ -7,6 +7,7 @@ class View {
 protected:
     GAME_FLT x;
     GAME_FLT y;
+    GAME_VEC position;
     InputDevice* iDevice;
 public:
 	View();

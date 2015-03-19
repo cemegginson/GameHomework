@@ -4,9 +4,11 @@
 #include "Definitions.h"
 #include "Object.h"
 #include "View.h"
+#include "ArtAssetLibrary.h"
 
 class Carrier : public Object {
 protected:
+    ArtAssetLibrary artlib;
 
 public:
     Carrier();

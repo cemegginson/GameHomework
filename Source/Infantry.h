@@ -3,9 +3,11 @@
 #include <string>
 #include "Definitions.h"
 #include "Object.h"
+#include "ArtAssetLibrary.h"
 
 class Infantry : public Object {
 protected:
+    ArtAssetLibrary artlib;
 
 public:
     Infantry();
