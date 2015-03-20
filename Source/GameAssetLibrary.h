@@ -14,12 +14,12 @@ class GameAssetLibrary {
 	~GameAssetLibrary() {}
 
 	void AddFactory(std::string name, ObjectFactory* factory) {
-		library.insert(
+		library.Insert(
 		    std::pair<std::string, ObjectFactory*>(name, factory));
 		return;
 	}
 
 	ObjectFactory* Search(std::string obj) { // Spec was jacked
-		return library[obj];
+		return library.at(obj);
 	}
 };

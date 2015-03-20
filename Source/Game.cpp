@@ -23,6 +23,7 @@ Game::~Game() {
 bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 		      GAME_INT framerate) {
 	gDevice = graphics;
+	aLibrary = new ArtAssetLibrary();
 	iDevice = input;
 	fps = framerate;
 	timer.Initialize(fps);
@@ -34,7 +35,7 @@ void Game::Reset() {
 	for (auto iter = objects.begin(); iter <= objects.end(); iter++) {
 		//delete *iter;
 	}
-	objects.erase(objects.begin(), objects.end());
+	// objects.erase(objects.begin(), objects.end());
 }
 
 bool Game::LoadLevel(std::string file) {
@@ -43,7 +44,7 @@ bool Game::LoadLevel(std::string file) {
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
 		for (pugi::xml_node child : Level.children("GameAsset")) {
-			gLibrary->Search(child.attribute("name").value())->Create(child);
+			gLibrary->Insert(child.attribute("name").value(), aLibrary.)
 		}
 	}
 	return true;
