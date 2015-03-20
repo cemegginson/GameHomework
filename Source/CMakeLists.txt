@@ -1,18 +1,5 @@
 project(GameHomework1)
 
-    # add_library(ArtAssetLibrary ArtAssetLibrary.cpp)
-    # add_library(Carrier Carrier.cpp)
-    # add_library(Factory Factory.cpp)
-    # add_library(Game Game.cpp)
-    # add_library(GraphicsDevice GraphicsDevice.cpp)
-    # add_library(Infantry Infantry.cpp)
-    # add_library(InputDevice InputDevice.cpp)
-    # add_library(Object Object.cpp)
-    # add_library(Pugixml pugixml.cpp)
-    # add_library(Texture Texture.cpp)
-    # add_library(Timer Timer.cpp)
-    # add_library(View View.cpp)
-
     add_executable(GameHomework1 Source.cpp ArtAssetLibrary.cpp Carrier.cpp
         Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
         Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
@@ -20,17 +7,5 @@ project(GameHomework1)
 
     target_link_libraries(GameHomework1 ${SDL2_LIBRARY})
     target_link_libraries(GameHomework1 SDL_image)
-    # target_link_libraries(GameHomework1 ArtAssetLibrary)
-    # target_link_libraries(GameHomework1 Carrier)
-    # target_link_libraries(GameHomework1 Factory)
-    # target_link_libraries(GameHomework1 Game)
-    # target_link_libraries(GameHomework1 GraphicsDevice)
-    # target_link_libraries(GameHomework1 Infantry)
-    # target_link_libraries(GameHomework1 InputDevice)
-    # target_link_libraries(GameHomework1 Object)
-    # target_link_libraries(GameHomework1 Pugixml)
-    # target_link_libraries(GameHomework1 Texture)
-    # target_link_libraries(GameHomework1 Timer)
-    # target_link_libraries(GameHomework1 View)
 
     install(TARGETS RUNTIME DESTINATION ${BIN_DIR})
