@@ -10,11 +10,11 @@ class GameAssetLibrary {
 	std::map<std::string, ObjectFactory*> library;
 
 	public:
-	GameAssetLibrary();
+	GameAssetLibrary() {}
 	~GameAssetLibrary() {}
 
 	void AddFactory(std::string name, ObjectFactory* factory) {
-		library.Insert(
+		library.insert(
 		    std::pair<std::string, ObjectFactory*>(name, factory));
 		return;
 	}

@@ -8,12 +8,12 @@
 
 class Carrier : public Object {
 	protected:
-	ArtAssetLibrary artlib;
+	ArtAssetLibrary aLibrary;
 
 	public:
 	Carrier();
 	~Carrier();
 	void Update(GAME_FLT gameTime);
 	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(std::string tex, GAME_VEC pos, GAME_FLT ang);
+	void Initialize(Texture* tex, GAME_VEC pos, GAME_FLT ang);
 };

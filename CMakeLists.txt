@@ -4,7 +4,7 @@ project(GameHomework1)
 # Use our modified FindSDL2* modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameHomework1_SOURCE_DIR}/cmake")
 # Set an output directory for our binaries
-set(BIN_DIR ${GameHomework1_SOURCE_DIR}/bin)
+set(BIN_DIR ${GameHomework1_SOURCE_DIR})
 
 # Bump up warning levels appropriately for clang, gcc & msvc
 # Also set debug/optimization flags depending on the build type. IDE users choose this when

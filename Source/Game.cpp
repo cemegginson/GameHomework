@@ -24,9 +24,15 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 		      GAME_INT framerate) {
 	gDevice = graphics;
 	aLibrary = new ArtAssetLibrary();
+	aLibrary->LoadAssets();
 	iDevice = input;
 	fps = framerate;
 	timer.Initialize(fps);
+	gLibrary = new GameAssetLibrary();
+	gLibrary->AddFactory("Infantry",
+			     (ObjectFactory*)new InfantryFactory(aLibrary));
+	gLibrary->AddFactory("Carrier",
+			     (ObjectFactory*)new CarrierFactory(aLibrary));
 	return true;
 }
 
@@ -44,7 +50,8 @@ bool Game::LoadLevel(std::string file) {
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
 		for (pugi::xml_node child : Level.children("GameAsset")) {
-			gLibrary->Insert(child.attribute("name").value(), aLibrary.)
+			gLibrary->Search(child.attribute("name").value())
+			    ->Create(child);
 		}
 	}
 	return true;

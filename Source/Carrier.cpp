@@ -10,8 +10,8 @@ void Carrier::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Carrier::Initialize(std::string tex, GAME_VEC pos, GAME_FLT ang) {
-	texture = artlib.Search(tex);
+void Carrier::Initialize(Texture* tex, GAME_VEC pos, GAME_FLT ang) {
+	texture = tex;
 	position = pos;
 	angle = ang;
 }

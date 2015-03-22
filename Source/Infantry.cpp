@@ -10,8 +10,8 @@ void Infantry::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Infantry::Initialize(std::string tex, GAME_VEC pos, GAME_FLT ang) {
-	texture = artlib.Search(tex);
+void Infantry::Initialize(Texture* tex, GAME_VEC pos, GAME_FLT ang) {
+	texture = tex;
 	position = pos;
 	angle = ang;
 }

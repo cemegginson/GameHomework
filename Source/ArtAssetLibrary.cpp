@@ -6,7 +6,7 @@ ArtAssetLibrary::ArtAssetLibrary() { gDevice = nullptr; }
 ArtAssetLibrary::~ArtAssetLibrary() {}
 
 bool ArtAssetLibrary::LoadAssets() {
-	if (!library.find("Carrier")->second->Initialize(
+	if (!library.insert(std::pair<std::string, Texture*>"Carrier")->second->Initialize(
 		gDevice->getRenderer(), "./Assets/Images/t_carrier.png")) {
 		// LogSDLError(std::cerr, "LoadAssets");
 		std::cerr << "Something broke" << std::endl;
