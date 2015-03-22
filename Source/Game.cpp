@@ -24,7 +24,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 		      GAME_INT framerate) {
 	gDevice = graphics;
 	aLibrary = new ArtAssetLibrary();
-	aLibrary->LoadAssets();
+	aLibrary->LoadAssets(gDevice);
 	iDevice = input;
 	fps = framerate;
 	timer.Initialize(fps);
@@ -57,7 +57,10 @@ bool Game::LoadLevel(std::string file) {
 	return true;
 }
 
-void Game::Run() {}
+void Game::Run() {
+	this->Update();
+	this->Draw();
+}
 
 void Game::Update() {
 	for (auto obj : objects) {

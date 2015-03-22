@@ -13,6 +13,6 @@ class ArtAssetLibrary {
 	public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
-	bool LoadAssets();
+	bool LoadAssets(GraphicsDevice* gDevice);
 	Texture* Search(std::string key);
 };

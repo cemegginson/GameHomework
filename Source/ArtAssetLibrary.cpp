@@ -5,10 +5,10 @@ ArtAssetLibrary::ArtAssetLibrary() { gDevice = nullptr; }
 
 ArtAssetLibrary::~ArtAssetLibrary() {}
 
-bool ArtAssetLibrary::LoadAssets() {
+bool ArtAssetLibrary::LoadAssets(GraphicsDevice* gDevice) {
 	library.insert(
 	    std::pair<std::string, Texture*>("Carrier", new Texture()));
-	library.at("Carrier")->Initialize(gDevice->getRenderer, "./Assets/Images/t_carrier.png");
+	library.at("Carrier")->Initialize(gDevice->getRenderer(), "./Assets/Images/t_carrier.png");
 
 	library.insert(std::pair<std::string, Texture*>("Infantry", new Texture()));
 	library.at("Infantry")->Initialize(gDevice->getRenderer(), "./Assets/Images/t_infantry.png");

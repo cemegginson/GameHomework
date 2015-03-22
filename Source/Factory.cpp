@@ -44,7 +44,6 @@ Object* CarrierFactory::Create(pugi::xml_node tag) {
 	GAME_FLT ang;
 	std::string name;
 	name = tag.attribute("name").value();
-	std::cout << name << std::endl;
 	vec.x = atof(tag.attribute("x").value());
 	vec.y = atof(tag.attribute("y").value());
 	ang = atof(tag.attribute("angle").value());
