@@ -6,18 +6,13 @@ ArtAssetLibrary::ArtAssetLibrary() { gDevice = nullptr; }
 ArtAssetLibrary::~ArtAssetLibrary() {}
 
 bool ArtAssetLibrary::LoadAssets() {
-	if (!library.insert(std::pair<std::string, Texture*>"Carrier")->second->Initialize(
-		gDevice->getRenderer(), "./Assets/Images/t_carrier.png")) {
-		// LogSDLError(std::cerr, "LoadAssets");
-		std::cerr << "Something broke" << std::endl;
-		return false;
-	}
-	if (!library.find("Infantry")->second->Initialize(
-		gDevice->getRenderer(), "./Assets/Images/t_infantry.png")) {
-		// LogSDLError(std::cerr, "LoadAssets");
-		std::cerr << "Something broke" << std::endl;
-		return false;
-	}
+	library.insert(
+	    std::pair<std::string, Texture*>("Carrier", new Texture()));
+	library.at("Carrier")->Initialize(gDevice->getRenderer, "./Assets/Images/t_carrier.png");
+
+	library.insert(std::pair<std::string, Texture*>("Infantry", new Texture()));
+	library.at("Infantry")->Initialize(gDevice->getRenderer(), "./Assets/Images/t_infantry.png");
+
 	return true;
 }
 
