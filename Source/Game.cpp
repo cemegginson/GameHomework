@@ -50,16 +50,16 @@ bool Game::LoadLevel(std::string file) {
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
 		for (pugi::xml_node child : Level.children("GameAsset")) {
-			gLibrary->Search(child.attribute("name").value())
-			    ->Create(child);
+			objects.push_back(gLibrary->Search(child.attribute("name").value())
+			    ->Create(child));
 		}
 	}
 	return true;
 }
 
 void Game::Run() {
-	this->Update();
-	this->Draw();
+	Update();
+	Draw();
 }
 
 void Game::Update() {
@@ -69,7 +69,9 @@ void Game::Update() {
 }
 
 void Game::Draw() {
+	SDL_RenderClear(gDevice->getRenderer());
 	for (auto obj : objects) {
 		obj->Draw(timer.getTicks() / 1000.0, view);
 	}
+	SDL_RenderPresent(gDevice->getRenderer());
 }

@@ -8,20 +8,16 @@ ArtAssetLibrary::~ArtAssetLibrary() {}
 bool ArtAssetLibrary::LoadAssets(GraphicsDevice* gDevice) {
 	library.insert(
 	    std::pair<std::string, Texture*>("Carrier", new Texture()));
-	library.at("Carrier")->Initialize(gDevice->getRenderer(), "./Assets/Images/t_carrier.png");
+	std::string carr = "./Assets/Images/t_carrier.png";
+	library.at("Carrier")->Initialize(gDevice->getRenderer(), carr);
 
 	library.insert(std::pair<std::string, Texture*>("Infantry", new Texture()));
-	library.at("Infantry")->Initialize(gDevice->getRenderer(), "./Assets/Images/t_infantry.png");
+	std::string inf = "./Assets/Images/t_infantry.png";
+	library.at("Infantry")->Initialize(gDevice->getRenderer(), inf);
 
 	return true;
 }
 
 Texture* ArtAssetLibrary::Search(std::string key) {
-	/*
-		auto iter = library.find(key);
-		if(iter != library.end()){
-			return iter->second;
-		}
-	*/
 	return library.at(key);
 }
