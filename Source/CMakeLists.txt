@@ -4,7 +4,7 @@ project(GameHomework1)
         Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
         Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
 
-    target_link_libraries(GameHomework1 ${SDL2_LIBRARY})
+    target_link_libraries(GameHomework1 SDL2)
     target_link_libraries(GameHomework1 SDL_image)
 
     install(TARGETS RUNTIME DESTINATION ${BIN_DIR})
