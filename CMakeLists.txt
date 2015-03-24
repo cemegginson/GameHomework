@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 2.6)
 project(GameHomework1)
 
 # Use our modified FindSDL2* modules
-# set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameHomework1_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameHomework1_SOURCE_DIR}/cmake")
 # ^ Not sure any of that stuff is useful on Windows without MinGW
 
 # Set an output directory for our binaries
-set(BIN_DIR ${GameHomework1_SOURCE_DIR}/bin)
+set(BIN_DIR ${CMAKE_SOURCE_DIRECTORY}/bin)
 
 # Bump up warning levels appropriately for clang, gcc & msvc
 # Also set debug/optimization flags depending on the build type. IDE users choose this when
@@ -23,24 +23,26 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 	endif()
 endif()
 
+
 # Platform specific handling for required libraries
 if (WIN32)
 	include_directories("./ThirdParty/SDL2-2.0.3/include")
 	include_directories("./ThirdParty/SDL2_image-2.0.0/include")
-	link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
-  add_library(SDL2 STATIC "./ThirdParty/SDL2-2.0.3/lib/x64/SDL2.lib")
-	add_library(SDL_image STATIC "./ThirdParty/SDL2_image-2.0.0/lib/x64/SDL2_image.lib")
-	set_target_properties(SDL2 SDL_image PROPERTIES LINKER_LANGUAGE C)
+	# link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
+  # add_library(SDL2 STATIC "./ThirdParty/SDL2-2.0.3/lib/x64/SDL2.lib")
+	# add_library(SDL2/SDL_image STATIC "./ThirdParty/SDL2_image-2.0.0/lib/x64/SDL2_image.lib")
+	set_target_properties(SDL2 SDL2/SDL_image PROPERTIES LINKER_LANGUAGE C)
 elseif(UNIX)
 
 endif()
 
-# find_package(SDL2 REQUIRED)
-# find_package(SDL_image REQUIRED)
+find_package(SDL2 REQUIRED)
+find_package(SDL_image REQUIRED)
 
 # Include directories with relevant items
-
 include_directories(Source)
-
-# Add directory with all our source code
 add_subdirectory(Source)
+
+if(WIN32)
+	link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
+endif()
