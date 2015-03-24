@@ -1,14 +1,20 @@
 project(GameHomework1)
 
-    set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Carrier.cpp
-        Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
-        Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
+set(TARGET_NAME GameHomework1)
 
-    add_executable(gamebin ${SRC_FILES})
+set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Carrier.cpp
+    Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
+    Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
 
-    target_include_directories(GameHomework1 ${SDL_INCLUDE_DIRS} "${CMAKE_SOURCE_DIRECTORY}/Source")
+add_executable(${TARGET_NAME} ${SRC_FILES})
 
-    target_link_libraries(GameHomework1 ${SDL2_LIBRARY})
-    target_link_libraries(GameHomework1 ${SDL2_IMAGE_LIBRARIES})
+target_include_directories(${TARGET_NAME} PRIVATE
+    ${SDL2_INCLUDE_DIR}
+    ${SDL2_IMAGE_INCLUDE_DIRS}
+    "${CMAKE_SOURCE_DIR}/Source")
 
-    install(TARGETS RUNTIME DESTINATION ${BIN_DIR})
+target_link_libraries(${TARGET_NAME} ${SDL2_LIBRARY})
+target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARIES})
+
+install(TARGETS ${TARGET_NAME}
+    RUNTIME DESTINATION ${BIN_DIR})
