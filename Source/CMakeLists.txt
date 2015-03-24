@@ -4,7 +4,7 @@ project(GameHomework1)
         Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
         Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
 
-    add_executable(GameHomework1 ${SRC_FILES})
+    add_executable(gamebin ${SRC_FILES})
 
     target_include_directories(GameHomework1 ${SDL_INCLUDE_DIRS} "${CMAKE_SOURCE_DIRECTORY}/Source")
 
