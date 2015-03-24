@@ -27,6 +27,8 @@ if(WIN32)
 	set(SDL2_INCLUDE_DIR  "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2-2.0.3/include")
 	set(SDL2_LIBRARY_TEMP "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2-2.0.3/lib/x64/SDL2.lib")
 	set(SDL2MAIN_LIBRARY  "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2-2.0.3/lib/x64/SDL2main.lib")
+	set(SDL2_IMAGE_INCLUDE_DIR  "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2_image-2.0.0/include")
+	set(SDL2_IMAGE_LIBRARY "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2_image-2.0.0/lib/x64/SDL2_image.lib")
 endif()
 
 find_package(SDL2 REQUIRED)
