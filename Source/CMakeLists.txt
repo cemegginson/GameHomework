@@ -14,7 +14,7 @@ target_include_directories(${TARGET_NAME} PRIVATE
     "${CMAKE_SOURCE_DIR}/Source")
 
 target_link_libraries(${TARGET_NAME} ${SDL2_LIBRARY})
-target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARY})
 
 install(TARGETS ${TARGET_NAME}
     RUNTIME DESTINATION ${BIN_DIR})
