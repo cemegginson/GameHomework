@@ -8,7 +8,7 @@ project(GameHomework1)
 
     target_include_directories(GameHomework1 ${SDL_INCLUDE_DIRS} "${CMAKE_SOURCE_DIRECTORY}/Source")
 
-    target_link_libraries(GameHomework1 ${SDL2_LIBRARIES})
-    target_link_libraries(GameHomework1 SDL_image)
+    target_link_libraries(GameHomework1 ${SDL2_LIBRARY})
+    target_link_libraries(GameHomework1 ${SDL2_IMAGE_LIBRARIES})
 
     install(TARGETS RUNTIME DESTINATION ${BIN_DIR})

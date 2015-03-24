@@ -25,19 +25,19 @@ endif()
 
 
 # Platform specific handling for required libraries
-if (WIN32)
-	include_directories("./ThirdParty/SDL2-2.0.3/include")
-	include_directories("./ThirdParty/SDL2_image-2.0.0/include")
-	# link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
-  # add_library(SDL2 STATIC "./ThirdParty/SDL2-2.0.3/lib/x64/SDL2.lib")
-	# add_library(SDL2/SDL_image STATIC "./ThirdParty/SDL2_image-2.0.0/lib/x64/SDL2_image.lib")
-	set_target_properties(SDL2 SDL2/SDL_image PROPERTIES LINKER_LANGUAGE C)
-elseif(UNIX)
-
-endif()
+# if (WIN32)
+# 	include_directories("./ThirdParty/SDL2-2.0.3/include")
+# 	include_directories("./ThirdParty/SDL2_image-2.0.0/include")
+# 	link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
+#   add_library(SDL2 STATIC "./ThirdParty/SDL2-2.0.3/lib/x64/SDL2.lib")
+# 	add_library(SDL2/SDL_image STATIC "./ThirdParty/SDL2_image-2.0.0/lib/x64/SDL2_image.lib")
+# 	set_target_properties(SDL2 SDL2/SDL_image PROPERTIES LINKER_LANGUAGE C)
+# elseif(UNIX)
+#
+# endif()
 
 find_package(SDL2 REQUIRED)
-find_package(SDL_image REQUIRED)
+find_package(SDL2_image REQUIRED)
 
 # Include directories with relevant items
 include_directories(Source)
