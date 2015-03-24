@@ -36,13 +36,14 @@ endif()
 #
 # endif()
 
+if(WIN32)
+	set(SDL2_LIBRARY_TEMP "${CMAKE_SOURCE_DIRECTORY}/ThirdParty/SDL2-2.0.3/include")
+	set(SDL2MAIN_LIBRARY "${CMAKE_SOURCE_DIRECTORY}/ThirdParty/SDL2-2.0.3/include")
+endif()
+
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 
 # Include directories with relevant items
 include_directories(Source)
 add_subdirectory(Source)
-
-if(WIN32)
-	link_directories("./ThirdParty/SDL2-2.0.3/lib/x64/" "./ThirdParty/SDL2_image-2.0.0/lib/x64/")
-endif()
