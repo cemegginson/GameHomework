@@ -14,5 +14,5 @@ class Infantry : public Object {
 	~Infantry();
 	void Update(GAME_FLT gameTime);
 	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(Texture* tex, GAME_VEC pos, GAME_FLT ang);
+	void Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_FLT ang);
 };

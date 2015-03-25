@@ -7,10 +7,11 @@
 
 class ObjectFactory {
 	protected:
+	GraphicsDevice* gDevice;
 	ArtAssetLibrary* aLibrary;
 	public:
 	ObjectFactory();
-	ObjectFactory(ArtAssetLibrary* aLib);
+	ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~ObjectFactory();
 	virtual Object* Create(pugi::xml_node) = 0;
 };
@@ -18,7 +19,7 @@ class ObjectFactory {
 class InfantryFactory : ObjectFactory {
 	protected:
 	public:
-	InfantryFactory(ArtAssetLibrary* aLib);
+	InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~InfantryFactory();
 	Object* Create(pugi::xml_node);
 };
@@ -26,7 +27,7 @@ class InfantryFactory : ObjectFactory {
 class CarrierFactory : ObjectFactory {
 	protected:
 	public:
-	CarrierFactory(ArtAssetLibrary* aLib);
+	CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~CarrierFactory();
 	Object* Create(pugi::xml_node);
 };

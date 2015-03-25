@@ -10,7 +10,8 @@ void Infantry::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Infantry::Initialize(Texture* tex, GAME_VEC pos, GAME_FLT ang) {
+void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_FLT ang) {
+	gDevice = gDev;
 	texture = tex;
 	position = pos;
 	angle = ang;

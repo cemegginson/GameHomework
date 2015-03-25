@@ -11,13 +11,14 @@ ObjectFactory::ObjectFactory() {
 	aLibrary = nullptr;
 }
 
-ObjectFactory::ObjectFactory(ArtAssetLibrary* aLib) {
+ObjectFactory::ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) {
+	gDevice = gDev;
 	aLibrary = aLib;
 }
 
 ObjectFactory::~ObjectFactory() {}
 
-InfantryFactory::InfantryFactory(ArtAssetLibrary* aLib) : ObjectFactory(aLib) {}
+InfantryFactory::InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
 
 InfantryFactory::~InfantryFactory() {}
 
@@ -30,11 +31,11 @@ Object* InfantryFactory::Create(pugi::xml_node tag) {
 	vec.x = atof(tag.attribute("x").value());
 	vec.y = atof(tag.attribute("y").value());
 	ang = atof(tag.attribute("angle").value());
-	infantry->Initialize(aLibrary->Search(name), vec, ang);
+	infantry->Initialize(gDevice, aLibrary->Search(name), vec, ang);
 	return infantry;
 }
 
-CarrierFactory::CarrierFactory(ArtAssetLibrary* aLib) : ObjectFactory(aLib) {}
+CarrierFactory::CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
 
 CarrierFactory::~CarrierFactory() {}
 
@@ -47,6 +48,6 @@ Object* CarrierFactory::Create(pugi::xml_node tag) {
 	vec.x = atof(tag.attribute("x").value());
 	vec.y = atof(tag.attribute("y").value());
 	ang = atof(tag.attribute("angle").value());
-	carrier->Initialize(aLibrary->Search(name), vec, ang);
+	carrier->Initialize(gDevice, aLibrary->Search(name), vec, ang);
 	return carrier;
 }

@@ -30,9 +30,9 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	timer.Initialize(fps);
 	gLibrary = new GameAssetLibrary();
 	gLibrary->AddFactory("Infantry",
-			     (ObjectFactory*)new InfantryFactory(aLibrary));
+			     (ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Carrier",
-			     (ObjectFactory*)new CarrierFactory(aLibrary));
+			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary));
 	return true;
 }
 
@@ -63,15 +63,15 @@ void Game::Run() {
 }
 
 void Game::Update() {
-	for (auto obj : objects) {
-		obj->Update(timer.getTicks() / 1000.0);
+	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
+		(*iter)->Update(timer.getTicks() / 1000.0);
 	}
 }
 
 void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
-	for (auto obj : objects) {
-		obj->Draw(timer.getTicks() / 1000.0, view);
+	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
+		(*iter)->Draw(timer.getTicks() / 1000.0, view);
 	}
 	SDL_RenderPresent(gDevice->getRenderer());
 }

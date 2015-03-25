@@ -48,4 +48,6 @@ int GraphicsDevice::getWidth() { return width; }
 
 int GraphicsDevice::getHeight() { return height; }
 
-SDL_Renderer* GraphicsDevice::getRenderer() { return (SDL_Renderer*)&renderer; }
+SDL_Renderer* GraphicsDevice::getRenderer() {
+	return renderer;
+}
