@@ -14,7 +14,7 @@ class Game {
 	ArtAssetLibrary* aLibrary;
 	GraphicsDevice* gDevice;
 	InputDevice* iDevice;
-	Timer timer;
+	Timer* timer;
 	GAME_INT fps;
 	GAME_FLT gameTime;
 	View* view;

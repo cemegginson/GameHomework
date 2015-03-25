@@ -7,6 +7,7 @@ Game::Game() {
 	aLibrary = nullptr;
 	gDevice = nullptr;
 	iDevice = nullptr;
+	timer = nullptr;
 	fps = 0;
 	gameTime = 0;
 	view = nullptr;
@@ -27,7 +28,8 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	aLibrary->LoadAssets(graphics);
 	iDevice = input;
 	fps = framerate;
-	timer.Initialize(fps);
+	timer = new Timer();
+	timer->Initialize(fps);
 	gLibrary = new GameAssetLibrary();
 	gLibrary->AddFactory("Infantry",
 			     (ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
@@ -58,20 +60,22 @@ bool Game::LoadLevel(std::string file) {
 }
 
 void Game::Run() {
+	timer->start();
 	Update();
 	Draw();
+	timer->fpsRegulate();
 }
 
 void Game::Update() {
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Update(timer.getTicks() / 1000.0);
+		(*iter)->Update(timer->getTicks());
 	}
 }
 
 void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Draw(timer.getTicks() / 1000.0, view);
+		(*iter)->Draw(timer->getTicks(), view);
 	}
 	SDL_RenderPresent(gDevice->getRenderer());
 }

@@ -4,7 +4,14 @@ Infantry::Infantry() : Object() {}
 
 Infantry::~Infantry() {}
 
-void Infantry::Update(GAME_FLT gameTime) { angle += gameTime; }
+void Infantry::Update(GAME_FLT gameTime) {
+	angle += .5;
+	if(angle > 360) {
+		angle -= 360;
+	} else if(angle < 0) {
+		angle += 360;
+	}
+}
 
 void Infantry::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);

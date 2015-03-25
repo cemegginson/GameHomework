@@ -34,5 +34,5 @@ void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
 
 	SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
 
-	SDL_RenderCopy(renderer, texture, NULL, &dst);
+	SDL_RenderCopyEx(renderer, texture, NULL, &dst, angle, NULL, SDL_FLIP_NONE);
 }
