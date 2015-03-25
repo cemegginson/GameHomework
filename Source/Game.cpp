@@ -24,7 +24,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 		      GAME_INT framerate) {
 	gDevice = graphics;
 	aLibrary = new ArtAssetLibrary();
-	aLibrary->LoadAssets(gDevice);
+	aLibrary->LoadAssets(graphics);
 	iDevice = input;
 	fps = framerate;
 	timer.Initialize(fps);

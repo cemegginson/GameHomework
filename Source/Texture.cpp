@@ -30,7 +30,6 @@ void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
 		   GAME_FLT angle, SDL_Rect* clip) {
 	SDL_Rect dst;
 	dst.x = position.x;
-	std::cout << position.x << std::endl;
 	dst.y = position.y;
 
 	SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
