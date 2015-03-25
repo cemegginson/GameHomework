@@ -12,6 +12,8 @@ void Carrier::Update(GAME_FLT gameTime) {
 	} else if(angle < 0) {
 		angle += 360;
 	}
+	float rAngle = PI / 180.0;
+
 }
 
 void Carrier::Draw(GAME_FLT gameTime, View* view) {
