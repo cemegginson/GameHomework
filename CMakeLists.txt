@@ -6,7 +6,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameHomework1_SOURCE_DIR}/cmake")
 # ^ Not sure any of that stuff is useful on Windows without MinGW
 
 # Set an output directory for our binaries
-set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 # Bump up warning levels appropriately for clang, gcc & msvc
 # Also set debug/optimization flags depending on the build type. IDE users choose this when

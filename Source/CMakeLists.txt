@@ -16,5 +16,6 @@ target_include_directories(${TARGET_NAME} PRIVATE
 target_link_libraries(${TARGET_NAME} ${SDL2_LIBRARY})
 target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARY})
 
-install(TARGETS ${TARGET_NAME}
-    RUNTIME DESTINATION ${BIN_DIR})
+# install(TARGETS ${TARGET_NAME} RUNTIME DESTINATION ${BIN_DIR})
+
+# set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/ CACHE PATH "Executable output path")
