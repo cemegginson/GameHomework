@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SDL_image.h>
 #include "Texture.h"
 //#include "GameUtils.h"
 
@@ -17,8 +18,9 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FreeSurface(surface);
 
-	if (texture == nullptr) {
+	if (texture == NULL) {
 		//LogSDLError(std::cerr, "LoadTexture");
+		std::cerr << "Texture failed: " << SDL_GetError() << std::endl;
 		return false;
 	}
 	return true;

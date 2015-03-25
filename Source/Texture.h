@@ -9,7 +9,6 @@
 #include "SDL_image.h"
 #elif _LINUX
 #include <SDL.h>
-#include <SDL/SDL_image.h>
 #endif
 
 class Texture {
