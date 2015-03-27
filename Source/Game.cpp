@@ -28,7 +28,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	aLibrary->LoadAssets(graphics);
 	iDevice = input;
 	view = new View();
-	view->Initialize(iDevice, )
+	view->Initialize(iDevice, 0, 0);
 	fps = framerate;
 	timer = new Timer();
 	timer->Initialize(fps);
