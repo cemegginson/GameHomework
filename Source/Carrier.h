@@ -9,6 +9,8 @@
 class Carrier : public Object {
 	protected:
 	ArtAssetLibrary aLibrary;
+	GAME_VEC center;
+	int radius;
 
 	public:
 	Carrier();

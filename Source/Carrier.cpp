@@ -12,7 +12,11 @@ void Carrier::Update(GAME_FLT gameTime) {
 	} else if(angle < 0) {
 		angle += 360;
 	}
-	float rAngle = PI / 180.0;
+
+	float rAngle = (angle * (PI / 180.0)) - PI;
+
+	position.x = (radius * cos(rAngle)) + center.x;
+	position.y = (radius * sin(rAngle)) + center.y;
 
 }
 
@@ -25,4 +29,7 @@ void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_
 	texture = tex;
 	position = pos;
 	angle = ang;
+	center = position;
+	radius = rand() % 100;
+	center.x += radius;
 }

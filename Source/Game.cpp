@@ -27,6 +27,8 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	aLibrary = new ArtAssetLibrary();
 	aLibrary->LoadAssets(graphics);
 	iDevice = input;
+	view = new View();
+	view->Initialize(iDevice, )
 	fps = framerate;
 	timer = new Timer();
 	timer->Initialize(fps);
@@ -68,7 +70,7 @@ void Game::Run() {
 
 void Game::Update() {
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Update(timer->getTicks());
+		(*iter)->Update(timer->getTicks()/1000.0);
 	}
 }
 
