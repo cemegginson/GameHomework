@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(GameHomework1)
 
+set(CMAKE_USE_RELATIVE_PATHS TRUE)
+
 # Use our modified FindSDL2* modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameHomework1_SOURCE_DIR}/cmake")
 # ^ Not sure any of that stuff is useful on Windows without MinGW
