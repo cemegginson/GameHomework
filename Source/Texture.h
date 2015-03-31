@@ -12,10 +12,10 @@
 #endif
 
 class Texture {
-	protected:
+protected:
 	SDL_Texture* texture;
 
-	public:
+public:
 	Texture();
 	~Texture();
 	bool Initialize(SDL_Renderer* renderer, std::string image);

@@ -6,10 +6,11 @@
 #include "ArtAssetLibrary.h"
 
 class ObjectFactory {
-	protected:
+protected:
 	GraphicsDevice* gDevice;
 	ArtAssetLibrary* aLibrary;
-	public:
+
+public:
 	ObjectFactory();
 	ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~ObjectFactory();
@@ -17,16 +18,16 @@ class ObjectFactory {
 };
 
 class InfantryFactory : ObjectFactory {
-	protected:
-	public:
+protected:
+public:
 	InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~InfantryFactory();
 	Object* Create(pugi::xml_node);
 };
 
 class CarrierFactory : ObjectFactory {
-	protected:
-	public:
+protected:
+public:
 	CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
 	~CarrierFactory();
 	Object* Create(pugi::xml_node);

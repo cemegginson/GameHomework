@@ -6,11 +6,11 @@
 #include "GraphicsDevice.h"
 
 class ArtAssetLibrary {
-	protected:
+protected:
 	std::map<std::string, Texture*> library;
 	GraphicsDevice* gDevice;
 
-	public:
+public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
 	bool LoadAssets(GraphicsDevice* gDevice);

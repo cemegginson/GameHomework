@@ -9,13 +9,13 @@
 #endif
 
 class GraphicsDevice {
-	protected:
+protected:
 	int width;
 	int height;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-	public:
+public:
 	GraphicsDevice();
 	GraphicsDevice(GAME_INT ScreenWidth, GAME_INT ScreenHeight);
 	~GraphicsDevice();

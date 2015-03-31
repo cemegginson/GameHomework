@@ -307,15 +307,16 @@ typedef struct SDL_JoyHatEvent {
 	SDL_JoystickID which; /**< The joystick instance id */
 	Uint8 hat;	    /**< The joystick hat index */
 	Uint8 value;	  /**< The hat position value.
-					   *   \sa ::SDL_HAT_LEFTUP ::SDL_HAT_UP
-					*::SDL_HAT_RIGHTUP
-					   *   \sa ::SDL_HAT_LEFT ::SDL_HAT_CENTERED
-					*::SDL_HAT_RIGHT
-					   *   \sa ::SDL_HAT_LEFTDOWN ::SDL_HAT_DOWN
-					   *::SDL_HAT_RIGHTDOWN
-					   *
-					   *   Note that zero means the POV is centered.
-					   */
+					       *   \sa ::SDL_HAT_LEFTUP ::SDL_HAT_UP
+					    *::SDL_HAT_RIGHTUP
+					       *   \sa ::SDL_HAT_LEFT ::SDL_HAT_CENTERED
+					    *::SDL_HAT_RIGHT
+					       *   \sa ::SDL_HAT_LEFTDOWN ::SDL_HAT_DOWN
+					       *::SDL_HAT_RIGHTDOWN
+					       *
+					       *   Note that zero means the POV is
+				*centered.
+					       */
 	Uint8 padding1;
 	Uint8 padding2;
 } SDL_JoyHatEvent;

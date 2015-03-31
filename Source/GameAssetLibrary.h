@@ -6,10 +6,10 @@
 #include "Factory.h"
 
 class GameAssetLibrary {
-	protected:
+protected:
 	std::map<std::string, ObjectFactory*> library;
 
-	public:
+public:
 	GameAssetLibrary() {}
 	~GameAssetLibrary() {}
 
