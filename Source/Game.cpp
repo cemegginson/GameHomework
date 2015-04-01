@@ -42,7 +42,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 
 void Game::Reset() {
 	delete view;
-	if(objects.begin() != nullptr){
+	if(!objects.empty()){
 		for (std::vector<Object*>::iterator iter = objects.begin(); iter <= objects.end(); iter++) {
 			delete *iter;
 		}
