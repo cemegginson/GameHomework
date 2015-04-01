@@ -36,8 +36,6 @@
 #include "Definitions.h"
 
 int main(int argc, char* argv[]) {
-// int main() {
-// int SDL_main(int /* argc */, char* /* argv */[]) {
 
 	//========================================
 	// Initialize the random number generator

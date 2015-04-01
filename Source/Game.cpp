@@ -42,10 +42,11 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 
 void Game::Reset() {
 	delete view;
-	for (auto iter = objects.begin(); iter <= objects.end(); iter++) {
-		//delete *iter;
+	if(objects.begin() != nullptr){
+		for (std::vector<Object*>::iterator iter = objects.begin(); iter <= objects.end(); iter++) {
+			delete *iter;
+		}
 	}
-	// objects.erase(objects.begin(), objects.end());
 }
 
 bool Game::LoadLevel(std::string file) {
