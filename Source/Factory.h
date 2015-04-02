@@ -32,3 +32,11 @@ public:
 	~CarrierFactory();
 	Object* Create(pugi::xml_node);
 };
+
+class RockFactory : ObjectFactory {
+protected:
+public:
+	RockFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
+	~RockFactory();
+	Object* Create(pugi::xml_node);
+};

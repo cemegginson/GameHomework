@@ -16,6 +16,10 @@ bool ArtAssetLibrary::LoadAssets(GraphicsDevice* graphics) {
 	std::string inf = "./Assets/Images/t_infantry.png";
 	library.at("Infantry")->Initialize(gDevice->getRenderer(), inf);
 
+	library.insert(std::pair<std::string, Texture*>("Rock", new Texture()));
+	std::string rock = "./Assets/Images/t_rock.png";
+	library.at("Rock")->Initialize(gDevice->getRenderer(), rock);
+
 	return true;
 }
 

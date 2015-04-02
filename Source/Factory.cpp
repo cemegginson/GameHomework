@@ -51,3 +51,20 @@ Object* CarrierFactory::Create(pugi::xml_node tag) {
 	carrier->Initialize(gDevice, aLibrary->Search(name), vec, ang);
 	return carrier;
 }
+
+RockFactory::RockFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
+
+RockFactory::~RockFactory() {}
+
+Object* RockFactory::Create(pugi::xml_node tag) {
+	Object* rock = new Rock();
+	GAME_VEC vec;
+	GAME_FLT ang;
+	std::string name;
+	name = tag.attribute("name").value();
+	vec.x = stof(tag.attribute("x").value());
+	vec.y = stof(tag.attribute("y").value());
+	ang = atof(tag.attribute("angle").value());
+	rock->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	return infantry;
+}
