@@ -2,7 +2,7 @@ AccessModifierOffset: -8
 AlignAfterOpenBracket: true
 AlignEscapedNewlinesLeft: false
 AlignOperands:   true
-AlignTrailingComments: true
+AlignTrailingComments: false
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
