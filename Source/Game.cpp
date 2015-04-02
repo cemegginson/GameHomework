@@ -33,10 +33,14 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	timer = new Timer();
 	timer->Initialize(fps);
 	gLibrary = new GameAssetLibrary();
-	gLibrary->AddFactory("Infantry",
-			     (ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Carrier",
 			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary));
+	gLibrary->AddFactory("Infantry",
+				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
+	gLibrary->AddFactory("Player",
+				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
+	gLibrary->AddFactory("Rock",
+			     (ObjectFactory*)new RockFactory(gDevice, aLibrary));
 	return true;
 }
 
@@ -54,9 +58,10 @@ bool Game::LoadLevel(std::string file) {
 	pugi::xml_parse_result result = doc.load_file(file.c_str());
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
+		std::string name;
 		for (pugi::xml_node child : Level.children("GameAsset")) {
-			objects.push_back(gLibrary->Search(child.attribute("name").value())
-			    ->Create(child));
+			name = child.attribute("name").value();
+			objects.push_back(gLibrary->Search(name)->Create(child));
 		}
 	}
 	return true;

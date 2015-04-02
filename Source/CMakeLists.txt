@@ -1,10 +1,10 @@
 project(GameHomework)
 
-set(TARGET_NAME GameHomework1)
+set(TARGET_NAME GameHomework)
 
 set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Carrier.cpp
     Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
-    Object.cpp pugixml.cpp Texture.cpp Timer.cpp View.cpp)
+    Object.cpp Player.cpp pugixml.cpp Rock.cpp Texture.cpp Timer.cpp View.cpp)
 
 add_executable(${TARGET_NAME} ${SRC_FILES})
 

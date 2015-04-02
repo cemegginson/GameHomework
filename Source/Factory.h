@@ -17,6 +17,14 @@ public:
 	virtual Object* Create(pugi::xml_node) = 0;
 };
 
+class CarrierFactory : ObjectFactory {
+protected:
+public:
+	CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
+	~CarrierFactory();
+	Object* Create(pugi::xml_node);
+};
+
 class InfantryFactory : ObjectFactory {
 protected:
 public:
@@ -25,11 +33,11 @@ public:
 	Object* Create(pugi::xml_node);
 };
 
-class CarrierFactory : ObjectFactory {
+class PlayerFactory : ObjectFactory {
 protected:
 public:
-	CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
-	~CarrierFactory();
+	PlayerFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib);
+	~PlayerFactory();
 	Object* Create(pugi::xml_node);
 };
 

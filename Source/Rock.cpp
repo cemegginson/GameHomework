@@ -4,8 +4,7 @@ Rock::Rock() : Object() {}
 
 Rock::~Rock() {}
 
-void Rock::Update(GAME_FLT gameTime) {
-}
+void Rock::Update(GAME_FLT gameTime) {}
 
 void Rock::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
