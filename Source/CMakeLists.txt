@@ -1,4 +1,4 @@
-project(GameHomework1)
+project(GameHomework)
 
 set(TARGET_NAME GameHomework1)
 
