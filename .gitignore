@@ -5,3 +5,5 @@ temp
 <stdin>
 gamebin
 bin/GameHomework1
+*.ilk
+*.pdb
