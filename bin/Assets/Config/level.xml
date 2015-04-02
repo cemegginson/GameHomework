@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<Level>
+    <!-- NPC Layout for Game 	-->
+    <GameAsset name="Carrier" x="30.0f" y="140.0f" angle="0.0f"/>
+    <GameAsset name="Infantry" x="0.0f" y="200.0f" angle="-180.0f"/>
+    <GameAsset name="Infantry" x="100.0f" y="50.0f" angle="0.0f"/>
+    <GameAsset name="Infantry" x="200.0f" y="200.0f" angle="270.0f"/>
+    <GameAsset name="Infantry" x="-75.0f" y="0.0f" angle="270.0f"/>
+    <GameAsset name="Infantry" x="35.0f" y="100.0f" angle="270.0f"/>
+    <GameAsset name="Infantry" x="125.0f" y="40.0f" angle="270.0f"/>
+    <GameAsset name="Player" x="400.0f" y="300.0f" angle="0.0f"/>
+    <GameAsset name="Rock" x="300.0f" y="50.0f" angle="0.0f"/>
+    <GameAsset name="Rock" x="300.0f" y="80.0f" angle="90.0f"/>
+    <GameAsset name="Rock" x="320.0f" y="110.0f" angle="90.0f"/>
+    <GameAsset name="Rock" x="320.0f" y="140.0f" angle="90.0f"/>
+    <GameAsset name="Rock" x="360.0f" y="50.0f" angle="0.0f"/>
+    <GameAsset name="Rock" x="360.0f" y="80.0f" angle="90.0f"/>
+    <GameAsset name="Rock" x="380.0f" y="110.0f" angle="90.0f"/>
+    <GameAsset name="Rock" x="380.0f" y="140.0f" angle="90.0f"/>
+</Level>
