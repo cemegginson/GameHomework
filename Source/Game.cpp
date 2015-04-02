@@ -38,7 +38,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
 	gLibrary->AddFactory("Infantry",
 				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
+				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Rock",
 			     (ObjectFactory*)new RockFactory(gDevice, aLibrary));
 	return true;
