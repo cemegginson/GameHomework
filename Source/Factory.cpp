@@ -28,8 +28,8 @@ Object* InfantryFactory::Create(pugi::xml_node tag) {
 	GAME_FLT ang;
 	std::string name;
 	name = tag.attribute("name").value();
-	vec.x = atof(tag.attribute("x").value());
-	vec.y = atof(tag.attribute("y").value());
+	vec.x = stof(tag.attribute("x").value());
+	vec.y = stof(tag.attribute("y").value());
 	ang = atof(tag.attribute("angle").value());
 	infantry->Initialize(gDevice, aLibrary->Search(name), vec, ang);
 	return infantry;
