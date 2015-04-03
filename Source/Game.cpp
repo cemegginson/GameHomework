@@ -21,17 +21,20 @@ Game::~Game() {
 	delete view;
 }
 
-bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input,
-		      GAME_INT framerate) {
+bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT framerate) {
 	gDevice = graphics;
+
 	aLibrary = new ArtAssetLibrary();
 	aLibrary->LoadAssets(graphics);
 	iDevice = input;
+
 	view = new View();
 	view->Initialize(iDevice, 0, 0);
+
 	fps = framerate;
 	timer = new Timer();
 	timer->Initialize(fps);
+
 	gLibrary = new GameAssetLibrary();
 	gLibrary->AddFactory("Carrier",
 			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary));
@@ -75,6 +78,7 @@ void Game::Run() {
 }
 
 void Game::Update() {
+	view->Update(timer->getTicks());
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Update(timer->getTicks()/1000.0);
 	}
