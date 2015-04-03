@@ -29,7 +29,7 @@ bool GraphicsDevice::Initialize() {
 
 	window = SDL_CreateWindow("Game Homework 1", SDL_WINDOWPOS_UNDEFINED,
 				  SDL_WINDOWPOS_UNDEFINED, width, height,
-				  SDL_WINDOW_SHOWN);
+				SDL_WINDOW_RESIZABLE);
 	if (window == nullptr) {
 		LogSDLError(std::cerr, "SDL_CreateWindow");
 		return false;

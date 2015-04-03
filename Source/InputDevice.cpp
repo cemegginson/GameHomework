@@ -6,53 +6,55 @@ InputDevice::InputDevice() { gEvent = GAME_NA; }
 InputDevice::~InputDevice() {}
 
 bool InputDevice::Initialize(SDL_Event* event) {
-	gEvent = Translate(event);
+	this->gEvent = Translate(event);
 	return true;
 }
 
 void InputDevice::Update(SDL_Event* event) {
 	switch(event->type){
 		case SDL_KEYDOWN:
-			gEvent = Translate(event);
-			break;
-		default:
-			break;
-	}
-}
-
-GAME_EVENT InputDevice::Translate(SDL_Event* event) {
-	switch(event->key.keysym.sym) {
-		case SDLK_UP:
-			gEvent = GAME_UP;
-			break;
-		case SDLK_DOWN:
-			gEvent = GAME_DOWN;
-			break;
-		case SDLK_LEFT:
-			gEvent = GAME_LEFT;
-			break;
-		case SDLK_RIGHT:
-			gEvent = GAME_RIGHT;
-			break;
-		case SDLK_w:
-			gEvent = GAME_W;
-			break;
-		case SDLK_a:
-			gEvent = GAME_A;
-			break;
-		case SDLK_s:
-			gEvent = GAME_S;
-			break;
-		case SDLK_d:
-			gEvent = GAME_D;
+			this->gEvent = Translate(event);
 			break;
 		default:
 			gEvent = GAME_NA;
 			break;
 	}
-	return gEvent;
+}
+
+GAME_EVENT InputDevice::Translate(SDL_Event* event) {
+	GAME_EVENT keyEvent = GAME_NA;
+	switch(event->key.keysym.sym) {
+		case SDLK_UP:
+			keyEvent = GAME_UP;
+			break;
+		case SDLK_DOWN:
+			keyEvent = GAME_DOWN;
+			break;
+		case SDLK_LEFT:
+			keyEvent = GAME_LEFT;
+			break;
+		case SDLK_RIGHT:
+			keyEvent = GAME_RIGHT;
+			break;
+		case SDLK_w:
+			keyEvent = GAME_W;
+			break;
+		case SDLK_a:
+			keyEvent = GAME_A;
+			break;
+		case SDLK_s:
+			keyEvent = GAME_S;
+			break;
+		case SDLK_d:
+			keyEvent = GAME_D;
+			break;
+		default:
+			keyEvent = GAME_NA;
+			break;
+	}
+	return keyEvent;
 }
 
 GAME_EVENT InputDevice::GetEvent() {
-	return gEvent;
+	return this->gEvent;
 }

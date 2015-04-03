@@ -29,7 +29,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	iDevice = input;
 
 	view = new View();
-	view->Initialize(iDevice, 0, 0);
+	view->Initialize(gDevice->getRenderer(), input, 0, 0);
 
 	fps = framerate;
 	timer = new Timer();
@@ -48,7 +48,6 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 }
 
 void Game::Reset() {
-	delete view;
 	if(!objects.empty()){
 		for (std::vector<Object*>::iterator iter = objects.begin(); iter <= objects.end(); iter++) {
 			delete *iter;
@@ -78,7 +77,10 @@ void Game::Run() {
 }
 
 void Game::Update() {
+	// Update View position
 	view->Update(timer->getTicks());
+
+	// Cycle through every objects' Update method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Update(timer->getTicks()/1000.0);
 	}
@@ -86,6 +88,19 @@ void Game::Update() {
 
 void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
+
+	// Get and set our viewport position
+	GAME_VEC pos = view->getPosition();
+	SDL_Rect camera = {
+		(int)pos.x,
+		(int)pos.y,
+		800,
+		600,
+	};
+	// SDL_RenderSetClipRect(renderer, &camera);
+	// SDL_RenderSetViewport(renderer, &camera);
+
+	// Cycle through every objects' Draw method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(timer->getTicks(), view);
 	}
