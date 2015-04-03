@@ -6,15 +6,38 @@ InputDevice::InputDevice() { gEvent = GAME_NA; }
 InputDevice::~InputDevice() {}
 
 bool InputDevice::Initialize(SDL_Event* event) {
-	// gEvent = *event; 
+	gEvent = Translate(event);
 	return true;
 }
 
 void InputDevice::Update(SDL_Event* event) {
-	SDL_PollEvent(event);
+	switch(event->type){
+		case SDL_KEYDOWN:
+			gEvent = Translate(event);
+			break;
+		default:
+			break;
+	}
 }
 
 GAME_EVENT InputDevice::Translate(SDL_Event* event) {
+	switch(event->key.keysym.sym) {
+		case SDLK_UP:
+			gEvent = GAME_UP;
+			break;
+		case SDLK_DOWN:
+			gEvent = GAME_DOWN;
+			break;
+		case SDLK_LEFT:
+			gEvent = GAME_LEFT;
+			break;
+		case SDLK_RIGHT:
+			gEvent = GAME_RIGHT;
+			break;
+		default:
+			gEvent = GAME_NA;
+			break;
+	}
 	return gEvent;
 }
 
