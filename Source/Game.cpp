@@ -29,7 +29,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	iDevice = input;
 
 	view = new View();
-	view->Initialize(gDevice->getRenderer(), input, 0, 0);
+	view->Initialize(input, 0, 0);
 
 	fps = framerate;
 	timer = new Timer();
