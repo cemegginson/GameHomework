@@ -4,6 +4,6 @@ temp
 *.exe
 <stdin>
 gamebin
-bin/GameHomework1
+bin/GameHomework
 *.ilk
 *.pdb
