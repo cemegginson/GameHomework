@@ -34,6 +34,18 @@ GAME_EVENT InputDevice::Translate(SDL_Event* event) {
 		case SDLK_RIGHT:
 			gEvent = GAME_RIGHT;
 			break;
+		case SDLK_w:
+			gEvent = GAME_W;
+			break;
+		case SDLK_a:
+			gEvent = GAME_A;
+			break;
+		case SDLK_s:
+			gEvent = GAME_S;
+			break;
+		case SDLK_d:
+			gEvent = GAME_D;
+			break;
 		default:
 			gEvent = GAME_NA;
 			break;
