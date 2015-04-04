@@ -89,17 +89,6 @@ void Game::Update() {
 void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
 
-	// Get and set our viewport position
-	GAME_VEC pos = view->getPosition();
-	SDL_Rect camera = {
-		(int)pos.x,
-		(int)pos.y,
-		800,
-		600,
-	};
-	// SDL_RenderSetClipRect(renderer, &camera);
-	// SDL_RenderSetViewport(renderer, &camera);
-
 	// Cycle through every objects' Draw method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(timer->getTicks(), view);
