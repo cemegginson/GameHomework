@@ -10,9 +10,6 @@ Player::~Player() {}
 void Player::Update(GAME_FLT gameTime) {
 
 	GAME_FLT theta = (angle-90)*(PI/180.0);
-	// GAME_VEC dst;
-	// dst.x = travel * cos(theta);
-	// dst.y = travel * sin(theta);
 
 	switch(iDevice->GetEvent()){
 		case GAME_A:
