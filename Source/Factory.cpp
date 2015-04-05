@@ -4,12 +4,6 @@
 #include "Factory.h"
 #include "pugixml.hpp"
 
-// Object Classes
-#include "Carrier.h"
-#include "Infantry.h"
-#include "Player.h"
-#include "Rock.h"
-
 ObjectFactory::ObjectFactory() {
 	aLibrary = nullptr;
 }
@@ -25,8 +19,8 @@ CarrierFactory::CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : Ob
 
 CarrierFactory::~CarrierFactory() {}
 
-Object* CarrierFactory::Create(pugi::xml_node tag) {
-	Object* obj = new Carrier();
+Carrier* CarrierFactory::Create(pugi::xml_node tag) {
+	Carrier* obj = new Carrier();
 	GAME_VEC vec;
 	GAME_FLT ang;
 	std::string name = tag.attribute("name").value();
@@ -44,8 +38,8 @@ InfantryFactory::InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : 
 
 InfantryFactory::~InfantryFactory() {}
 
-Object* InfantryFactory::Create(pugi::xml_node tag) {
-	Object* obj = new Infantry();
+Infantry* InfantryFactory::Create(pugi::xml_node tag) {
+	Infantry* obj = new Infantry();
 	GAME_VEC vec;
 	GAME_FLT ang;
 	std::string name = tag.attribute("name").value();
@@ -59,12 +53,14 @@ Object* InfantryFactory::Create(pugi::xml_node tag) {
 	return obj;
 }
 
-PlayerFactory::PlayerFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
+PlayerFactory::PlayerFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, InputDevice* iDev) : ObjectFactory(gDev, aLib) {
+	iDevice = iDev;
+}
 
 PlayerFactory::~PlayerFactory() {}
 
-Object* PlayerFactory::Create(pugi::xml_node tag) {
-	Object* obj = new Player();
+Player* PlayerFactory::Create(pugi::xml_node tag) {
+	Player* obj = new Player();
 	GAME_VEC vec;
 	GAME_FLT ang;
 	std::string name = tag.attribute("name").value();
@@ -75,6 +71,7 @@ Object* PlayerFactory::Create(pugi::xml_node tag) {
 	vec.y = stof(y);
 	ang = stof(a);
 	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	obj->setInput(iDevice);
 	return obj;
 }
 
@@ -82,8 +79,8 @@ RockFactory::RockFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFa
 
 RockFactory::~RockFactory() {}
 
-Object* RockFactory::Create(pugi::xml_node tag) {
-	Object* obj = new Rock();
+Rock* RockFactory::Create(pugi::xml_node tag) {
+	Rock* obj = new Rock();
 	GAME_VEC vec;
 	GAME_FLT ang;
 	std::string name = tag.attribute("name").value();

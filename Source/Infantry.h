@@ -7,7 +7,6 @@
 
 class Infantry : public Object {
 protected:
-	ArtAssetLibrary artlib;
 
 public:
 	Infantry();
