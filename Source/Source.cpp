@@ -107,7 +107,16 @@ int main(int argc, char* argv[]) {
 	while (!quit) {
 
 		// Check for Event
-		if (SDL_PollEvent(event)) {
+		while (SDL_PollEvent(event)) {
+			
+			// Janky, needs fix :TODO
+			if (event->type == SDL_WINDOWEVENT) {
+				switch(event->window.event) {
+					case SDL_WINDOWEVENT_CLOSE:
+						SDL_Quit();
+				}
+			}
+
 			if (event->type == SDL_QUIT) {
 				quit = true;
 			}

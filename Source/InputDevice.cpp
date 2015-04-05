@@ -13,12 +13,9 @@ bool InputDevice::Initialize(SDL_Event* event) {
 void InputDevice::Update(SDL_Event* event) {
 	if(event->type == SDL_KEYDOWN){
 		this->gEvent = Translate(event);
-	} else if (event->type == SDL_WINDOWEVENT) {
-		switch(event->window.event) {
-			case SDL_WINDOWEVENT_CLOSE:
-				SDL_Quit();
-		}
-	}
+	} else if(event->type == SDL_KEYUP) {
+		this->gEvent = GAME_NA;
+	} 
 }
 
 GAME_EVENT InputDevice::Translate(SDL_Event* event) {
