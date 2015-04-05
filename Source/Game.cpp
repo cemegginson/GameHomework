@@ -41,7 +41,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	gLibrary->AddFactory("Infantry",
 				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary));
+				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary, iDevice));
 	gLibrary->AddFactory("Rock",
 			     (ObjectFactory*)new RockFactory(gDevice, aLibrary));
 	return true;
@@ -63,7 +63,7 @@ bool Game::LoadLevel(std::string file) {
 		std::string name;
 		for (pugi::xml_node child : Level.children("GameAsset")) {
 			name = child.attribute("name").value();
-			objects.push_back(gLibrary->Search(name)->Create(child));
+			objects.push_back((Object*)gLibrary->Search(name)->Create(child));
 		}
 	}
 	return true;
@@ -93,5 +93,6 @@ void Game::Draw() {
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(timer->getTicks(), view);
 	}
+
 	SDL_RenderPresent(gDevice->getRenderer());
 }
