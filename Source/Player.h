@@ -7,12 +7,12 @@
 
 class Player : public Object {
 protected:
-	ArtAssetLibrary artlib;
-
+	InputDevice* iDevice;
 public:
 	Player();
 	~Player();
 	void Update(GAME_FLT gameTime);
 	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_FLT ang);
+	void Initialize(GraphicsDevice*, Texture*, GAME_VEC, GAME_FLT);
+	void setInput(InputDevice*);
 };

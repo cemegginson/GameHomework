@@ -1,10 +1,23 @@
 #include "Player.h"
 
-Player::Player() : Object() {}
+Player::Player() : Object() {
+	iDevice = nullptr;
+}
 
 Player::~Player() {}
 
-void Player::Update(GAME_FLT gameTime) {}
+void Player::Update(GAME_FLT gameTime) {
+	switch(iDevice->GetEvent()){
+		case GAME_A:
+			angle -= 2.0;
+			break;
+		case GAME_D:
+			angle += 2.0;
+			break;
+		default:
+			break;
+	}
+}
 
 void Player::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
@@ -15,4 +28,8 @@ void Player::Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_F
 	texture = tex;
 	position = pos;
 	angle = ang;
+}
+
+void Player::setInput(InputDevice* iDev) {
+	iDevice = iDev;
 }
