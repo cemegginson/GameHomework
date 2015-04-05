@@ -8,6 +8,7 @@
 class Player : public Object {
 protected:
 	InputDevice* iDevice;
+	GAME_INT travel = 2;
 public:
 	Player();
 	~Player();

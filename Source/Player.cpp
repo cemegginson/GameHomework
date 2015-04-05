@@ -1,3 +1,4 @@
+#include <math.h>
 #include "Player.h"
 
 Player::Player() : Object() {
@@ -7,12 +8,26 @@ Player::Player() : Object() {
 Player::~Player() {}
 
 void Player::Update(GAME_FLT gameTime) {
+
+	GAME_FLT theta = (angle-90)*(PI/180.0);
+	// GAME_VEC dst;
+	// dst.x = travel * cos(theta);
+	// dst.y = travel * sin(theta);
+
 	switch(iDevice->GetEvent()){
 		case GAME_A:
 			angle -= 2.0;
 			break;
 		case GAME_D:
 			angle += 2.0;
+			break;
+		case GAME_W:
+			position.x += travel * cos(theta);
+			position.y += travel * sin(theta);
+			break;
+		case GAME_S:
+			position.x -= travel * cos(theta);
+			position.y -= travel * sin(theta);
 			break;
 		default:
 			break;
