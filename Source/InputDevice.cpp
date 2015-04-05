@@ -15,7 +15,7 @@ void InputDevice::Update(SDL_Event* event) {
 		this->gEvent = Translate(event);
 	} else if(event->type == SDL_KEYUP) {
 		this->gEvent = GAME_NA;
-	} 
+	}
 }
 
 GAME_EVENT InputDevice::Translate(SDL_Event* event) {
@@ -44,6 +44,9 @@ GAME_EVENT InputDevice::Translate(SDL_Event* event) {
 			break;
 		case SDLK_d:
 			keyEvent = GAME_D;
+			break;
+		case SDLK_SPACE:
+			keyEvent = GAME_SPACE;
 			break;
 		default:
 			keyEvent = GAME_NA;
