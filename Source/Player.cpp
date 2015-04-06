@@ -38,8 +38,12 @@ void Player::Update(GAME_FLT gameTime) {
 		direction.x = 0;
 		direction.y = 0;
 
+		GAME_VEC bulletpos;
+		bulletpos.x = position.x + center.x + radius * cos(theta);
+		bulletpos.y = position.y + center.y + radius * sin(theta);
+
 		Bullet* bullet = new Bullet();
-		bullet->Initialize(gDevice, aLibrary->Search("Bullet"), position, direction);
+		bullet->Initialize(gDevice, aLibrary->Search("Bullet"), bulletpos, direction);
 		bullets.push_back(bullet);
 	}
 
@@ -67,6 +71,10 @@ void Player::Initialize(GraphicsDevice* gDev, Texture* tex, ArtAssetLibrary* aLi
 	aLibrary = aLib;
 	position = pos;
 	angle = ang;
+	int w, h;
+	texture->GetDimensions(&w, &h);
+	center.x = (w/2)-2;
+	center.y = (h/2)-1;
 }
 
 void Player::setInput(InputDevice* iDev) {

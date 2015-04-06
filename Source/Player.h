@@ -13,6 +13,8 @@ protected:
 	std::vector<Bullet*> bullets;
 	InputDevice* iDevice;
 	GAME_INT travel = 2;
+	GAME_INT radius = 15;
+	GAME_VEC center;
 public:
 	Player();
 	~Player();
