@@ -48,6 +48,10 @@ GAME_EVENT InputDevice::Translate(SDL_Event* event) {
 		case SDLK_SPACE:
 			keyEvent = GAME_SPACE;
 			break;
+		case SDLK_t:
+			int* foo;
+			*foo = 1;
+			break;
 		default:
 			keyEvent = GAME_NA;
 			break;
