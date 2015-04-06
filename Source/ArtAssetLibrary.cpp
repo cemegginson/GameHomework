@@ -8,6 +8,11 @@ ArtAssetLibrary::~ArtAssetLibrary() {}
 bool ArtAssetLibrary::LoadAssets(GraphicsDevice* graphics) {
 	gDevice = graphics;
 
+	// Bullet
+	library.insert(std::pair<std::string, Texture*>("Bullet", new Texture()));
+	std::string bull = "./Assets/Images/t_bullet.png";
+	library.at("Bullet")->Initialize(gDevice->getRenderer(), bull);
+
 	// Carrier
 	library.insert(std::pair<std::string, Texture*>("Carrier", new Texture()));
 	std::string carr = "./Assets/Images/t_carrier.png";

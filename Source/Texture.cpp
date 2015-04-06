@@ -28,11 +28,19 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 
 void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
 		   GAME_FLT angle, SDL_Rect* clip) {
+
+	GAME_VEC camera = view->getPosition();
+
 	SDL_Rect dst;
-	dst.x = position.x;
-	dst.y = position.y;
+	dst.x = position.x + camera.x;
+	dst.y = position.y + camera.y;
 
 	SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
 
 	SDL_RenderCopyEx(renderer, texture, NULL, &dst, angle, NULL, SDL_FLIP_NONE);
+}
+
+void Texture::GetDimensions(int* w, int* h) {
+	SDL_QueryTexture(texture, NULL, NULL, w, h);
+	return;
 }

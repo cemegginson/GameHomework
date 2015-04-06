@@ -29,7 +29,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	iDevice = input;
 
 	view = new View();
-	view->Initialize(gDevice->getRenderer(), input, 0, 0);
+	view->Initialize(input, 0, 0);
 
 	fps = framerate;
 	timer = new Timer();
@@ -41,7 +41,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	gLibrary->AddFactory("Infantry",
 				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
 	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary));
+				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary, iDevice));
 	gLibrary->AddFactory("Rock",
 			     (ObjectFactory*)new RockFactory(gDevice, aLibrary));
 	return true;
@@ -63,7 +63,7 @@ bool Game::LoadLevel(std::string file) {
 		std::string name;
 		for (pugi::xml_node child : Level.children("GameAsset")) {
 			name = child.attribute("name").value();
-			objects.push_back(gLibrary->Search(name)->Create(child));
+			objects.push_back((Object*)gLibrary->Search(name)->Create(child));
 		}
 	}
 	return true;
@@ -89,20 +89,10 @@ void Game::Update() {
 void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
 
-	// Get and set our viewport position
-	GAME_VEC pos = view->getPosition();
-	SDL_Rect camera = {
-		(int)pos.x,
-		(int)pos.y,
-		800,
-		600,
-	};
-	// SDL_RenderSetClipRect(renderer, &camera);
-	// SDL_RenderSetViewport(renderer, &camera);
-
 	// Cycle through every objects' Draw method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(timer->getTicks(), view);
 	}
+
 	SDL_RenderPresent(gDevice->getRenderer());
 }

@@ -2,7 +2,7 @@ project(GameHomework)
 
 set(TARGET_NAME GameHomework)
 
-set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Carrier.cpp
+set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Bullet.cpp Carrier.cpp
     Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
     Object.cpp Player.cpp pugixml.cpp Rock.cpp Texture.cpp Timer.cpp View.cpp)
 

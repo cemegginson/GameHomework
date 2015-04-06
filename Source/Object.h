@@ -20,6 +20,6 @@ public:
 	virtual ~Object();
 	virtual void Update(GAME_FLT gameTime) = 0;
 	virtual void Draw(GAME_FLT gameTime, View* view) = 0;
-	virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
-				GAME_VEC pos, GAME_FLT ang) = 0;
+	// virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
+	// 			GAME_VEC pos, GAME_FLT ang) = 0;
 };
