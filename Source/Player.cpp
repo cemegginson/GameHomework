@@ -10,8 +10,10 @@ Player::~Player() {}
 void Player::Update(GAME_FLT gameTime) {
 
 	GAME_FLT theta = (angle-90)*(PI/180.0);
-
+	GAME_FLT tcos = cos(theta);
+	GAME_FLT tsin = sin(theta);
 	GAME_EVENT event = iDevice->GetEvent();
+
 
 	switch(event){
 		case GAME_A:
@@ -21,12 +23,12 @@ void Player::Update(GAME_FLT gameTime) {
 			angle += 2.0;
 			break;
 		case GAME_W:
-			position.x += travel * cos(theta);
-			position.y += travel * sin(theta);
+			position.x += travel * tcos;
+			position.y += travel * tsin;
 			break;
 		case GAME_S:
-			position.x -= travel * cos(theta);
-			position.y -= travel * sin(theta);
+			position.x -= travel * tcos;
+			position.y -= travel * tsin;
 			break;
 		default:
 			break;
@@ -35,12 +37,12 @@ void Player::Update(GAME_FLT gameTime) {
 	// Create bullet if spacebar pressed
 	if(event == GAME_SPACE){
 		GAME_VEC direction;
-		direction.x = 0;
-		direction.y = 0;
+		direction.x = 2 * tcos;
+		direction.y = 2 * tsin;
 
 		GAME_VEC bulletpos;
-		bulletpos.x = position.x + center.x + radius * cos(theta);
-		bulletpos.y = position.y + center.y + radius * sin(theta);
+		bulletpos.x = position.x + center.x + radius * tcos;
+		bulletpos.y = position.y + center.y + radius * tsin;
 
 		Bullet* bullet = new Bullet();
 		bullet->Initialize(gDevice, aLibrary->Search("Bullet"), bulletpos, direction);
