@@ -15,25 +15,6 @@ ObjectFactory::ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) {
 
 ObjectFactory::~ObjectFactory() {}
 
-BulletFactory::BulletFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
-
-BulletFactory::~BulletFactory() {}
-
-Bullet* BulletFactory::Create(pugi::xml_node tag) {
-	Bullet* obj = new Bullet();
-	GAME_VEC vec;
-	GAME_FLT ang;
-	std::string name = tag.attribute("name").value();
-	std::string x = tag.attribute("x").value();
-	std::string y = tag.attribute("y").value();
-	std::string a = tag.attribute("angle").value();
-	vec.x = stof(x);
-	vec.y = stof(y);
-	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
-	return obj;
-}
-
 CarrierFactory::CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
 
 CarrierFactory::~CarrierFactory() {}
@@ -89,7 +70,7 @@ Player* PlayerFactory::Create(pugi::xml_node tag) {
 	vec.x = stof(x);
 	vec.y = stof(y);
 	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	obj->Initialize(gDevice, aLibrary->Search(name), aLibrary, vec, ang);
 	obj->setInput(iDevice);
 	return obj;
 }

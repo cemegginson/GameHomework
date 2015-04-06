@@ -1,19 +1,23 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include "ArtAssetLibrary.h"
+#include "Bullet.h"
 #include "Definitions.h"
 #include "Object.h"
-#include "ArtAssetLibrary.h"
 
 class Player : public Object {
 protected:
+	ArtAssetLibrary* aLibrary;
+	std::vector<Bullet*> bullets;
 	InputDevice* iDevice;
 	GAME_INT travel = 2;
 public:
 	Player();
 	~Player();
-	void Update(GAME_FLT gameTime);
-	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(GraphicsDevice*, Texture*, GAME_VEC, GAME_FLT);
+	void Update(GAME_FLT);
+	void Draw(GAME_FLT, View*);
+	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, GAME_VEC, GAME_FLT);
 	void setInput(InputDevice*);
 };

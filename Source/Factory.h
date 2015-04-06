@@ -57,11 +57,3 @@ public:
 	~RockFactory();
 	Rock* Create(pugi::xml_node);
 };
-
-class BulletFactory : ObjectFactory {
-protected:
-public:
-	BulletFactory(GraphicsDevice*, ArtAssetLibrary*);
-	~BulletFactory();
-	Bullet* Create(pugi::xml_node);
-};

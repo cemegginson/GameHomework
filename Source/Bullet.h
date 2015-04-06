@@ -8,14 +8,12 @@
 
 class Bullet : public Object {
 protected:
-	GAME_VEC center;
-	int radius;
+	GAME_VEC velocity;
 
 public:
 	Bullet();
 	~Bullet();
 	void Update(GAME_FLT gameTime);
 	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos,
-			GAME_FLT ang);
+	void Initialize(GraphicsDevice*, Texture*, GAME_VEC, GAME_VEC);
 };
