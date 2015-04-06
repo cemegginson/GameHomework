@@ -7,6 +7,7 @@
 #include "pugixml.hpp"
 
 // Object Classes
+#include "Bullet.h"
 #include "Carrier.h"
 #include "Infantry.h"
 #include "Player.h"
@@ -55,4 +56,12 @@ public:
 	RockFactory(GraphicsDevice*, ArtAssetLibrary*);
 	~RockFactory();
 	Rock* Create(pugi::xml_node);
+};
+
+class BulletFactory : ObjectFactory {
+protected:
+public:
+	BulletFactory(GraphicsDevice*, ArtAssetLibrary*);
+	~BulletFactory();
+	Bullet* Create(pugi::xml_node);
 };

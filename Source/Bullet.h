@@ -1,0 +1,21 @@
+#pragma once
+
+#include <string>
+#include "Definitions.h"
+#include "Object.h"
+#include "View.h"
+#include "ArtAssetLibrary.h"
+
+class Bullet : public Object {
+protected:
+	GAME_VEC center;
+	int radius;
+
+public:
+	Bullet();
+	~Bullet();
+	void Update(GAME_FLT gameTime);
+	void Draw(GAME_FLT gameTime, View* view);
+	void Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos,
+			GAME_FLT ang);
+};
