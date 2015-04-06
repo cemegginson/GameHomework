@@ -15,27 +15,26 @@ void Player::Update(GAME_FLT gameTime) {
 	GAME_EVENT event = iDevice->GetEvent();
 
 
-	switch(event){
-		case GAME_A:
-			angle -= 2.0;
-			break;
-		case GAME_D:
-			angle += 2.0;
-			break;
-		case GAME_W:
-			position.x += travel * tcos;
-			position.y += travel * tsin;
-			break;
-		case GAME_S:
-			position.x -= travel * tcos;
-			position.y -= travel * tsin;
-			break;
-		default:
-			break;
+
+	if(iDevice->IsPressed(GAME_A)) {
+		angle -= 2.0;
+	}
+	if(iDevice->IsPressed(GAME_D)) {
+		angle += 2.0;
+	}
+	if(iDevice->IsPressed(GAME_W)) {
+		position.x += travel * tcos;
+		position.y += travel * tsin;
+	}
+	if(iDevice->IsPressed(GAME_S)) {
+		position.x -= travel * tcos;
+		position.y -= travel * tsin;
 	}
 
+
+
 	// Create bullet if spacebar pressed
-	if(event == GAME_SPACE){
+	if(iDevice->IsPressed(GAME_SPACE)){
 		GAME_VEC direction;
 		direction.x = 2 * tcos;
 		direction.y = 2 * tsin;

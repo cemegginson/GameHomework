@@ -6,57 +6,40 @@ InputDevice::InputDevice() { gEvent = GAME_NA; }
 InputDevice::~InputDevice() {}
 
 bool InputDevice::Initialize(SDL_Event* event) {
-	this->gEvent = Translate(event);
+	translations[SDLK_UP] = GAME_UP;
+	translations[SDLK_DOWN] = GAME_DOWN;
+	translations[SDLK_LEFT] = GAME_LEFT;
+	translations[SDLK_RIGHT] = GAME_RIGHT;
+	translations[SDLK_w] = GAME_W;
+	translations[SDLK_a] = GAME_A;
+	translations[SDLK_s] = GAME_S;
+	translations[SDLK_d] = GAME_D;
+	translations[SDLK_SPACE] = GAME_SPACE;
+
+	keystates[GAME_UP] = false;
+	keystates[GAME_DOWN] = false;
+	keystates[GAME_LEFT] = false;
+	keystates[GAME_RIGHT] = false;
+	keystates[GAME_W] = false;
+	keystates[GAME_A] = false;
+	keystates[GAME_S] = false;
+	keystates[GAME_D] = false;
+	keystates[GAME_SPACE] = false;
+
 	return true;
 }
 
 void InputDevice::Update(SDL_Event* event) {
+
 	if(event->type == SDL_KEYDOWN){
-		this->gEvent = Translate(event);
+		keystates[translations[event->key.keysym.sym]] = true;
 	} else if(event->type == SDL_KEYUP) {
-		this->gEvent = GAME_NA;
+		keystates[translations[event->key.keysym.sym]] = false;
 	}
 }
 
-GAME_EVENT InputDevice::Translate(SDL_Event* event) {
-	GAME_EVENT keyEvent = GAME_NA;
-	switch(event->key.keysym.sym) {
-		case SDLK_UP:
-			keyEvent = GAME_UP;
-			break;
-		case SDLK_DOWN:
-			keyEvent = GAME_DOWN;
-			break;
-		case SDLK_LEFT:
-			keyEvent = GAME_LEFT;
-			break;
-		case SDLK_RIGHT:
-			keyEvent = GAME_RIGHT;
-			break;
-		case SDLK_w:
-			keyEvent = GAME_W;
-			break;
-		case SDLK_a:
-			keyEvent = GAME_A;
-			break;
-		case SDLK_s:
-			keyEvent = GAME_S;
-			break;
-		case SDLK_d:
-			keyEvent = GAME_D;
-			break;
-		case SDLK_SPACE:
-			keyEvent = GAME_SPACE;
-			break;
-		case SDLK_t:
-			int* foo;
-			*foo = 1;
-			break;
-		default:
-			keyEvent = GAME_NA;
-			break;
-	}
-	return keyEvent;
+bool InputDevice::IsPressed(GAME_EVENT event) {
+	return keystates.at(event);
 }
 
 GAME_EVENT InputDevice::GetEvent() {
