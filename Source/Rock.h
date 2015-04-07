@@ -5,11 +5,11 @@
 #include "Object.h"
 #include "View.h"
 #include "ArtAssetLibrary.h"
+#include "Box2D/Box2D.h"
 
 class Rock : public Object {
 protected:
-	GAME_VEC center;
-	int radius;
+
 
 public:
 	Rock();

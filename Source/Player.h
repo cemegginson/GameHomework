@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "ArtAssetLibrary.h"
+#include "Box2D/Box2D.h"
 #include "Bullet.h"
 #include "Definitions.h"
 #include "Object.h"
