@@ -26,6 +26,9 @@
 #include <SDL.h>
 #endif
 
+// Physics
+#include "Box2D/Box2D.h"
+
 // Media Library Wrappers
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
@@ -108,7 +111,7 @@ int main(int argc, char* argv[]) {
 
 		// Check for Event
 		while (SDL_PollEvent(event)) {
-			
+
 			// Janky, needs fix :TODO
 			if (event->type == SDL_WINDOWEVENT) {
 				switch(event->window.event) {

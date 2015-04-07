@@ -15,6 +15,8 @@ target_include_directories(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} ${SDL2_LIBRARY})
 target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(${TARGET_NAME} "${CMAKE_SOURCE_DIR}/ThirdParty/Box2D/Box2D/libBox2D.a")
+
 
 # install(TARGETS ${TARGET_NAME} RUNTIME DESTINATION ${BIN_DIR})
 

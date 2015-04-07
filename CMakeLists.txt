@@ -36,6 +36,7 @@ endif()
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
+include_directories("${CMAKE_SOURCE_DIR}/ThirdParty/Box2D")
 
 message(STATUS "SDL2_LIBRARY...... ${SDL2_LIBRARY}")
 message(STATUS "SDL2_INCLUDE_DIR.. ${SDL2_INCLUDE_DIR}")
