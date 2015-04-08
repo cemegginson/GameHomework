@@ -11,19 +11,19 @@ bool View::Initialize(InputDevice* input, GAME_FLT x, GAME_FLT y) {
 	return true;
 }
 
-void View::Update(GAME_FLT gameTime) {
-
+void View::Update(GAME_FLT deltaTime) {
+	GAME_INT velocity = 400;
 	if(iDevice->IsPressed(GAME_UP)) {
-		position.y += 3;
+		position.y += velocity * deltaTime;
 	}
 	if(iDevice->IsPressed(GAME_DOWN)) {
-		position.y -= 3;
+		position.y -= velocity * deltaTime;
 	}
 	if(iDevice->IsPressed(GAME_LEFT)) {
-		position.x += 3;
+		position.x += velocity * deltaTime;
 	}
 	if(iDevice->IsPressed(GAME_RIGHT)) {
-		position.x -= 3;
+		position.x -= velocity * deltaTime;
 	}
 	return;
 }

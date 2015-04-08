@@ -4,6 +4,7 @@
 #include <string>
 #include "GameAssetLibrary.h"
 #include "ArtAssetLibrary.h"
+#include "Box2D/Box2D.h"
 #include "Timer.h"
 #include "View.h"
 #include "Object.h"
@@ -19,6 +20,7 @@ protected:
 	GAME_FLT gameTime;
 	View* view;
 	std::vector<Object*> objects;
+	b2World* world;
 
 public:
 	Game();

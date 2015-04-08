@@ -8,6 +8,6 @@ GamePhysics::~GamePhysics() {
 
 }
 
-GamePhysics::Initialize() {
+void GamePhysics::Initialize() {
     
 }

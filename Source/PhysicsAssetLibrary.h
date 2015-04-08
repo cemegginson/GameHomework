@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 #include "GamePhysics.h"
 
 class PhysicsAssetLibrary {
@@ -13,5 +14,4 @@ public:
     GamePhysics* Search(std::string);
     void Insert(std::string, GamePhysics*);
     void Initialize();
-
 };

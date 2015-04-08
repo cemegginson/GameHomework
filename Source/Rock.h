@@ -9,13 +9,13 @@
 
 class Rock : public Object {
 protected:
-
+	b2CircleShape shape; 
+    b2FixtureDef shapefd;
 
 public:
 	Rock();
 	~Rock();
-	void Update(GAME_FLT gameTime);
-	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos,
-			GAME_FLT ang);
+	void Update(GAME_FLT);
+	void Draw(GAME_FLT, View*);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, GAME_FLT);
 };

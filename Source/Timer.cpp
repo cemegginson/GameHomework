@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Timer.h"
+#include "Definitions.h"
 
 Timer::Timer() {
 	// Initialize the variables
@@ -9,6 +10,8 @@ Timer::Timer() {
 	paused = false;
 	started = false;
 	mpf = 0.0f;
+	deltaTime = 0;
+	lastTime = 0;
 }
 
 bool Timer::Initialize(GAME_INT fps) {
@@ -46,7 +49,7 @@ void Timer::pause() {
 		paused = true;
 
 		// Calculate the paused ticks
-		pausedTicks = SDL_GetTicks() - startTicks;
+		pausedTicks = SDL_GetTicks();
 	}
 }
 
@@ -64,7 +67,7 @@ void Timer::unpause() {
 	}
 }
 
-Uint32 Timer::getTicks() {
+GAME_INT Timer::getTicks() {
 	// If the timer is running
 	if (started == true) {
 		// If the timer is paused
@@ -73,7 +76,7 @@ Uint32 Timer::getTicks() {
 			return pausedTicks;
 		} else {
 			// Return the current time minus the start time
-			return SDL_GetTicks() - startTicks;
+			return SDL_GetTicks();
 		}
 	}
 
@@ -90,4 +93,14 @@ void Timer::fpsRegulate() {
 	if (getTicks() < mpf) {
 		SDL_Delay((GAME_INT)mpf - getTicks());
 	}
+}
+
+// TIME DELTAS!!!
+void Timer::Update() {
+	deltaTime = SDL_GetTicks() - lastTime;
+	lastTime = SDL_GetTicks();
+}
+
+GAME_FLT Timer::DeltaTime() {
+	return (GAME_FLT)deltaTime/1000.0;
 }

@@ -9,12 +9,17 @@
 
 class Bullet : public Object {
 protected:
-	GAME_VEC velocity;
+	b2Vec2 velocity;
+	b2CircleShape shape; 
+    b2FixtureDef shapefd;
+	int w, h;
+	GAME_FLT life;
 
 public:
 	Bullet();
 	~Bullet();
-	void Update(GAME_FLT gameTime);
-	void Draw(GAME_FLT gameTime, View* view);
-	void Initialize(GraphicsDevice*, Texture*, GAME_VEC, GAME_VEC);
+	void Update(GAME_FLT);
+	void Draw(GAME_FLT, View*);
+	int GetLife();
+	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, GAME_VEC);
 };

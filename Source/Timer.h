@@ -25,10 +25,18 @@ public:
 	// Regulate
 	void fpsRegulate();
 
+	// Time Delta!
+	void Update();
+	GAME_FLT DeltaTime();
+
 private:
 	// The clock time when the timer started
 	GAME_INT startTicks;
 	GAME_FLT mpf; // millisecond per frame
+
+	// Time Delta!
+	GAME_INT deltaTime;
+	GAME_INT lastTime;
 
 	// The ticks stored when the timer was paused
 	GAME_INT pausedTicks;

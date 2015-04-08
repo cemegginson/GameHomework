@@ -2,6 +2,7 @@
 
 #include <string>
 #include "Box2D/Box2D.h"
+#include "Definitions.h"
 
 class GamePhysics {
 protected:
@@ -17,6 +18,6 @@ protected:
 public:
     GamePhysics();
     ~GamePhysics();
-    Initialize();
+    void Initialize();
     
-}
+};

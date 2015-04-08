@@ -2,9 +2,11 @@
 
 #include <string>
 #include "ArtAssetLibrary.h"
+#include "Box2D\Box2D.h"
 #include "InputDevice.h"
 #include "Object.h"
 #include "pugixml.hpp"
+#include "Timer.h"
 
 // Object Classes
 #include "Bullet.h"
@@ -17,10 +19,12 @@ class ObjectFactory {
 protected:
 	GraphicsDevice* gDevice;
 	ArtAssetLibrary* aLibrary;
+	b2World* world;
+	Timer* timer;
 
 public:
 	ObjectFactory();
-	ObjectFactory(GraphicsDevice*, ArtAssetLibrary*);
+	ObjectFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*);
 	~ObjectFactory();
 	virtual Object* Create(pugi::xml_node) = 0;
 };
@@ -28,7 +32,7 @@ public:
 class CarrierFactory : ObjectFactory {
 protected:
 public:
-	CarrierFactory(GraphicsDevice*, ArtAssetLibrary*);
+	CarrierFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*);
 	~CarrierFactory();
 	Carrier* Create(pugi::xml_node);
 };
@@ -36,7 +40,7 @@ public:
 class InfantryFactory : ObjectFactory {
 protected:
 public:
-	InfantryFactory(GraphicsDevice*, ArtAssetLibrary*);
+	InfantryFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*);
 	~InfantryFactory();
 	Infantry* Create(pugi::xml_node);
 };
@@ -45,7 +49,7 @@ class PlayerFactory : ObjectFactory {
 protected:
 	InputDevice* iDevice;
 public:
-	PlayerFactory(GraphicsDevice*, ArtAssetLibrary*, InputDevice*);
+	PlayerFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*, InputDevice*);
 	~PlayerFactory();
 	Player* Create(pugi::xml_node);
 };
@@ -53,7 +57,7 @@ public:
 class RockFactory : ObjectFactory {
 protected:
 public:
-	RockFactory(GraphicsDevice*, ArtAssetLibrary*);
+	RockFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*);
 	~RockFactory();
 	Rock* Create(pugi::xml_node);
 };

@@ -8,14 +8,15 @@ ObjectFactory::ObjectFactory() {
 	aLibrary = nullptr;
 }
 
-ObjectFactory::ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) {
+ObjectFactory::ObjectFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, b2World* wor) {
 	gDevice = gDev;
 	aLibrary = aLib;
+	world = wor;
 }
 
 ObjectFactory::~ObjectFactory() {}
 
-CarrierFactory::CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
+CarrierFactory::CarrierFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, b2World* wor) : ObjectFactory(gDev, aLib, wor) {}
 
 CarrierFactory::~CarrierFactory() {}
 
@@ -30,11 +31,11 @@ Carrier* CarrierFactory::Create(pugi::xml_node tag) {
 	vec.x = stof(x);
 	vec.y = stof(y);
 	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	obj->Initialize(gDevice, aLibrary->Search(name), world, vec, ang);
 	return obj;
 }
 
-InfantryFactory::InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
+InfantryFactory::InfantryFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, b2World* wor) : ObjectFactory(gDev, aLib, wor) {}
 
 InfantryFactory::~InfantryFactory() {}
 
@@ -49,11 +50,11 @@ Infantry* InfantryFactory::Create(pugi::xml_node tag) {
 	vec.x = stof(x);
 	vec.y = stof(y);
 	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	obj->Initialize(gDevice, aLibrary->Search(name), world, vec, ang);
 	return obj;
 }
 
-PlayerFactory::PlayerFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, InputDevice* iDev) : ObjectFactory(gDev, aLib) {
+PlayerFactory::PlayerFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, b2World* wor, InputDevice* iDev) : ObjectFactory(gDev, aLib, wor) {
 	iDevice = iDev;
 }
 
@@ -70,12 +71,12 @@ Player* PlayerFactory::Create(pugi::xml_node tag) {
 	vec.x = stof(x);
 	vec.y = stof(y);
 	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), aLibrary, vec, ang);
+	obj->Initialize(gDevice, aLibrary->Search(name), aLibrary, world, vec, ang);
 	obj->setInput(iDevice);
 	return obj;
 }
 
-RockFactory::RockFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib) : ObjectFactory(gDev, aLib) {}
+RockFactory::RockFactory(GraphicsDevice* gDev, ArtAssetLibrary* aLib, b2World* wor) : ObjectFactory(gDev, aLib, wor) {}
 
 RockFactory::~RockFactory() {}
 
@@ -90,6 +91,6 @@ Rock* RockFactory::Create(pugi::xml_node tag) {
 	vec.x = stof(x);
 	vec.y = stof(y);
 	ang = stof(a);
-	obj->Initialize(gDevice, aLibrary->Search(name), vec, ang);
+	obj->Initialize(gDevice, aLibrary->Search(name), world, vec, ang);
 	return obj;
 }

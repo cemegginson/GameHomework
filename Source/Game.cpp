@@ -1,6 +1,9 @@
-#include "Game.h"
-#include "pugixml.hpp"
 #include <iostream>
+#include "Box2D\Box2D.h"
+#include "ContactListener.h"
+#include "Game.h"
+#include "GameFunctions.h"
+#include "pugixml.hpp"
 
 Game::Game() {
 	gLibrary = nullptr;
@@ -24,6 +27,7 @@ Game::~Game() {
 bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT framerate) {
 	gDevice = graphics;
 
+	// Load sprites
 	aLibrary = new ArtAssetLibrary();
 	aLibrary->LoadAssets(graphics);
 	iDevice = input;
@@ -34,16 +38,26 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	fps = framerate;
 	timer = new Timer();
 	timer->Initialize(fps);
+	timer->start();
 
+	// Initialize Physics world
+	const b2Vec2 gravity(0, 0);
+	world = new b2World(gravity);
+
+	// Create Factories
 	gLibrary = new GameAssetLibrary();
 	gLibrary->AddFactory("Carrier",
-			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary));
+			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary, world));
 	gLibrary->AddFactory("Infantry",
-				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary));
+				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary, world));
 	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary, iDevice));
+				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary, world, iDevice));
 	gLibrary->AddFactory("Rock",
-			     (ObjectFactory*)new RockFactory(gDevice, aLibrary));
+			     (ObjectFactory*)new RockFactory(gDevice, aLibrary, world));
+
+	ContactListener* cl = new ContactListener();
+	world->SetContactListener(cl);
+
 	return true;
 }
 
@@ -70,20 +84,22 @@ bool Game::LoadLevel(std::string file) {
 }
 
 void Game::Run() {
-	timer->start();
+	timer->Update();
 	Update();
 	Draw();
-	timer->fpsRegulate();
+	//timer->fpsRegulate();
 }
 
 void Game::Update() {
 	// Update View position
-	view->Update(timer->getTicks());
+	view->Update(timer->DeltaTime());
 
 	// Cycle through every objects' Update method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Update(timer->getTicks()/1000.0);
+		(*iter)->Update(timer->DeltaTime());
 	}
+
+	world->Step(.01, 8, 3);
 }
 
 void Game::Draw() {
@@ -91,7 +107,7 @@ void Game::Draw() {
 
 	// Cycle through every objects' Draw method
 	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Draw(timer->getTicks(), view);
+		(*iter)->Draw(timer->DeltaTime(), view);
 	}
 
 	SDL_RenderPresent(gDevice->getRenderer());

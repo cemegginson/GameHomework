@@ -1,3 +1,4 @@
+#include <utility>
 #include "PhysicsAssetLibrary.h"
 
 PhysicsAssetLibrary::PhysicsAssetLibrary() {
@@ -13,28 +14,28 @@ GamePhysics* PhysicsAssetLibrary::Search(std::string name) {
 }
 
 void PhysicsAssetLibrary::Insert(std::string name, GamePhysics* physob) {
-    library.insert(pair<std::string, GamePhysics*>(name, physob));
+    library.insert(std::pair<std::string, GamePhysics*>(name, physob));
 }
 
 void PhysicsAssetLibrary::Initialize() {
     // Player physics object
     GamePhysics* player = new GamePhysics();
-    player.Initialize();
-    library.Insert("Player", player);
+    player->Initialize();
+    Insert("Player", player);
 
     // Infantry physics object
     GamePhysics* infantry = new GamePhysics();
-    infantry..Initialize();
-    library.Insert("Infantry", infantry);
+    infantry->Initialize();
+    Insert("Infantry", infantry);
 
     // Rock physics object
     GamePhysics* rock = new GamePhysics();
-    rock..Initialize();
-    library.Insert("Rock", rock);
+    rock->Initialize();
+    Insert("Rock", rock);
 
     // Carrier physics object
     GamePhysics* carrier = new GamePhysics();
-    carrier..Initialize();
-    library.Insert("Carrier", carrier);
+    carrier->Initialize();
+    Insert("Carrier", carrier);
 
 }

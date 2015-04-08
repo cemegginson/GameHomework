@@ -1,25 +1,50 @@
 #include "Infantry.h"
 
+#include "GameFunctions.h"
+
 Infantry::Infantry() : Object() {}
 
-Infantry::~Infantry() {}
+Infantry::~Infantry() {
+	world->DestroyBody(body);
+	delete texture;
+}
 
-void Infantry::Update(GAME_FLT gameTime) {
-	angle += .5;
-	if(angle > 360) {
-		angle -= 360;
-	} else if(angle < 0) {
-		angle += 360;
-	}
+void Infantry::Update(GAME_FLT deltaTime) {
+	b2Vec2 physPosition;
+	physPosition = body->GetPosition();
+
+	body->SetTransform(physPosition, RW2PWAngle(PW2RWAngle(body->GetAngle()) + rotation * deltaTime));
+	
+	position.x = (int)PW2RW(physPosition.x) - w/2.0;
+	position.y = (int)PW2RW(physPosition.y) - h/2.0;
+	angle = PW2RWAngle(body->GetAngle());
 }
 
 void Infantry::Draw(GAME_FLT gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, GAME_VEC pos, GAME_FLT ang) {
+void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, GAME_FLT ang) {
 	gDevice = gDev;
 	texture = tex;
+	world = wor;
 	position = pos;
 	angle = ang;
+	rotation = 100;
+
+	// Physics stuff
+	bdef.type = b2_dynamicBody;
+	bdef.position.Set(RW2PW(position.x), RW2PW(position.y));
+	bdef.angle = RW2PWAngle(angle);
+	bdef.angularDamping = 10.0;
+	bdef.linearDamping = 10.0;
+	body = world->CreateBody(&bdef);
+
+	texture->GetDimensions(&w, &h);
+	shape.m_radius = RW2PW(w/2.0f);
+	shapefd.shape = &shape;
+	shapefd.density = 0.1f;
+	shapefd.friction = 0.0f;
+	shapefd.restitution = 0.0f;
+	body->CreateFixture(&shapefd);
 }

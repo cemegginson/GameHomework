@@ -10,3 +10,7 @@ Object::Object() {
 }
 
 Object::~Object() {}
+
+b2Body* Object::getPhysicsBody() {
+	return body;
+}
