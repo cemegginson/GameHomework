@@ -2,7 +2,7 @@
 
 #include <string>
 #include "ArtAssetLibrary.h"
-#include "Box2D\Box2D.h"
+#include <Box2D/Box2D.h>
 #include "InputDevice.h"
 #include "Object.h"
 #include "pugixml.hpp"

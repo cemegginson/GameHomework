@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Box2D\Box2D.h"
-#include "ContactListener.h"
+#include "Box2D/Box2D.h"
+// #include "ContactListener.h"
 #include "Game.h"
 #include "GameFunctions.h"
 #include "pugixml.hpp"
@@ -55,8 +55,8 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT fra
 	gLibrary->AddFactory("Rock",
 			     (ObjectFactory*)new RockFactory(gDevice, aLibrary, world));
 
-	ContactListener* cl = new ContactListener();
-	world->SetContactListener(cl);
+	// ContactListener* cl = new ContactListener();
+	// world->SetContactListener(cl);
 
 	return true;
 }

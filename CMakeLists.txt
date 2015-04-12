@@ -32,14 +32,18 @@ if(WIN32)
 	set(SDL2MAIN_LIBRARY  "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2-2.0.3/lib/x86/SDL2main.lib")
 	set(SDL2_IMAGE_INCLUDE_DIR  "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2_image-2.0.0/include")
 	set(SDL2_IMAGE_LIBRARY "${CMAKE_SOURCE_DIR}/ThirdParty/SDL2_image-2.0.0/lib/x86/SDL2_image.lib")
+	set(BOX2D_INCLUDE_DIR  "${CMAKE_SOURCE_DIR}/ThirdParty/Box2D/Box2D")
+	set(BOX2D_LIBRARY "${CMAKE_SOURCE_DIR}/ThirdParty/Box2D/Box2D/") #Fix for Windows :TODO
 endif()
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
-include_directories("${CMAKE_SOURCE_DIR}/ThirdParty/Box2D")
+find_package(Box2D REQUIRED)
 
 message(STATUS "SDL2_LIBRARY...... ${SDL2_LIBRARY}")
 message(STATUS "SDL2_INCLUDE_DIR.. ${SDL2_INCLUDE_DIR}")
+message(STATUS "BOX2D_LIBRARY..... ${BOX2D_LIBRARY}")
+message(STATUS "BOX2D_INCLUDE_DIR.. ${BOX2D_INCLUDE_DIR}")
 
 # Include directories with relevant items
 add_subdirectory(Source)

@@ -15,8 +15,8 @@ void Carrier::Update(GAME_FLT deltaTime) {
 	}
 	float rAngle = (angle * (PI / 180.0)) - PI;
 	b2Vec2 physPosition;
-	physPosition.x = RW2PW(((radius * cos(rAngle)) + center.x));
-	physPosition.y = RW2PW(((radius * sin(rAngle)) + center.y));
+	physPosition.x = RW2PW((float)((radius * cos(rAngle)) + center.x));
+	physPosition.y = RW2PW((float)((radius * sin(rAngle)) + center.y));
 
 	body->SetTransform(physPosition, rAngle);
 

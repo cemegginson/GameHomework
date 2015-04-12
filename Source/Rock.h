@@ -5,11 +5,11 @@
 #include "Object.h"
 #include "View.h"
 #include "ArtAssetLibrary.h"
-#include "Box2D/Box2D.h"
+#include <Box2D/Box2D.h>
 
 class Rock : public Object {
 protected:
-	b2CircleShape shape; 
+	b2CircleShape shape;
     b2FixtureDef shapefd;
 
 public:
