@@ -43,7 +43,7 @@ find_package(Box2D REQUIRED)
 message(STATUS "SDL2_LIBRARY...... ${SDL2_LIBRARY}")
 message(STATUS "SDL2_INCLUDE_DIR.. ${SDL2_INCLUDE_DIR}")
 message(STATUS "BOX2D_LIBRARY..... ${BOX2D_LIBRARY}")
-message(STATUS "BOX2D_INCLUDE_DIR.. ${BOX2D_INCLUDE_DIR}")
+message(STATUS "BOX2D_INCLUDE_DIR. ${BOX2D_INCLUDE_DIR}")
 
 # Include directories with relevant items
 add_subdirectory(Source)
