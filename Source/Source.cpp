@@ -35,7 +35,6 @@
 #include "Definitions.h"
 
 int main(int argc, char* argv[]) {
-
 	//========================================
 	// Initialize the random number generator
 	//========================================
@@ -101,21 +100,16 @@ int main(int argc, char* argv[]) {
 	// Main Game Loop
 	//========================================
 	bool quit = false;
-
 	// While the user hasn't quit
 	while (!quit) {
-
 		// Check for Event
 		while (SDL_PollEvent(event)) {
-
 			if (event->type == SDL_QUIT) {
 				quit = true;
 			}
-
 			// Update the Input Device with the Event
 			iDevice->Update(event);
 		}
-
 		// Execute the Game
 		game->Run();
 	}
