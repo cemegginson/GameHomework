@@ -14,7 +14,7 @@ protected:
 	InputDevice* iDevice;
 	uint32 travel;
 	uint32 radius;
-	GAME_VEC center;
+	vector2 center;
 	float32 rotation;
 	float32 lastfiretime;
 
@@ -25,6 +25,6 @@ public:
 	~Player();
 	void Update(float32);
 	void Draw(float32, View*);
-	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, b2World*, GAME_VEC, float32);
+	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, b2World*, vector2, float32);
 	void setInput(InputDevice*);
 };

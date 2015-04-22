@@ -28,6 +28,6 @@ void View::Update(float32 deltaTime) {
 	return;
 }
 
-GAME_VEC View::getPosition() {
+vector2 View::getPosition() {
 	return position;
 }

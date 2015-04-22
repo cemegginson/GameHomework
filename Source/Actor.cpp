@@ -8,9 +8,9 @@ Actor::~Actor() {
     ;
 }
 
-Actor::Update() {
+Actor::Update(float32 deltaTime) {
     for(auto iter = components.begin(); iter != objects.end(); ++iter) {
-        iter->Update();
+        iter->Update(deltaTime);
     }
 }
 

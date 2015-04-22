@@ -12,7 +12,7 @@ protected:
 	// GraphicsDevice* gDevice;
 	// InputDevice* iDevice;
 	// Texture* texture;
-	// GAME_VEC position;
+	// vector2 position;
 	// float32 angle;
     std::vector<Component> components;
 
@@ -22,5 +22,5 @@ public:
 	virtual void Update(float32) = 0;
 	// virtual void Render(float32, View*) = 0;
 	// virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
-	// 			GAME_VEC pos, float32 ang) = 0;
+	// 			vector2 pos, float32 ang) = 0;
 };

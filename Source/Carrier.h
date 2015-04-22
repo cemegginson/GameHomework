@@ -10,7 +10,7 @@ class Carrier : public Object {
 protected:
 	b2PolygonShape shape; 
     b2FixtureDef shapefd;
-	GAME_VEC center;
+	vector2 center;
 	float32 rotation;
 	int radius;
 	int w, h;
@@ -20,5 +20,5 @@ public:
 	~Carrier();
 	void Update(float32);
 	void Draw(float32, View*);
-	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, float32);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, vector2, float32);
 };

@@ -17,5 +17,5 @@ public:
 	~Rock();
 	void Update(float32);
 	void Draw(float32, View*);
-	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, float32);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, vector2, float32);
 };

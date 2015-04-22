@@ -28,7 +28,7 @@ void Carrier::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, float32 ang) {
+void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

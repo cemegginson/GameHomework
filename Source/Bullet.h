@@ -21,5 +21,5 @@ public:
 	void Update(float32);
 	void Draw(float32, View*);
 	int GetLife();
-	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, GAME_VEC);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, vector2, vector2);
 };

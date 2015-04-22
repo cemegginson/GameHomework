@@ -51,11 +51,11 @@ void Player::Update(float32 deltaTime) {
 	// Create bullet if spacebar pressed
 	if(iDevice->IsPressed(GAME_SPACE) && lastfiretime > .075){
 		lastfiretime = 0;
-		GAME_VEC direction;
+		vector2 direction;
 		direction.x = 2 * tcos;
 		direction.y = 2 * tsin;
 
-		GAME_VEC bulletpos;
+		vector2 bulletpos;
 		bulletpos.x = position.x + center.x + radius * tcos;
 		bulletpos.y = position.y + center.y + radius * tsin;
 
@@ -88,7 +88,7 @@ void Player::Draw(float32 gameTime, View* view) {
 	}
 }
 
-void Player::Initialize(GraphicsDevice* gDev, Texture* tex, ArtAssetLibrary* aLib, b2World* wor, GAME_VEC pos, float32 ang) {
+void Player::Initialize(GraphicsDevice* gDev, Texture* tex, ArtAssetLibrary* aLib, b2World* wor, vector2 pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	aLibrary = aLib;

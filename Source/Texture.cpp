@@ -26,10 +26,10 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 	return true;
 }
 
-void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
+void Texture::Draw(SDL_Renderer* renderer, View* view, vector2 position,
 		   float32 angle, SDL_Rect* clip) {
 
-	GAME_VEC camera = view->getPosition();
+	vector2 camera = view->getPosition();
 
 	SDL_Rect dst;
 	dst.x = position.x + camera.x;

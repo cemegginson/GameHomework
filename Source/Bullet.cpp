@@ -27,7 +27,7 @@ void Bullet::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, NULL, nullptr);
 }
 
-void Bullet::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC origin, GAME_VEC ivelocity) {
+void Bullet::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 origin, vector2 ivelocity) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;
