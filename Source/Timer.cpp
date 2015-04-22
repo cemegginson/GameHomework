@@ -14,9 +14,9 @@ Timer::Timer() {
 	lastTime = 0;
 }
 
-bool Timer::Initialize(GAME_INT fps) {
+bool Timer::Initialize(uint32 fps) {
 	if (fps > 0) {
-		mpf = (GAME_FLT)1000 / fps;
+		mpf = (float32)1000 / fps;
 		return (true);
 	} else {
 		return (false);
@@ -67,7 +67,7 @@ void Timer::unpause() {
 	}
 }
 
-GAME_INT Timer::getTicks() {
+uint32 Timer::getTicks() {
 	// If the timer is running
 	if (started == true) {
 		// If the timer is paused
@@ -91,7 +91,7 @@ bool Timer::isPaused() { return paused; }
 void Timer::fpsRegulate() {
 	// Pause for a length of time such that frame rate is maintained
 	if (getTicks() < mpf) {
-		SDL_Delay((GAME_INT)mpf - getTicks());
+		SDL_Delay((uint32)mpf - getTicks());
 	}
 }
 
@@ -101,6 +101,6 @@ void Timer::Update() {
 	lastTime = SDL_GetTicks();
 }
 
-GAME_FLT Timer::DeltaTime() {
-	return (GAME_FLT)deltaTime/1000.0;
+float32 Timer::DeltaTime() {
+	return (float32)deltaTime/1000.0;
 }

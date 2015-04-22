@@ -6,7 +6,7 @@ Carrier::Carrier() : Object() {}
 
 Carrier::~Carrier() {}
 
-void Carrier::Update(GAME_FLT deltaTime) {
+void Carrier::Update(float32 deltaTime) {
 	angle += rotation * deltaTime;
 	if(angle > 360) {
 		angle -= 360;
@@ -24,11 +24,11 @@ void Carrier::Update(GAME_FLT deltaTime) {
 	position.y = PW2RW(physPosition.y);
 }
 
-void Carrier::Draw(GAME_FLT gameTime, View* view) {
+void Carrier::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, GAME_FLT ang) {
+void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

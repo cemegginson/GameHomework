@@ -27,7 +27,7 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 }
 
 void Texture::Draw(SDL_Renderer* renderer, View* view, GAME_VEC position,
-		   GAME_FLT angle, SDL_Rect* clip) {
+		   float32 angle, SDL_Rect* clip) {
 
 	GAME_VEC camera = view->getPosition();
 

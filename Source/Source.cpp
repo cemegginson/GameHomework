@@ -44,9 +44,9 @@ int main(int argc, char* argv[]) {
 	//========================================
 	// Base Game Constants
 	//========================================
-	GAME_INT SCREEN_WIDTH = 800;
-	GAME_INT SCREEN_HEIGHT = 600;
-	GAME_INT GAME_FPS = 100;
+	uint32 SCREEN_WIDTH = 800;
+	uint32 SCREEN_HEIGHT = 600;
+	uint32 GAME_FPS = 100;
 
 	//========================================
 	// Construct Graphical Device

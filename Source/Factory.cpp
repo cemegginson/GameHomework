@@ -23,7 +23,7 @@ CarrierFactory::~CarrierFactory() {}
 Carrier* CarrierFactory::Create(pugi::xml_node tag) {
 	Carrier* obj = new Carrier();
 	GAME_VEC vec;
-	GAME_FLT ang;
+	float32 ang;
 	std::string name = tag.attribute("name").value();
 	std::string x = tag.attribute("x").value();
 	std::string y = tag.attribute("y").value();
@@ -42,7 +42,7 @@ InfantryFactory::~InfantryFactory() {}
 Infantry* InfantryFactory::Create(pugi::xml_node tag) {
 	Infantry* obj = new Infantry();
 	GAME_VEC vec;
-	GAME_FLT ang;
+	float32 ang;
 	std::string name = tag.attribute("name").value();
 	std::string x = tag.attribute("x").value();
 	std::string y = tag.attribute("y").value();
@@ -63,7 +63,7 @@ PlayerFactory::~PlayerFactory() {}
 Player* PlayerFactory::Create(pugi::xml_node tag) {
 	Player* obj = new Player();
 	GAME_VEC vec;
-	GAME_FLT ang;
+	float32 ang;
 	std::string name = tag.attribute("name").value();
 	std::string x = tag.attribute("x").value();
 	std::string y = tag.attribute("y").value();
@@ -83,7 +83,7 @@ RockFactory::~RockFactory() {}
 Rock* RockFactory::Create(pugi::xml_node tag) {
 	Rock* obj = new Rock();
 	GAME_VEC vec;
-	GAME_FLT ang;
+	float32 ang;
 	std::string name = tag.attribute("name").value();
 	std::string x = tag.attribute("x").value();
 	std::string y = tag.attribute("y").value();

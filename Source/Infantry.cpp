@@ -9,7 +9,7 @@ Infantry::~Infantry() {
 	delete texture;
 }
 
-void Infantry::Update(GAME_FLT deltaTime) {
+void Infantry::Update(float32 deltaTime) {
 	b2Vec2 physPosition;
 	physPosition = body->GetPosition();
 
@@ -20,11 +20,11 @@ void Infantry::Update(GAME_FLT deltaTime) {
 	angle = PW2RWAngle(body->GetAngle());
 }
 
-void Infantry::Draw(GAME_FLT gameTime, View* view) {
+void Infantry::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, GAME_FLT ang) {
+void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

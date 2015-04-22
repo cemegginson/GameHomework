@@ -16,8 +16,8 @@ protected:
 	GraphicsDevice* gDevice;
 	InputDevice* iDevice;
 	Timer* timer;
-	GAME_INT fps;
-	GAME_FLT gameTime;
+	uint32 fps;
+	float32 gameTime;
 	View* view;
 	std::vector<Object*> objects;
 	b2World* world;
@@ -26,7 +26,7 @@ public:
 	Game();
 	~Game();
 	bool Initialize(GraphicsDevice* graphics, InputDevice* input,
-			GAME_INT fps);
+			uint32 fps);
 	void Reset();
 	bool LoadLevel(std::string file);
 	void Run();

@@ -15,7 +15,7 @@ protected:
 public:
 	Rock();
 	~Rock();
-	void Update(GAME_FLT);
-	void Draw(GAME_FLT, View*);
-	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, GAME_FLT);
+	void Update(float32);
+	void Draw(float32, View*);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, float32);
 };

@@ -9,9 +9,11 @@ Actor::~Actor() {
 }
 
 Actor::Update() {
-    ;
+    for(auto iter = components.begin(); iter != objects.end(); ++iter) {
+        iter->Update();
+    }
 }
 
-Actor::Render() {
-    ;
-}
+// Actor::Render() {
+//     ;
+// }

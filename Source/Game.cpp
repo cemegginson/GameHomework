@@ -24,7 +24,7 @@ Game::~Game() {
 	delete view;
 }
 
-bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, GAME_INT framerate) {
+bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, uint32 framerate) {
 	gDevice = graphics;
 
 	// Load sprites

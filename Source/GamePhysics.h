@@ -6,12 +6,12 @@
 
 class GamePhysics {
 protected:
-    GAME_FLT density;
-	GAME_FLT restitution;
-	GAME_FLT angularDamping;
-	GAME_FLT linearDamping;
-	GAME_FLT angularForce;
-	GAME_FLT linearForce;
+    float32 density;
+	float32 restitution;
+	float32 angularDamping;
+	float32 linearDamping;
+	float32 angularForce;
+	float32 linearForce;
 	std::string type;
 	std::string shape;
 

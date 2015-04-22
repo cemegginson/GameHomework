@@ -13,16 +13,16 @@ Player::~Player() {
 	world->DestroyBody(body);
 }
 
-void Player::Update(GAME_FLT deltaTime) {
+void Player::Update(float32 deltaTime) {
 
-	GAME_FLT theta = (angle-90)*(PI/180.0);
-	GAME_FLT tcos = cos(theta);
-	GAME_FLT tsin = sin(theta);
+	float32 theta = (angle-90)*(PI/180.0);
+	float32 tcos = cos(theta);
+	float32 tsin = sin(theta);
 	GAME_EVENT event = iDevice->GetEvent();
 
 	b2Vec2 physPosition;
 	physPosition = body->GetPosition();
-	GAME_FLT physAngle = body->GetAngle();
+	float32 physAngle = body->GetAngle();
 
 	if(iDevice->IsPressed(GAME_A)) {
 		physAngle = RW2PWAngle((PW2RWAngle(body->GetAngle()) - rotation * deltaTime));
@@ -78,7 +78,7 @@ void Player::Update(GAME_FLT deltaTime) {
 	}
 }
 
-void Player::Draw(GAME_FLT gameTime, View* view) {
+void Player::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 
 	if(!bullets.empty()) {
@@ -88,7 +88,7 @@ void Player::Draw(GAME_FLT gameTime, View* view) {
 	}
 }
 
-void Player::Initialize(GraphicsDevice* gDev, Texture* tex, ArtAssetLibrary* aLib, b2World* wor, GAME_VEC pos, GAME_FLT ang) {
+void Player::Initialize(GraphicsDevice* gDev, Texture* tex, ArtAssetLibrary* aLib, b2World* wor, GAME_VEC pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	aLibrary = aLib;

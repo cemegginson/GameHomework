@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "Texture.h"
 
 class RenderComponent : Component {
 protected:

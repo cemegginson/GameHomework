@@ -17,7 +17,7 @@ protected:
 
 public:
 	GraphicsDevice();
-	GraphicsDevice(GAME_INT ScreenWidth, GAME_INT ScreenHeight);
+	GraphicsDevice(uint32 ScreenWidth, uint32 ScreenHeight);
 	~GraphicsDevice();
 	bool Initialize();
 	int getWidth();

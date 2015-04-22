@@ -8,7 +8,7 @@ Bullet::~Bullet() {
 	world->DestroyBody(body);
 }
 
-void Bullet::Update(GAME_FLT deltaTime) {
+void Bullet::Update(float32 deltaTime) {
 	//position.x += velocity.x;
 	//position.y += velocity.y;
 	life += deltaTime;
@@ -23,7 +23,7 @@ void Bullet::Update(GAME_FLT deltaTime) {
 	angle = PW2RWAngle(body->GetAngle());
 }
 
-void Bullet::Draw(GAME_FLT gameTime, View* view) {
+void Bullet::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, NULL, nullptr);
 }
 

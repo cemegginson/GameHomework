@@ -1,26 +1,26 @@
 #pragma once
 
-#include <string>
-#include <Box2D/Box2D.h>
+#include <vector>
+
+#include "Component.h"
 #include "Definitions.h"
-#include "GraphicsDevice.h"
 #include "InputDevice.h"
-#include "Texture.h"
 #include "View.h"
 
 class Actor {
 protected:
-	GraphicsDevice* gDevice;
-	InputDevice* iDevice;
-	Texture* texture;
-	GAME_VEC position;
-	GAME_FLT angle;
+	// GraphicsDevice* gDevice;
+	// InputDevice* iDevice;
+	// Texture* texture;
+	// GAME_VEC position;
+	// float32 angle;
+    std::vector<Component> components;
 
 public:
 	Actor();
 	virtual ~Actor();
-	virtual void Update(GAME_FLT) = 0;
-	virtual void Draw(GAME_FLT, View*) = 0;
+	virtual void Update(float32) = 0;
+	// virtual void Render(float32, View*) = 0;
 	// virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
-	// 			GAME_VEC pos, GAME_FLT ang) = 0;
+	// 			GAME_VEC pos, float32 ang) = 0;
 };

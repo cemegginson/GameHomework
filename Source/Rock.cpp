@@ -8,13 +8,13 @@ Rock::~Rock() {
 	world->DestroyBody(body);
 }
 
-void Rock::Update(GAME_FLT gameTime) {}
+void Rock::Update(float32 gameTime) {}
 
-void Rock::Draw(GAME_FLT gameTime, View* view) {
+void Rock::Draw(float32 gameTime, View* view) {
 	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
 }
 
-void Rock::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, GAME_FLT ang) {
+void Rock::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, GAME_VEC pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

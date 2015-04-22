@@ -15,16 +15,18 @@
 #pragma once
 
 // Basic Types
-typedef unsigned int Uint32;
-typedef float GAME_FLT;
-typedef Uint32 GAME_INT;
+typedef unsigned long long int uint64;
+typedef unsigned int uint32;
+typedef unsigned short int uint16;
+typedef float float32;
+typedef double float64;
 typedef struct GAME_VEC {
-	GAME_FLT x;
-	GAME_FLT y;
+	float32 x;
+	float32 y;
 } GAME_VEC;
 
 // Event Types
 enum GAME_EVENT { GAME_NA, GAME_UP, GAME_DOWN, GAME_LEFT, GAME_RIGHT, GAME_W, GAME_A, GAME_S, GAME_D, GAME_SPACE };
 
 // Constants
-const GAME_FLT PI = 3.14159f;
+const float32 PI = 3.14159f;

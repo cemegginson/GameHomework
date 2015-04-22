@@ -13,13 +13,13 @@ protected:
 	b2CircleShape shape; 
     b2FixtureDef shapefd;
 	int w, h;
-	GAME_FLT life;
+	float32 life;
 
 public:
 	Bullet();
 	~Bullet();
-	void Update(GAME_FLT);
-	void Draw(GAME_FLT, View*);
+	void Update(float32);
+	void Draw(float32, View*);
 	int GetLife();
 	void Initialize(GraphicsDevice*, Texture*, b2World*, GAME_VEC, GAME_VEC);
 };

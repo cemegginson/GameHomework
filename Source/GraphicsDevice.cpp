@@ -9,7 +9,7 @@ GraphicsDevice::GraphicsDevice() {
 	height = 0;
 }
 
-GraphicsDevice::GraphicsDevice(GAME_INT ScreenWidth, GAME_INT ScreenHeight) {
+GraphicsDevice::GraphicsDevice(uint32 ScreenWidth, uint32 ScreenHeight) {
 	window = nullptr;
 	renderer = nullptr;
 	width = ScreenWidth;

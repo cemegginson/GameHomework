@@ -12,19 +12,19 @@ protected:
 	ArtAssetLibrary* aLibrary;
 	std::list<Bullet*> bullets;
 	InputDevice* iDevice;
-	GAME_INT travel;
-	GAME_INT radius;
+	uint32 travel;
+	uint32 radius;
 	GAME_VEC center;
-	GAME_FLT rotation;
-	GAME_FLT lastfiretime;
+	float32 rotation;
+	float32 lastfiretime;
 
 	b2CircleShape shape; 
     b2FixtureDef shapefd;
 public:
 	Player();
 	~Player();
-	void Update(GAME_FLT);
-	void Draw(GAME_FLT, View*);
-	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, b2World*, GAME_VEC, GAME_FLT);
+	void Update(float32);
+	void Draw(float32, View*);
+	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, b2World*, GAME_VEC, float32);
 	void setInput(InputDevice*);
 };
