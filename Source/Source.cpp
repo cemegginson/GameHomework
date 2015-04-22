@@ -20,11 +20,7 @@
 #include <ctime>
 
 // Media Libraries
-#ifdef _WIN32
 #include "SDL.h"
-#else
-#include <SDL.h>
-#endif
 
 // Physics
 #include <Box2D/Box2D.h>
@@ -111,12 +107,6 @@ int main(int argc, char* argv[]) {
 
 		// Check for Event
 		while (SDL_PollEvent(event)) {
-			if (event->type == SDL_WINDOWEVENT) {
-				switch(event->window.event) {
-					case SDL_WINDOWEVENT_CLOSE:
-						SDL_Quit();
-				}
-			}
 
 			if (event->type == SDL_QUIT) {
 				quit = true;
@@ -147,6 +137,8 @@ int main(int argc, char* argv[]) {
 		delete gDevice;
 		gDevice = nullptr;
 	}
+
+	SDL_Quit();
 
 	return 0;
 }
