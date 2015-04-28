@@ -8,26 +8,14 @@ Timer::Timer() {
 	startTicks = 0;
 	pausedTicks = 0;
 	paused = false;
-	started = false;
-	mpf = 0.0f;
+	active = false;
 	deltaTime = 0;
 	lastTime = 0;
 }
 
-bool Timer::Initialize(uint32 fps) {
-	if (fps > 0) {
-		mpf = (float32)1000 / fps;
-		return (true);
-	} else {
-		return (false);
-	}
-}
-
 void Timer::start() {
 	// Start the timer
-	started = true;
-
-	// Unpause the timer
+	active = true;
 	paused = false;
 
 	// Get the current clock time
@@ -36,7 +24,7 @@ void Timer::start() {
 
 void Timer::stop() {
 	// Stop the timer
-	started = false;
+	active = false;
 
 	// Unpause the timer
 	paused = false;
@@ -44,7 +32,7 @@ void Timer::stop() {
 
 void Timer::pause() {
 	// If the timer is running and isn't already paused
-	if ((started == true) && (paused == false)) {
+	if ((active == true) && (paused == false)) {
 		// Pause the timer
 		paused = true;
 
@@ -53,7 +41,7 @@ void Timer::pause() {
 	}
 }
 
-void Timer::unpause() {
+void Timer::resume() {
 	// If the timer is paused
 	if (paused == true) {
 		// Unpause the timer
@@ -69,7 +57,7 @@ void Timer::unpause() {
 
 uint32 Timer::getTicks() {
 	// If the timer is running
-	if (started == true) {
+	if (active == true) {
 		// If the timer is paused
 		if (paused == true) {
 			// Return the number of ticks when the timer was paused
@@ -84,18 +72,10 @@ uint32 Timer::getTicks() {
 	return 0;
 }
 
-bool Timer::isStarted() { return started; }
+bool Timer::isRunning() { return active; }
 
 bool Timer::isPaused() { return paused; }
 
-void Timer::fpsRegulate() {
-	// Pause for a length of time such that frame rate is maintained
-	if (getTicks() < mpf) {
-		SDL_Delay((uint32)mpf - getTicks());
-	}
-}
-
-// TIME DELTAS!!!
 void Timer::Update() {
 	deltaTime = SDL_GetTicks() - lastTime;
 	lastTime = SDL_GetTicks();
