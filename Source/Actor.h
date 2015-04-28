@@ -7,20 +7,21 @@
 #include "InputDevice.h"
 #include "View.h"
 
-class Actor {
+class Actor : public std::enable_shared_from_this<Actor> {
 protected:
-	// GraphicsDevice* gDevice;
-	// InputDevice* iDevice;
-	// Texture* texture;
-	// vector2 position;
-	// float32 angle;
-    std::vector<Component> components;
+	std::vector<std::shared_ptr<Component>> components;
+    vector2 position;
+    float32 angle;
+    bool initialized;
 
 public:
 	Actor();
-	virtual ~Actor();
-	virtual void Update(float32) = 0;
-	// virtual void Render(float32, View*) = 0;
-	// virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
-	// 			vector2 pos, float32 ang) = 0;
+	~Actor();
+	bool Initialize(GraphicsDevice*, std::string);
+	void AddComponent(std::shared_ptr<Component>);
+
+	template<class T>
+	std::shared_ptr<T> GetComponent();
+
+	void Update();
 };

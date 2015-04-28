@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Box2D/Box2D.h"
 // #include "ContactListener.h"
 #include "Game.h"
 #include "GameFunctions.h"
@@ -87,7 +86,6 @@ void Game::Run() {
 	timer->Update();
 	Update();
 	Draw();
-	//timer->fpsRegulate();
 }
 
 void Game::Update() {

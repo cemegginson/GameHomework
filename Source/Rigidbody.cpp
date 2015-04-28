@@ -1,13 +1,13 @@
 #include "Rigidbody.h"
 
-Rigidbody::Rigidbody() : Component() {
-    ;
+GamePhysics::GamePhysics() {
+
 }
 
-Rigidbody::~Rigidbody() {
-    ;
+GamePhysics::~GamePhysics() {
+
 }
 
-void Rigidbody::Update() {
-    ;
+void GamePhysics::Initialize() {
+
 }
