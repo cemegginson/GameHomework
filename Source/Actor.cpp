@@ -28,3 +28,17 @@ void Actor::Update(float32 deltaTime) {
         (*iter)->Update(deltaTime);
     }
 }
+
+vector2 Actor::GetPosition() {
+    return position;
+}
+void Actor::SetPosition(vector2 newPosition) {
+    position = newPosition;
+}
+
+float32 Actor::GetAngle() {
+    return angle;
+}
+void Actor::SetAngle(float32 newAngle) {
+    angle = newAngle;
+}

@@ -1,4 +1,5 @@
 #include <iostream>
+
 // #include "ContactListener.h"
 #include "Game.h"
 #include "GameFunctions.h"
@@ -23,7 +24,7 @@ Game::~Game() {
 	delete view;
 }
 
-bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, uint32 framerate) {
+bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input) {
 	gDevice = graphics;
 
 	// Load sprites
@@ -34,9 +35,7 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, uint32 frame
 	view = new View();
 	view->Initialize(input, 0, 0);
 
-	fps = framerate;
 	timer = new Timer();
-	timer->Initialize(fps);
 	timer->start();
 
 	// Initialize Physics world
@@ -61,8 +60,8 @@ bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input, uint32 frame
 }
 
 void Game::Reset() {
-	if(!objects.empty()){
-		for (std::vector<Object*>::iterator iter = objects.begin(); iter <= objects.end(); iter++) {
+	if(!actors.empty()){
+		for (auto iter = actors.begin(); iter <= actors.end(); iter++) {
 			delete *iter;
 		}
 	}
@@ -93,7 +92,7 @@ void Game::Update() {
 	view->Update(timer->DeltaTime());
 
 	// Cycle through every objects' Update method
-	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
+	for (auto iter = actors.begin(); iter != actors.end(); ++iter) {
 		(*iter)->Update(timer->DeltaTime());
 	}
 
@@ -104,7 +103,7 @@ void Game::Draw() {
 	SDL_RenderClear(gDevice->getRenderer());
 
 	// Cycle through every objects' Draw method
-	for (std::vector<Object*>::iterator iter = objects.begin(); iter != objects.end(); ++iter) {
+	for (auto iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(timer->DeltaTime(), view);
 	}
 

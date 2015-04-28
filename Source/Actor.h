@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include "Component.h"
@@ -24,4 +25,10 @@ public:
 	std::shared_ptr<T> GetComponent();
 
 	void Update();
+
+    vector2 GetPosition();
+    void SetPosition(vector2);
+
+    float32 GetAngle();
+    void SetAngle(float32);
 };
