@@ -45,7 +45,6 @@ int main(int argc, char* argv[]) {
 	//========================================
 	uint32 SCREEN_WIDTH = 800;
 	uint32 SCREEN_HEIGHT = 600;
-	uint32 GAME_FPS = 100;
 
 	//========================================
 	// Construct Graphical Device
@@ -80,7 +79,7 @@ int main(int argc, char* argv[]) {
 	// Construct Game
 	//========================================
 	Game* game = new Game();
-	if (!game->Initialize(gDevice, iDevice, GAME_FPS)) {
+	if (!game->Initialize(gDevice, iDevice)) {
 		printf("Game could not Initialize!");
 		exit(1);
 	}
