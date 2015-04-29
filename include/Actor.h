@@ -24,7 +24,7 @@ public:
 	template<class T>
 	std::shared_ptr<T> GetComponent();
 
-	void Update();
+	void Update(float32);
 
     vector2 GetPosition();
     void SetPosition(vector2);

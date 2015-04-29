@@ -32,6 +32,6 @@ public:
 	void Reset();
 	bool LoadLevel(std::string file);
 	void Run();
-	void Update();
-	void Draw();
+	void Update(float32);
+	void Render();
 };

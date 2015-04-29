@@ -7,9 +7,9 @@ Texture::Texture() { texture = nullptr; }
 
 Texture::~Texture() { SDL_DestroyTexture(texture); }
 
-bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
+bool Texture::Initialize(SDL_Renderer* renderer, std::string imPath) {
 	SDL_Surface* surface = nullptr;
-	surface = IMG_Load(image.c_str());
+	surface = IMG_Load(imPath.c_str());
 	if(surface == NULL) {
 		std::cerr << "Surface failed: " << IMG_GetError() << std::endl;
 		return false;
@@ -26,7 +26,7 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string image) {
 	return true;
 }
 
-void Texture::Draw(SDL_Renderer* renderer, View* view, vector2 position,
+void Texture::Render(SDL_Renderer* renderer, View* view, vector2 position,
 		   float32 angle, SDL_Rect* clip) {
 
 	vector2 camera = view->getPosition();

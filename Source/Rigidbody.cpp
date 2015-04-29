@@ -1,13 +1,17 @@
 #include "Rigidbody.h"
 
-GamePhysics::GamePhysics() {
-
+Rigidbody::Rigidbody() {
+    ;
 }
 
-GamePhysics::~GamePhysics() {
-
+Rigidbody::~Rigidbody() {
+    ;
 }
 
-void GamePhysics::Initialize() {
+void Rigidbody::Initialize() {
+    ;
+}
 
+void RigidBody::Update(float32 deltaTime) {
+    ;
 }

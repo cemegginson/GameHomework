@@ -50,6 +50,10 @@ int GraphicsDevice::getWidth() { return width; }
 
 int GraphicsDevice::getHeight() { return height; }
 
-SDL_Renderer* GraphicsDevice::getRenderer() {
+SDL_Renderer* GraphicsDevice::GetRenderer() {
 	return renderer;
+}
+
+bool GraphicsDevice::AddSprite(std::shared_ptr<Sprite>) {
+	;
 }

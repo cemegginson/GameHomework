@@ -1,12 +1,14 @@
 #pragma once
 
-#include "Definitions.h"
+#include <list>
+#include <memory>
 
-#ifdef _WIN32
 #include "SDL.h"
-#else
-#include <SDL.h>
-#endif
+#include "SDL_image.h"
+#include "SDL_ttf.h"
+
+#include "Definitions.h"
+#include "Sprite.h"
 
 class GraphicsDevice {
 protected:
@@ -14,6 +16,7 @@ protected:
 	int height;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	std::list<std::shared_ptr<Sprite>> sprites;
 
 public:
 	GraphicsDevice();
@@ -22,5 +25,6 @@ public:
 	bool Initialize();
 	int getWidth();
 	int getHeight();
-	SDL_Renderer* getRenderer();
+	SDL_Renderer* GetRenderer();
+	bool AddSprite(std::shared_ptr<Sprite>);
 };

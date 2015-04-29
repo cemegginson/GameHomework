@@ -83,28 +83,28 @@ bool Game::LoadLevel(std::string file) {
 
 void Game::Run() {
 	timer->Update();
-	Update();
-	Draw();
+	Update(timer->DeltaTime());
+	Render();
 }
 
-void Game::Update() {
+void Game::Update(float32 deltaTime) {
 	// Update View position
-	view->Update(timer->DeltaTime());
+	view->Update(deltaTime);
 
 	// Cycle through every objects' Update method
 	for (auto iter = actors.begin(); iter != actors.end(); ++iter) {
-		(*iter)->Update(timer->DeltaTime());
+		(*iter)->Update(deltaTime);
 	}
 
 	world->Step(.01, 8, 3);
 }
 
-void Game::Draw() {
+void Game::Render() {
 	SDL_RenderClear(gDevice->getRenderer());
 
 	// Cycle through every objects' Draw method
 	for (auto iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Draw(timer->DeltaTime(), view);
+		(*iter)->Draw(deltaTime, view);
 	}
 
 	SDL_RenderPresent(gDevice->getRenderer());

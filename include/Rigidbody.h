@@ -6,7 +6,7 @@
 #include "Component.h"
 #include "Definitions.h"
 
-class GamePhysics : Component{
+class Rigidbody : Component{
 protected:
     float32 density;
 	float32 restitution;
@@ -18,7 +18,8 @@ protected:
 	std::string shape;
 
 public:
-    GamePhysics();
-    ~GamePhysics();
+    Rigidbody();
+    ~Rigidbody();
     void Initialize();
+    void Update(float32);
 };

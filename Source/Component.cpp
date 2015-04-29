@@ -1,7 +1,7 @@
 #include "Component.h"
 
-Component::Component(std::shared_ptr<GameObject> _owner); {
-    owner = _owner;
+Component::Component(std::shared_ptr<GameObject> owner); {
+    this->owner = owner;
 }
 
 Component::~Component() {
