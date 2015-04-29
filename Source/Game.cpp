@@ -104,7 +104,7 @@ void Game::Render() {
 
 	// Cycle through every objects' Draw method
 	for (auto iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Draw(deltaTime, view);
+		(*iter)->Draw(view);
 	}
 
 	SDL_RenderPresent(gDevice->getRenderer());

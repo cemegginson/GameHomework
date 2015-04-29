@@ -20,6 +20,8 @@ protected:
 public:
     Rigidbody();
     ~Rigidbody();
-    void Initialize();
+    void Initialize(b2World*);
     void Update(float32);
+    void ExportPosition();
+    void ExportAngle();
 };

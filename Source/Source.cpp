@@ -16,8 +16,8 @@
 */
 
 // C++ Libraries
-#include <iostream>
 #include <ctime>
+#include <iostream>
 
 // Media Libraries
 #include "SDL.h"
@@ -25,14 +25,11 @@
 // Physics
 #include <Box2D/Box2D.h>
 
-// Media Library Wrappers
+// Project Libraries
+#include "Definitions.h"
+#include "Game.h"
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
-
-// Game
-#include "Game.h"
-
-#include "Definitions.h"
 
 int main(int argc, char* argv[]) {
 	//========================================
