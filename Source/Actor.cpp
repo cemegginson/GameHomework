@@ -24,7 +24,7 @@ std::shared_ptr<T> Actor::GetComponent() {
 }
 
 void Actor::Update(float32 deltaTime) {
-    for(auto iter = components.begin(); iter != objects.end(); ++iter) {
+    for(auto iter = components.begin(); iter != components.end(); ++iter) {
         (*iter)->Update(deltaTime);
     }
 }
