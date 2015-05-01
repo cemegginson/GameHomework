@@ -1,6 +1,10 @@
+#pragma once
+
 #include <memory>
 
 #include "Actor.h"
+
+class Actor;
 
 class Component {
 protected:

@@ -24,11 +24,11 @@ void Carrier::Update(float32 deltaTime) {
 	position.y = PW2RW(physPosition.y);
 }
 
-void Carrier::Draw(float32 gameTime, View* view) {
-	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
+void Carrier::Render(float32 gameTime, View* view) {
+	texture->Render(gDevice->GetRenderer(), view, position, angle, nullptr);
 }
 
-void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 pos, float32 ang) {
+void Carrier::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, Vector2 pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

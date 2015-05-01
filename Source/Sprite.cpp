@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite() {
+Sprite::Sprite() : Component() {
     texture = nullptr;
 }
 
@@ -12,7 +12,7 @@ void Sprite::Initialize(GraphicsDevice* gDevice, std::string imPath) {
 	this->gDevice = gDevice;
 
 	//Add Sprite to gDevice
-	gDevice->AddSprite(this);
+	gDevice->AddSprite(std::shared_ptr<Sprite>(this));
 
 	//Load the Art Asset
 	texture = new Texture();
@@ -24,7 +24,7 @@ void Sprite::Update(float32 deltaTime) {
 }
 
 void Render() {
-    vector2 position = owner->GetPosition();
+    Vector2 position = owner->GetPosition();
     float32 angle = owner->GetAngle();
     // Not finished here
     texture->Render(gDevice->GetRenderer(), view, position, angle, clip);

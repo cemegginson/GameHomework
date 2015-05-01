@@ -29,10 +29,10 @@ void Actor::Update(float32 deltaTime) {
     }
 }
 
-vector2 Actor::GetPosition() {
+Vector2 Actor::GetPosition() {
     return position;
 }
-void Actor::SetPosition(vector2 newPosition) {
+void Actor::SetPosition(Vector2 newPosition) {
     position = newPosition;
 }
 

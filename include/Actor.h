@@ -5,13 +5,17 @@
 
 #include "Component.h"
 #include "Definitions.h"
+#include "GraphicsDevice.h"
 #include "InputDevice.h"
 #include "View.h"
+
+class Component;
+class GraphicsDevice;
 
 class Actor : public std::enable_shared_from_this<Actor> {
 protected:
 	std::vector<std::shared_ptr<Component>> components;
-    vector2 position;
+    Vector2 position;
     float32 angle;
     bool initialized;
 
@@ -26,8 +30,8 @@ public:
 
 	void Update(float32);
 
-    vector2 GetPosition();
-    void SetPosition(vector2);
+    Vector2 GetPosition();
+    void SetPosition(Vector2);
 
     float32 GetAngle();
     void SetAngle(float32);

@@ -7,7 +7,7 @@ class View {
 protected:
 	float32 x;
 	float32 y;
-	vector2 position;
+	Vector2 position;
 	InputDevice* iDevice;
 
 public:
@@ -15,5 +15,5 @@ public:
 	~View();
 	bool Initialize(InputDevice* input, float32 x, float32 y);
 	void Update(float32 gameTime);
-	vector2 getPosition();
+	Vector2 getPosition();
 };

@@ -17,17 +17,17 @@ void Bullet::Update(float32 deltaTime) {
 	physPosition = body->GetPosition();
 
 	body->SetTransform(physPosition, body->GetAngle());
-	
+
 	position.x = (int)PW2RW(physPosition.x) - w/2.0;
 	position.y = (int)PW2RW(physPosition.y) - h/2.0;
 	angle = PW2RWAngle(body->GetAngle());
 }
 
-void Bullet::Draw(float32 gameTime, View* view) {
-	texture->Draw(gDevice->getRenderer(), view, position, NULL, nullptr);
+void Bullet::Render(float32 gameTime, View* view) {
+	texture->Render(gDevice->GetRenderer(), view, position, NULL, nullptr);
 }
 
-void Bullet::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 origin, vector2 ivelocity) {
+void Bullet::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, Vector2 origin, Vector2 ivelocity) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

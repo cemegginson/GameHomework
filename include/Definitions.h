@@ -14,16 +14,24 @@
 
 #pragma once
 
-// Basic Types
-typedef unsigned long long int uint64;
+// Unsigned Integers
+// typedef unsigned long long int uint64;
 typedef unsigned int uint32;
 typedef unsigned short int uint16;
+
+// Signed Integers
+// typedef long long int sint64;
+typedef int sint32;
+typedef short int sint16;
+
+// Floats
 typedef float float32;
 typedef double float64;
-typedef struct vector2 {
+
+typedef struct Vector2 {
 	float32 x;
 	float32 y;
-} vector2;
+} Vector2;
 
 // Event Types
 enum GAME_EVENT { GAME_NA, GAME_UP, GAME_DOWN, GAME_LEFT, GAME_RIGHT, GAME_W, GAME_A, GAME_S, GAME_D, GAME_SPACE };

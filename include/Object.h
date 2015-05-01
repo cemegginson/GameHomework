@@ -13,7 +13,7 @@ protected:
 	GraphicsDevice* gDevice;
 	InputDevice* iDevice;
 	Texture* texture;
-	vector2 position;
+	Vector2 position;
 	float32 angle;
 	b2Body* body;
 	b2BodyDef bdef;
@@ -23,8 +23,8 @@ public:
 	Object();
 	virtual ~Object();
 	virtual void Update(float32) = 0;
-	virtual void Draw(float32, View*) = 0;
+	virtual void Render(float32, View*) = 0;
 	// virtual void Initialize(GraphicsDevice* graphics, Texture* tex,
-	// 			vector2 pos, float32 ang) = 0;
+	// 			Vector2 pos, float32 ang) = 0;
 	b2Body* getPhysicsBody();
 };

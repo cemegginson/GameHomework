@@ -100,12 +100,12 @@ void Game::Update(float32 deltaTime) {
 }
 
 void Game::Render() {
-	SDL_RenderClear(gDevice->getRenderer());
+	SDL_RenderClear(gDevice->GetRenderer());
 
 	// Cycle through every objects' Draw method
 	for (auto iter = objects.begin(); iter != objects.end(); ++iter) {
 		(*iter)->Draw(view);
 	}
 
-	SDL_RenderPresent(gDevice->getRenderer());
+	SDL_RenderPresent(gDevice->GetRenderer());
 }

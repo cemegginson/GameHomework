@@ -6,7 +6,7 @@
 #include "Component.h"
 #include "Definitions.h"
 
-class Rigidbody : Component{
+class Rigidbody : public Component{
 protected:
     float32 density;
 	float32 restitution;

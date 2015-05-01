@@ -10,11 +10,11 @@ Rock::~Rock() {
 
 void Rock::Update(float32 gameTime) {}
 
-void Rock::Draw(float32 gameTime, View* view) {
-	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
+void Rock::Render(float32 gameTime, View* view) {
+	texture->Render(gDevice->GetRenderer(), view, position, angle, nullptr);
 }
 
-void Rock::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 pos, float32 ang) {
+void Rock::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, Vector2 pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

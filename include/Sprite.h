@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 #include "Component.h"
@@ -16,4 +18,4 @@ public:
     void Initialize(GraphicsDevice*, std::string);
     void Update(float32);
     void Render();
-}
+};

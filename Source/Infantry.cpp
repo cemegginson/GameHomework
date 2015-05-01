@@ -14,17 +14,17 @@ void Infantry::Update(float32 deltaTime) {
 	physPosition = body->GetPosition();
 
 	body->SetTransform(physPosition, RW2PWAngle(PW2RWAngle(body->GetAngle()) + rotation * deltaTime));
-	
+
 	position.x = (int)PW2RW(physPosition.x) - w/2.0;
 	position.y = (int)PW2RW(physPosition.y) - h/2.0;
 	angle = PW2RWAngle(body->GetAngle());
 }
 
-void Infantry::Draw(float32 gameTime, View* view) {
-	texture->Draw(gDevice->getRenderer(), view, position, angle, nullptr);
+void Infantry::Render(float32 gameTime, View* view) {
+	texture->Render(gDevice->GetRenderer(), view, position, angle, nullptr);
 }
 
-void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, vector2 pos, float32 ang) {
+void Infantry::Initialize(GraphicsDevice* gDev, Texture* tex, b2World* wor, Vector2 pos, float32 ang) {
 	gDevice = gDev;
 	texture = tex;
 	world = wor;

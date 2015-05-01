@@ -1,7 +1,7 @@
 #include "GameFunctions.h"
 #include "Rigidbody.h"
 
-Rigidbody::Rigidbody() {
+Rigidbody::Rigidbody() : Component() {
     ;
 }
 
@@ -36,7 +36,7 @@ void RigidBody::Update(float32 deltaTime) {
 
 void RigidBody::ExportPosition() {
     b2vec2 physPos = body->GetPosition();
-    vector2 position;
+    Vector2 position;
     position.x = PW2RW(physPos.x);
     position.y = PW2RW(physPos.y);
     owner->SetPosition(position);

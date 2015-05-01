@@ -26,10 +26,10 @@ bool Texture::Initialize(SDL_Renderer* renderer, std::string imPath) {
 	return true;
 }
 
-void Texture::Render(SDL_Renderer* renderer, View* view, vector2 position,
+void Texture::Render(SDL_Renderer* renderer, View* view, Vector2 position,
 		   float32 angle, SDL_Rect* clip) {
 
-	vector2 camera = view->getPosition();
+	Vector2 camera = view->getPosition();
 
 	SDL_Rect dst;
 	dst.x = position.x + camera.x;

@@ -10,6 +10,8 @@
 #include "Definitions.h"
 #include "Sprite.h"
 
+class Sprite;
+
 class GraphicsDevice {
 protected:
 	int width;

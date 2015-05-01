@@ -10,7 +10,7 @@
 class Bullet : public Object {
 protected:
 	b2Vec2 velocity;
-	b2CircleShape shape; 
+	b2CircleShape shape;
     b2FixtureDef shapefd;
 	int w, h;
 	float32 life;
@@ -19,7 +19,7 @@ public:
 	Bullet();
 	~Bullet();
 	void Update(float32);
-	void Draw(float32, View*);
+	void Render(float32, View*);
 	int GetLife();
-	void Initialize(GraphicsDevice*, Texture*, b2World*, vector2, vector2);
+	void Initialize(GraphicsDevice*, Texture*, b2World*, Vector2, Vector2);
 };
