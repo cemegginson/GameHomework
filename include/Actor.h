@@ -16,8 +16,10 @@ class Actor : public std::enable_shared_from_this<Actor> {
 protected:
 	std::vector<std::shared_ptr<Component>> components;
     Vector2 position;
+	Vector2 dimensions;
     float32 angle;
-    bool initialized;
+    bool is_circle;
+	bool is_square;
 
 public:
 	Actor();
