@@ -1,21 +1,18 @@
 #pragma once
 
+#include <memory>
 #include <string>
-#include "Definitions.h"
-#include "Object.h"
-#include "ArtAssetLibrary.h"
 
-class Infantry : public Object {
+#include "Component.h"
+#include "Definitions.h"
+
+class Infantry : public Component {
 protected:
-	b2CircleShape shape;
-    b2FixtureDef shapefd;
-	float32 rotation;
-	int w, h;
+	float32 rotation_rate_;
 
 public:
 	Infantry();
 	~Infantry();
 	void Update(float32);
-	void Render(float32, View*);
-	void Initialize(GraphicsDevice*, Texture*, b2World*, Vector2, float32);
+	void Initialize();
 };

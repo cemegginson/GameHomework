@@ -72,7 +72,7 @@ Player* PlayerFactory::Create(pugi::xml_node tag) {
 	vec.y = stof(y);
 	ang = stof(a);
 	obj->Initialize(gDevice, aLibrary->Search(name), aLibrary, world, vec, ang);
-	obj->setInput(iDevice);
+	obj->SetInput(iDevice);
 	return obj;
 }
 

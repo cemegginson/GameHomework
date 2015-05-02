@@ -28,7 +28,7 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 
 	// Load sprites
 	art_library_ = new ArtAssetLibrary();
-	art_library_->LoadAssets(graphics_device_);
+	art_library_->LoadAssets(graphics_device_, view_);
 
 	view_ = new View();
 	view_->Initialize(input_device_, 0, 0);
@@ -51,8 +51,8 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	gLibrary->AddFactory("Rock",
 			     (ObjectFactory*)new RockFactory(graphics_device_, art_library_, world_));
 
-	// ContactListener* cl = new ContactListener();
-	// world_->SetContactListener(cl);
+	// ContactListener* contact_listener = new ContactListener();
+	// world_->SetContactListener(contact_listener);
 
 	return true;
 }
@@ -73,7 +73,7 @@ bool Game::LoadLevel(std::string file) {
 		std::string name;
 		for (pugi::xml_node child : Level.children("GameAsset")) {
 			name = child.attribute("name").value();
-			objects.push_back((Object*)gLibrary->Search(name)->Create(child));
+			objects.push_back((Component*)gLibrary->Search(name)->Create(child));
 		}
 	}
 	return true;

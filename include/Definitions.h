@@ -35,6 +35,7 @@ typedef struct Vector2 {
 
 // Event Types
 enum GameEvent { GAME_NA, GAME_UP, GAME_DOWN, GAME_LEFT, GAME_RIGHT, GAME_W, GAME_A, GAME_S, GAME_D, GAME_SPACE };
+enum ActorEvent { MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_DOWN, TURN_LEFT, TURN_RIGHT };
 
 // Constants
 const float32 PI = 3.14159f;

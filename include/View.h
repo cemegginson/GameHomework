@@ -5,15 +5,14 @@
 
 class View {
 protected:
-	float32 x;
-	float32 y;
-	Vector2 position;
 	InputDevice* iDevice;
+	Vector2 position;
+	uint32 velocity_;
 
 public:
 	View();
 	~View();
-	bool Initialize(InputDevice* input, float32 x, float32 y);
-	void Update(float32 gameTime);
-	Vector2 getPosition();
+	bool Initialize(InputDevice*, float32, float32);
+	void Update(float32);
+	Vector2 GetPosition();
 };

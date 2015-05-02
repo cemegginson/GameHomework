@@ -1,7 +1,7 @@
 #include "Bullet.h"
 #include "GameFunctions.h"
 
-Bullet::Bullet() : Object() {}
+Bullet::Bullet() : Component() {}
 
 Bullet::~Bullet() {
 	delete texture;

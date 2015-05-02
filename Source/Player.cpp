@@ -3,50 +3,33 @@
 #include "GameFunctions.h"
 #include "Player.h"
 
-Player::Player() : Object() {
+Player::Player() : Component() {
 	input_device_ = nullptr;
 	radius_ = 27;
 	travel_ = 200;
 	rotation_ = 500.0;
+	last_fire_time_ = 0;
 }
 
 Player::~Player() {
-	world->DestroyBody(body);
+	;
 }
 
 void Player::Update(float32 delta_time) {
-
-	float32 theta = (angle-90)*(PI/180.0);
-	float32 tcos = cos(theta);
-	float32 tsin = sin(theta);
 	GameEvent event = input_device_->GetEvent();
 
-	b2Vec2 physPosition;
-	physPosition = body->GetPosition();
-	float32 physAngle = body->GetAngle();
-
 	if(input_device_->IsPressed(GAME_A)) {
-		physAngle = RW2PWAngle((PW2RWAngle(body->GetAngle()) - rotation * delta_time));
+		;
 	}
 	if(input_device_->IsPressed(GAME_D)) {
-		physAngle = RW2PWAngle((PW2RWAngle(body->GetAngle()) + rotation * delta_time));
+		;
 	}
 	if(input_device_->IsPressed(GAME_W)) {
-		physPosition.x += RW2PW(travel * tcos) * delta_time;
-		physPosition.y += RW2PW(travel * tsin) * delta_time;
-		//position.x += travel * tcos;
-		//position.y += travel * tsin;
+		;
 	}
 	if(input_device_->IsPressed(GAME_S)) {
-		physPosition.x -= RW2PW(travel * tcos) * delta_time;
-		physPosition.y -= RW2PW(travel * tsin) * delta_time;
+		;
 	}
-
-	body->SetTransform(physPosition, physAngle);
-
-	angle_ = PW2RW(physAngle);
-	position_.x = PW2RW(physPosition.x);
-	position_.y = PW2RW(physPosition.y);
 
 	last_fire_time_ += delta_time;
 	// Create bullet if spacebar pressed
@@ -66,33 +49,13 @@ void Player::Update(float32 delta_time) {
 	}
 }
 
-void Player::Initialize(GraphicsDevice* graphics_device, Texture* texture, ArtAssetLibrary* art_library, Vector2 position, float32 angle) {
-	graphics_device_ = graphics_device;
-	texture_ = texture;
-	art_library_ = art_library;
-	position_ = position;
-	angle_ = angle;
-	int w, h;
+void Player::Initialize() {
+	sint32 w, h;
 	texture_->GetDimensions(&w, &h);
 	center_.x = (w/2);
 	center_.y = (h/2);
-	last_fire_time_ = 0;
-
-	bdef.type = b2_dynamicBody;
-	bdef.position.Set(RW2PW(position.x + 5), RW2PW(position.y + 5));
-	bdef.angle = RW2PWAngle(angle);
-	bdef.angularDamping = 10.0;
-	bdef.linearDamping = 10.0;
-	body = world->CreateBody(&bdef);
-
-	shape.m_radius = RW2PW(w/2.0f);
-	shapefd.shape = &shape;
-	shapefd.density = 0.1f;
-	shapefd.friction = 0.0f;
-	shapefd.restitution = 0.0f;
-	body->CreateFixture(&shapefd);
 }
 
-void Player::setInput(InputDevice* input_device) {
+void Player::SetInput(InputDevice* input_device) {
 	input_device_ = input_device;
 }

@@ -2,7 +2,7 @@
 
 #include "GameFunctions.h"
 
-Rock::Rock() : Object() {}
+Rock::Rock() : Component() {}
 
 Rock::~Rock() {
 	world->DestroyBody(body);

@@ -2,7 +2,7 @@
 #include "Carrier.h"
 #include "GameFunctions.h"
 
-Carrier::Carrier() : Object() {}
+Carrier::Carrier() : Component() {}
 
 Carrier::~Carrier() {}
 

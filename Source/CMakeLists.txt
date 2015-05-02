@@ -1,10 +1,4 @@
-project(GameHomework)
-
 set(TARGET_NAME GameHomework)
-
-# set(SRC_FILES Source.cpp ArtAssetLibrary.cpp Bullet.cpp Carrier.cpp
-#     Factory.cpp Game.cpp GraphicsDevice.cpp Infantry.cpp InputDevice.cpp
-#     Object.cpp Player.cpp pugixml.cpp Rock.cpp Texture.cpp Timer.cpp View.cpp)
 
 file(GLOB SRC_FILES *.cpp)
 
@@ -17,9 +11,4 @@ target_include_directories(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} ${SDL2_LIBRARY})
 target_link_libraries(${TARGET_NAME} ${SDL2_IMAGE_LIBRARY})
-#target_link_libraries(${TARGET_NAME} "${CMAKE_SOURCE_DIR}/ThirdParty/Box2D/Box2D/libBox2D.a")
 target_link_libraries(${TARGET_NAME} ${BOX2D_LIBRARY})
-
-# install(TARGETS ${TARGET_NAME} RUNTIME DESTINATION ${BIN_DIR})
-
-# set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/ CACHE PATH "Executable output path")

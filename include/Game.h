@@ -9,7 +9,7 @@
 #include "ArtAssetLibrary.h"
 #include "Timer.h"
 #include "View.h"
-#include "Object.h"
+#include "Component.h"
 
 class Game {
 protected:

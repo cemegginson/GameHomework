@@ -2,12 +2,12 @@
 
 #include <string>
 #include "Definitions.h"
-#include "Object.h"
+#include "Component.h"
 #include "View.h"
 #include "ArtAssetLibrary.h"
 #include <Box2D/Box2D.h>
 
-class Rock : public Object {
+class Rock : public Component {
 protected:
 	b2CircleShape shape;
     b2FixtureDef shapefd;

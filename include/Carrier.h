@@ -2,11 +2,11 @@
 
 #include <string>
 #include "Definitions.h"
-#include "Object.h"
+#include "Component.h"
 #include "View.h"
 #include "ArtAssetLibrary.h"
 
-class Carrier : public Object {
+class Carrier : public Component {
 protected:
 	b2PolygonShape shape;
     b2FixtureDef shapefd;

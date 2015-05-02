@@ -4,11 +4,11 @@
 #include "ArtAssetLibrary.h"
 #include <Box2D/Box2D.h>
 #include "InputDevice.h"
-#include "Object.h"
+#include "Component.h"
 #include "pugixml.hpp"
 #include "Timer.h"
 
-// Object Classes
+// Component Classes
 #include "Bullet.h"
 #include "Carrier.h"
 #include "Infantry.h"
@@ -26,7 +26,7 @@ public:
 	ObjectFactory();
 	ObjectFactory(GraphicsDevice*, ArtAssetLibrary*, b2World*);
 	~ObjectFactory();
-	virtual Object* Create(pugi::xml_node) = 0;
+	virtual Component* Create(pugi::xml_node) = 0;
 };
 
 class CarrierFactory : ObjectFactory {

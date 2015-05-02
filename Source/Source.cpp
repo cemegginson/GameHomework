@@ -10,7 +10,7 @@
 *				- Abstraction of game devices (Graphics, Input)
 *from SDL Library
 *               - AssetManagement using Libraries
-*               - Object Factory Design Pattern
+*               - Component Factory Design Pattern
 *               - XML Construction of 2-D game system
 *               - Main Game Loop
 */

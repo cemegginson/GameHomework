@@ -8,8 +8,19 @@ Actor::~Actor() {
     ;
 }
 
-void Actor::AddComponent(std::shared_ptr<Component>) {
-    ;
+void Actor::Initialize() {
+
+    
+    actor_events_[MOVE_UP] = false;
+    actor_events_[MOVE_DOWN] = false;
+    actor_events_[MOVE_LEFT] = false;
+    actor_events_[MOVE_RIGHT] = false;
+    actor_events_[TURN_LEFT] = false;
+    actor_events_[TURN_RIGHT] = false;
+}
+
+void Actor::AddComponent(std::shared_ptr<Component> component) {
+    components_.insert(component);
 }
 
 std::shared_ptr<T> Actor::GetComponent() {

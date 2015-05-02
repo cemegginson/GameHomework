@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <memory>
 #include <vector>
 
@@ -15,6 +16,7 @@ class GraphicsDevice;
 class Actor : public std::enable_shared_from_this<Actor> {
 protected:
 	std::vector<std::shared_ptr<Component>> components_;
+	std::map<ActorEvent, bool> actor_events_;
     Vector2 position_;
 	Vector2 dimensions_;
     float32 angle_;

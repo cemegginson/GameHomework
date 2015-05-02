@@ -24,6 +24,6 @@ public:
 	Player();
 	~Player();
 	void Update(float32);
-	void Initialize(GraphicsDevice*, Texture*, ArtAssetLibrary*, b2World*, Vector2, float32);
-	void setInput(InputDevice*);
+	void Initialize();
+	void SetInput(InputDevice*);
 };

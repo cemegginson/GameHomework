@@ -2,12 +2,12 @@
 
 #include <string>
 #include "Definitions.h"
-#include "Object.h"
+#include "Component.h"
 #include "View.h"
 #include "ArtAssetLibrary.h"
 #include <Box2D/Box2D.h>
 
-class Bullet : public Object {
+class Bullet : public Component {
 protected:
 	b2Vec2 velocity;
 	b2CircleShape shape;

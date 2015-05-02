@@ -29,4 +29,5 @@ public:
 	int GetHeight();
 	SDL_Renderer* GetRenderer();
 	bool AddSprite(std::shared_ptr<Sprite>);
+	void Render();
 };

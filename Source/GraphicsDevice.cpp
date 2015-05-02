@@ -58,7 +58,7 @@ bool GraphicsDevice::AddSprite(std::shared_ptr<Sprite>) {
 	;
 }
 
-void Game::Render() {
+void GraphicsDevice::Render() {
 	SDL_RenderClear(renderer_);
 
 	// Cycle through every objects' Draw method

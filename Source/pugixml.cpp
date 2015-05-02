@@ -604,8 +604,8 @@ inline xml_allocator& get_allocator(const xml_node_struct* node) {
 		    node->header & xml_memory_page_pointer_mask)->allocator;
 }
 
-template <typename Object>
-inline xml_document_struct& get_document(const Object* object) {
+template <typename Component>
+inline xml_document_struct& get_document(const Component* object) {
 	assert(object);
 
 	return *static_cast<xml_document_struct*>(
