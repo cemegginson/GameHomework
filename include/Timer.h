@@ -6,38 +6,35 @@
 class Timer {
 private:
 	// The clock time when the timer started
-	uint32 startTicks;
+	uint32 start_ticks_;
 
 	// Time Delta!
-	uint32 deltaTime;
-	uint32 lastTime;
+	uint32 delta_time_;
+	uint32 last_time_;
 
 	// The ticks stored when the timer was paused
 	uint32 pausedTicks;
 
 	// The timer status
-	bool paused;
-	bool active;
+	bool paused_;
+	bool active_;
 
 public:
 	// Initializes variables
 	Timer();
 
 	// The various clock actions
-	void start();
-	void stop();
-	void pause();
-	void resume();
+	void Start();
+	void Stop();
+	void Pause();
+	void Resume();
 
 	// Gets the timer's time
-	uint32 getTicks();
+	uint32 GetTicks();
 
 	// Checks the status of the timer
-	bool isRunning();
-	bool isPaused();
-
-	// Regulate
-	void fpsRegulate();
+	bool IsRunning();
+	bool IsPaused();
 
 	// Time Delta!
 	void Update();

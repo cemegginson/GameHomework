@@ -14,19 +14,19 @@ class Sprite;
 
 class GraphicsDevice {
 protected:
-	int width;
-	int height;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	std::list<std::shared_ptr<Sprite>> sprites;
+	int width_;
+	int height_;
+	SDL_Window* window_;
+	SDL_Renderer* renderer_;
+	std::list<std::shared_ptr<Sprite>> sprites_;
 
 public:
 	GraphicsDevice();
-	GraphicsDevice(uint32 ScreenWidth, uint32 ScreenHeight);
+	GraphicsDevice(uint32, uint32);
 	~GraphicsDevice();
 	bool Initialize();
-	int getWidth();
-	int getHeight();
+	int GetWidth();
+	int GetHeight();
 	SDL_Renderer* GetRenderer();
 	bool AddSprite(std::shared_ptr<Sprite>);
 };

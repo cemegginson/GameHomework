@@ -8,10 +8,10 @@ Bullet::~Bullet() {
 	world->DestroyBody(body);
 }
 
-void Bullet::Update(float32 deltaTime) {
+void Bullet::Update(float32 delta_time) {
 	//position.x += velocity.x;
 	//position.y += velocity.y;
-	life += deltaTime;
+	life += delta_time;
 
 	b2Vec2 physPosition;
 	physPosition = body->GetPosition();

@@ -6,8 +6,8 @@ Carrier::Carrier() : Object() {}
 
 Carrier::~Carrier() {}
 
-void Carrier::Update(float32 deltaTime) {
-	angle += rotation * deltaTime;
+void Carrier::Update(float32 delta_time) {
+	angle += rotation * delta_time;
 	if(angle > 360) {
 		angle -= 360;
 	} else if(angle < 0) {

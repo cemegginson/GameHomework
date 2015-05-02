@@ -14,24 +14,20 @@
 class Game {
 protected:
 	GameAssetLibrary* gLibrary;
-	ArtAssetLibrary* aLibrary;
-	GraphicsDevice* gDevice;
-	InputDevice* iDevice;
-	Timer* timer;
-	uint32 fps;
-	float32 gameTime;
-	View* view;
-	// std::vector<Object*> objects;
-	std::list<std::shared_ptr<Actor>> actors;
-	b2World* world;
+	ArtAssetLibrary* art_library_;
+	GraphicsDevice* graphics_device_;
+	InputDevice* input_device_;
+	Timer* timer_;
+	View* view_;
+	std::list<std::shared_ptr<Actor>> actors_;
+	b2World* world_;
 
 public:
 	Game();
 	~Game();
-	bool Initialize(GraphicsDevice* graphics, InputDevice* input);
+	bool Initialize(GraphicsDevice*, InputDevice*);
 	void Reset();
-	bool LoadLevel(std::string file);
+	bool LoadLevel(std::string);
 	void Run();
 	void Update(float32);
-	void Render();
 };

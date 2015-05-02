@@ -1,13 +1,9 @@
 #include "Component.h"
 
 Component::Component(std::shared_ptr<GameObject> owner); {
-    this->owner = owner;
+    owner_ = owner;
 }
 
 Component::~Component() {
-    delete owner;
+    delete owner_;
 }
-
-// Component::Update() {
-//     ;
-// }

@@ -1,47 +1,46 @@
 #include <iostream>
 #include "InputDevice.h"
 
-InputDevice::InputDevice() { gEvent = GAME_NA; }
+InputDevice::InputDevice() { game_event_ = GAME_NA; }
 
 InputDevice::~InputDevice() {}
 
-bool InputDevice::Initialize(SDL_Event* event) {
-	translations[SDLK_UP] = GAME_UP;
-	translations[SDLK_DOWN] = GAME_DOWN;
-	translations[SDLK_LEFT] = GAME_LEFT;
-	translations[SDLK_RIGHT] = GAME_RIGHT;
-	translations[SDLK_w] = GAME_W;
-	translations[SDLK_a] = GAME_A;
-	translations[SDLK_s] = GAME_S;
-	translations[SDLK_d] = GAME_D;
-	translations[SDLK_SPACE] = GAME_SPACE;
+bool InputDevice::Initialize() {
+	translations_[SDLK_UP] = GAME_UP;
+	translations_[SDLK_DOWN] = GAME_DOWN;
+	translations_[SDLK_LEFT] = GAME_LEFT;
+	translations_[SDLK_RIGHT] = GAME_RIGHT;
+	translations_[SDLK_w] = GAME_W;
+	translations_[SDLK_a] = GAME_A;
+	translations_[SDLK_s] = GAME_S;
+	translations_[SDLK_d] = GAME_D;
+	translations_[SDLK_SPACE] = GAME_SPACE;
 
-	keystates[GAME_UP] = false;
-	keystates[GAME_DOWN] = false;
-	keystates[GAME_LEFT] = false;
-	keystates[GAME_RIGHT] = false;
-	keystates[GAME_W] = false;
-	keystates[GAME_A] = false;
-	keystates[GAME_S] = false;
-	keystates[GAME_D] = false;
-	keystates[GAME_SPACE] = false;
+	keystates_[GAME_UP] = false;
+	keystates_[GAME_DOWN] = false;
+	keystates_[GAME_LEFT] = false;
+	keystates_[GAME_RIGHT] = false;
+	keystates_[GAME_W] = false;
+	keystates_[GAME_A] = false;
+	keystates_[GAME_S] = false;
+	keystates_[GAME_D] = false;
+	keystates_[GAME_SPACE] = false;
 
 	return true;
 }
 
 void InputDevice::Update(SDL_Event* event) {
-
 	if(event->type == SDL_KEYDOWN){
-		keystates[translations[event->key.keysym.sym]] = true;
+		keystates_[translations_[event->key.keysym.sym]] = true;
 	} else if(event->type == SDL_KEYUP) {
-		keystates[translations[event->key.keysym.sym]] = false;
+		keystates_[translations_[event->key.keysym.sym]] = false;
 	}
 }
 
-bool InputDevice::IsPressed(GAME_EVENT event) {
-	return keystates.at(event);
+bool InputDevice::IsPressed(GameEvent event) {
+	return keystates_.at(event);
 }
 
-GAME_EVENT InputDevice::GetEvent() {
-	return this->gEvent;
+GameEvent InputDevice::GetEvent() {
+	return game_event_;
 }

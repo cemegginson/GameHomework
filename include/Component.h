@@ -8,7 +8,7 @@ class Actor;
 
 class Component {
 protected:
-    std::shared_ptr<Actor> owner;
+    std::shared_ptr<Actor> owner_;
 
 public:
     Component(std::shared_ptr<Actor>);

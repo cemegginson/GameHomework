@@ -7,12 +7,12 @@
 
 class ArtAssetLibrary {
 protected:
-	std::map<std::string, Texture*> library;
-	GraphicsDevice* gDevice;
+	std::map<std::string, Texture*> library_;
+	GraphicsDevice* graphics_device_;
 
 public:
 	ArtAssetLibrary();
 	~ArtAssetLibrary();
-	bool LoadAssets(GraphicsDevice* gDevice);
-	Texture* Search(std::string key);
+	bool LoadAssets(GraphicsDevice*);
+	Texture* Search(std::string);
 };

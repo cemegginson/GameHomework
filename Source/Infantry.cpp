@@ -9,11 +9,11 @@ Infantry::~Infantry() {
 	delete texture;
 }
 
-void Infantry::Update(float32 deltaTime) {
+void Infantry::Update(float32 delta_time) {
 	b2Vec2 physPosition;
 	physPosition = body->GetPosition();
 
-	body->SetTransform(physPosition, RW2PWAngle(PW2RWAngle(body->GetAngle()) + rotation * deltaTime));
+	body->SetTransform(physPosition, RW2PWAngle(PW2RWAngle(body->GetAngle()) + rotation * delta_time));
 
 	position.x = (int)PW2RW(physPosition.x) - w/2.0;
 	position.y = (int)PW2RW(physPosition.y) - h/2.0;

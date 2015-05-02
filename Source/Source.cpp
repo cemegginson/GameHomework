@@ -57,8 +57,8 @@ int main(int argc, char* argv[]) {
 	//========================================
 	// Construct Event System
 	//========================================
-	SDL_Event* event = new SDL_Event();
-	if (!event) {
+	SDL_Event* event_ = new SDL_Event();
+	if (!event_) {
 		printf("SDL Event could not initialize!");
 		exit(1);
 	}
@@ -92,21 +92,16 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	//========================================
-	// Main Game Loop
-	//========================================
+	// Start the game
 	bool quit = false;
-	// While the user hasn't quit
 	while (!quit) {
-		// Check for Event
 		while (SDL_PollEvent(event)) {
 			if (event->type == SDL_QUIT) {
 				quit = true;
 			}
 			// Update the Input Device with the Event
-			iDevice->Update(event);
+			input_device_->Update(event);
 		}
-		// Execute the Game
 		game->Run();
 	}
 

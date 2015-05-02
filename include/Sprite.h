@@ -9,13 +9,13 @@ class GraphicsDevice;
 
 class Sprite : public Component {
 protected:
-    Texture* texture;
-    GraphicsDevice* gDevice;
+    Texture* texture_;
+    GraphicsDevice* graphics_device_;
 
 public:
     Sprite();
     ~Sprite();
-    void Initialize(GraphicsDevice*, std::string);
+    void Initialize(GraphicsDevice*, Texture*);
     void Update(float32);
     void Render();
 };

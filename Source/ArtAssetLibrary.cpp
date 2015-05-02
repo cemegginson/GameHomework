@@ -1,41 +1,41 @@
 #include <iostream>
 #include "ArtAssetLibrary.h"
 
-ArtAssetLibrary::ArtAssetLibrary() { gDevice = nullptr; }
+ArtAssetLibrary::ArtAssetLibrary() { graphics_device_ = nullptr; }
 
 ArtAssetLibrary::~ArtAssetLibrary() {}
 
-bool ArtAssetLibrary::LoadAssets(GraphicsDevice* graphics) {
-	gDevice = graphics;
+bool ArtAssetLibrary::LoadAssets(GraphicsDevice* graphics_device) {
+	graphics_device_ = graphics_device;
 
 	// Bullet
-	library.insert(std::pair<std::string, Texture*>("Bullet", new Texture()));
+	library_.insert(std::pair<std::string, Texture*>("Bullet", new Texture()));
 	std::string bull = "./Assets/Images/t_bullet.png";
-	library.at("Bullet")->Initialize(gDevice->GetRenderer(), bull);
+	library_.at("Bullet")->Initialize(graphics_device_->GetRenderer(), bull);
 
 	// Carrier
-	library.insert(std::pair<std::string, Texture*>("Carrier", new Texture()));
+	library_.insert(std::pair<std::string, Texture*>("Carrier", new Texture()));
 	std::string carr = "./Assets/Images/t_carrier.png";
-	library.at("Carrier")->Initialize(gDevice->GetRenderer(), carr);
+	library_.at("Carrier")->Initialize(graphics_device_->GetRenderer(), carr);
 
 	// Infantry
-	library.insert(std::pair<std::string, Texture*>("Infantry", new Texture()));
+	library_.insert(std::pair<std::string, Texture*>("Infantry", new Texture()));
 	std::string inf = "./Assets/Images/t_infantry.png";
-	library.at("Infantry")->Initialize(gDevice->GetRenderer(), inf);
+	library_.at("Infantry")->Initialize(graphics_device_->GetRenderer(), inf);
 
 	// Player
-	library.insert(std::pair<std::string, Texture*>("Player", new Texture()));
+	library_.insert(std::pair<std::string, Texture*>("Player", new Texture()));
 	std::string pl = "./Assets/Images/t_player.png";
-	library.at("Player")->Initialize(gDevice->GetRenderer(), pl);
+	library_.at("Player")->Initialize(graphics_device_->GetRenderer(), pl);
 
 	// Rock
-	library.insert(std::pair<std::string, Texture*>("Rock", new Texture()));
+	library_.insert(std::pair<std::string, Texture*>("Rock", new Texture()));
 	std::string rock = "./Assets/Images/t_rock.png";
-	library.at("Rock")->Initialize(gDevice->GetRenderer(), rock);
+	library_.at("Rock")->Initialize(graphics_device_->GetRenderer(), rock);
 
 	return true;
 }
 
 Texture* ArtAssetLibrary::Search(std::string key) {
-	return library.at(key);
+	return library_.at(key);
 }

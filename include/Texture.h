@@ -10,13 +10,12 @@
 
 class Texture {
 protected:
-	SDL_Texture* texture;
+	SDL_Texture* texture_;
 
 public:
 	Texture();
 	~Texture();
-	bool Initialize(SDL_Renderer* renderer, std::string imPath);
-	void Render(SDL_Renderer* renderer, View* view, Vector2 position,
-		  float32 angle, SDL_Rect* clip = nullptr);
+	bool Initialize(SDL_Renderer*, std::string);
+	void Render(SDL_Renderer*, View*, Vector2, float32, SDL_Rect* clip);
 	void GetDimensions(int*, int*);
 };

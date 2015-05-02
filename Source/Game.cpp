@@ -7,61 +7,59 @@
 
 Game::Game() {
 	gLibrary = nullptr;
-	aLibrary = nullptr;
-	gDevice = nullptr;
-	iDevice = nullptr;
-	timer = nullptr;
-	fps = 0;
-	gameTime = 0;
-	view = nullptr;
+	art_library_ = nullptr;
+	graphics_device_ = nullptr;
+	input_device_ = nullptr;
+	timer_ = nullptr;
+	view_ = nullptr;
 }
 
 Game::~Game() {
 	delete gLibrary;
-	delete aLibrary;
-	delete gDevice;
-	delete iDevice;
-	delete view;
+	delete art_library_;
+	delete graphics_device_;
+	delete input_device_;
+	delete view_;
 }
 
-bool Game::Initialize(GraphicsDevice* graphics, InputDevice* input) {
-	gDevice = graphics;
+bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device) {
+	graphics_device_ = graphics_device;
+	input_device_ = input_device;
 
 	// Load sprites
-	aLibrary = new ArtAssetLibrary();
-	aLibrary->LoadAssets(graphics);
-	iDevice = input;
+	art_library_ = new ArtAssetLibrary();
+	art_library_->LoadAssets(graphics_device_);
 
-	view = new View();
-	view->Initialize(input, 0, 0);
+	view_ = new View();
+	view_->Initialize(input_device_, 0, 0);
 
-	timer = new Timer();
-	timer->start();
+	timer_ = new Timer();
+	timer_->start();
 
 	// Initialize Physics world
 	const b2Vec2 gravity(0, 0);
-	world = new b2World(gravity);
+	world_ = new b2World(gravity);
 
 	// Create Factories
 	gLibrary = new GameAssetLibrary();
 	gLibrary->AddFactory("Carrier",
-			     (ObjectFactory*)new CarrierFactory(gDevice, aLibrary, world));
+			     (ObjectFactory*)new CarrierFactory(graphics_device_, art_library_, world_));
 	gLibrary->AddFactory("Infantry",
-				(ObjectFactory*)new InfantryFactory(gDevice, aLibrary, world));
+				(ObjectFactory*)new InfantryFactory(graphics_device_, art_library_, world_));
 	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new PlayerFactory(gDevice, aLibrary, world, iDevice));
+				(ObjectFactory*)new PlayerFactory(graphics_device_, art_library_, world_, input_device_));
 	gLibrary->AddFactory("Rock",
-			     (ObjectFactory*)new RockFactory(gDevice, aLibrary, world));
+			     (ObjectFactory*)new RockFactory(graphics_device_, art_library_, world_));
 
 	// ContactListener* cl = new ContactListener();
-	// world->SetContactListener(cl);
+	// world_->SetContactListener(cl);
 
 	return true;
 }
 
 void Game::Reset() {
-	if(!actors.empty()){
-		for (auto iter = actors.begin(); iter <= actors.end(); iter++) {
+	if(!actors_.empty()){
+		for (auto iter = actors_.begin(); iter <= actors_.end(); iter++) {
 			delete *iter;
 		}
 	}
@@ -82,30 +80,19 @@ bool Game::LoadLevel(std::string file) {
 }
 
 void Game::Run() {
-	timer->Update();
-	Update(timer->DeltaTime());
-	Render();
+	timer_->Update();
+	Update(timer_->DeltaTime());
+	graphcis_device_->Render();
 }
 
-void Game::Update(float32 deltaTime) {
+void Game::Update(float32 delta_time) {
 	// Update View position
-	view->Update(deltaTime);
+	view_->Update(delta_time);
 
 	// Cycle through every objects' Update method
-	for (auto iter = actors.begin(); iter != actors.end(); ++iter) {
-		(*iter)->Update(deltaTime);
+	for (auto iter = actors_.begin(); iter != actors_.end(); ++iter) {
+		(*iter)->Update(delta_time);
 	}
 
-	world->Step(.01, 8, 3);
-}
-
-void Game::Render() {
-	SDL_RenderClear(gDevice->GetRenderer());
-
-	// Cycle through every objects' Draw method
-	for (auto iter = objects.begin(); iter != objects.end(); ++iter) {
-		(*iter)->Draw(view);
-	}
-
-	SDL_RenderPresent(gDevice->GetRenderer());
+	world_->Step(.01, 8, 3);
 }

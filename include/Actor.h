@@ -14,12 +14,12 @@ class GraphicsDevice;
 
 class Actor : public std::enable_shared_from_this<Actor> {
 protected:
-	std::vector<std::shared_ptr<Component>> components;
-    Vector2 position;
-	Vector2 dimensions;
-    float32 angle;
-    bool is_circle;
-	bool is_square;
+	std::vector<std::shared_ptr<Component>> components_;
+    Vector2 position_;
+	Vector2 dimensions_;
+    float32 angle_;
+    bool is_circle_;
+	bool is_square_;
 
 public:
 	Actor();

@@ -1,25 +1,24 @@
 #pragma once
 
 #include <map>
+
+#include "SDL.h"
+
 #include "Definitions.h"
 
-#ifdef _WIN32
-#include "SDL.h"
-#else
-#include <SDL.h>
-#endif
+
 
 class InputDevice {
 protected:
-	GAME_EVENT gEvent;
-	std::map<SDL_Keycode, GAME_EVENT> translations;
-	std::map<GAME_EVENT, bool> keystates;
+	GameEvent game_event_;
+	std::map<SDL_Keycode, GameEvent> translations_;
+	std::map<GameEvent, bool> keystates_;
 
 public:
 	InputDevice();
 	~InputDevice();
-	bool Initialize(SDL_Event* event);
-	void Update(SDL_Event* event);
-	bool IsPressed(GAME_EVENT event);
-	GAME_EVENT GetEvent();
+	bool Initialize(SDL_Event*);
+	void Update(SDL_Event*);
+	bool IsPressed(GameEvent);
+	GameEvent GetEvent();
 };
