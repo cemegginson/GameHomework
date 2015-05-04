@@ -8,12 +8,6 @@
 
 class Rigidbody : public Component{
 protected:
-    float32 density_;
-	float32 restitution_;
-	float32 angularDamping_;
-	float32 linearDamping_;
-	float32 angularForce_;
-	float32 linearForce_;
 	std::string type_;
 	std::string shape_;
     b2World* world_;

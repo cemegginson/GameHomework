@@ -39,4 +39,7 @@ public:
 
     float32 GetAngle();
     void SetAngle(float32);
+
+	bool CheckEvent(ActorEvent);
+	void SetEvent(ActorEvent);
 };

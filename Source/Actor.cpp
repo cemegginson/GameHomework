@@ -10,7 +10,7 @@ Actor::~Actor() {
 
 void Actor::Initialize() {
 
-    
+
     actor_events_[MOVE_UP] = false;
     actor_events_[MOVE_DOWN] = false;
     actor_events_[MOVE_LEFT] = false;
@@ -35,6 +35,8 @@ std::shared_ptr<T> Actor::GetComponent() {
 }
 
 void Actor::Update(float32 delta_time) {
+    ResetEvents();
+    
     for(auto iter = components_.begin(); iter != components_.end(); ++iter) {
         (*iter)->Update(delta_time);
     }
@@ -52,4 +54,18 @@ float32 Actor::GetAngle() {
 }
 void Actor::SetAngle(float32 new_angle) {
     angle_ = new_angle;
+}
+
+bool Actor::CheckEvent(ActorEvent event) {
+    return actor_events_.at(event);
+}
+
+void Actor::SetEvent(ActorEvent event) {
+    actor_events_.at(event) = true;
+}
+
+void Actor::ResetEvents() {
+    for(auto iter = actor_events_.begin(); iter != actor_events_.end(); ++iter) {
+        iter->second = false;
+    }
 }

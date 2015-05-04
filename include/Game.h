@@ -5,7 +5,7 @@
 
 #include "Box2D/Box2D.h"
 
-#include "GameAssetLibrary.h"
+#include "ComponentLibrary.h"
 #include "ArtAssetLibrary.h"
 #include "Timer.h"
 #include "View.h"
@@ -13,7 +13,7 @@
 
 class Game {
 protected:
-	GameAssetLibrary* gLibrary;
+	ComponentLibrary* component_factories_;
 	ArtAssetLibrary* art_library_;
 	GraphicsDevice* graphics_device_;
 	InputDevice* input_device_;

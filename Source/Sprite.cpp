@@ -13,7 +13,7 @@ void Sprite::Initialize(GraphicsDevice* graphics_device, Texture* texture) {
     texture_ = texture;
 
 	//Add Sprite to graphics_device_
-	graphics_device_->AddSprite(std::shared_ptr<Sprite>(this));
+	graphics_device_->AddSprite(std::shared_from_this());
 }
 
 void Sprite::Update(float32 delta_time) {

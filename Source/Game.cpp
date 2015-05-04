@@ -6,7 +6,7 @@
 #include "pugixml.hpp"
 
 Game::Game() {
-	gLibrary = nullptr;
+	component_factories_ = nullptr;
 	art_library_ = nullptr;
 	graphics_device_ = nullptr;
 	input_device_ = nullptr;
@@ -15,7 +15,7 @@ Game::Game() {
 }
 
 Game::~Game() {
-	delete gLibrary;
+	delete component_factories_;
 	delete art_library_;
 	delete graphics_device_;
 	delete input_device_;
@@ -41,15 +41,11 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	world_ = new b2World(gravity);
 
 	// Create Factories
-	gLibrary = new GameAssetLibrary();
-	gLibrary->AddFactory("Carrier",
-			     (ObjectFactory*)new CarrierFactory(graphics_device_, art_library_, world_));
-	gLibrary->AddFactory("Infantry",
-				(ObjectFactory*)new InfantryFactory(graphics_device_, art_library_, world_));
-	gLibrary->AddFactory("Player",
-				(ObjectFactory*)new PlayerFactory(graphics_device_, art_library_, world_, input_device_));
-	gLibrary->AddFactory("Rock",
-			     (ObjectFactory*)new RockFactory(graphics_device_, art_library_, world_));
+	component_factories_ = new ComponentLibrary();
+	component_factories_->AddFactory("Carrier", (ComponentFactory*)new CarrierFactory());
+	component_factories_->AddFactory("Infantry", (ComponentFactory*)new InfantryFactory());
+	component_factories_->AddFactory("Player", (ComponentFactory*)new PlayerFactory(input_device_));
+	component_factories_->AddFactory("Rock", (ComponentFactory*)new RockFactory());
 
 	// ContactListener* contact_listener = new ContactListener();
 	// world_->SetContactListener(contact_listener);
@@ -71,9 +67,9 @@ bool Game::LoadLevel(std::string file) {
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
 		std::string name;
-		for (pugi::xml_node child : Level.children("GameAsset")) {
+		for (pugi::xml_node child : Level.children("Component")) {
 			name = child.attribute("name").value();
-			objects.push_back((Component*)gLibrary->Search(name)->Create(child));
+			objects.push_back((Component*)component_factories_->Search(name)->Create(child));
 		}
 	}
 	return true;

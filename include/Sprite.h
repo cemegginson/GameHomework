@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "Component.h"
@@ -7,7 +8,7 @@
 
 class GraphicsDevice;
 
-class Sprite : public Component {
+class Sprite : public Component, public std::enable_shared_from_this {
 protected:
     Texture* texture_;
     GraphicsDevice* graphics_device_;
