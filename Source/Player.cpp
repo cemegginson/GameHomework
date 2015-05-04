@@ -50,10 +50,7 @@ void Player::Update(float32 delta_time) {
 }
 
 void Player::Initialize() {
-	sint32 w, h;
-	texture_->GetDimensions(&w, &h);
-	center_.x = (w/2);
-	center_.y = (h/2);
+	;
 }
 
 void Player::SetInput(InputDevice* input_device) {

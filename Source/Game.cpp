@@ -45,7 +45,6 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	component_factories_->AddFactory("Carrier", (ComponentFactory*)new CarrierFactory());
 	component_factories_->AddFactory("Infantry", (ComponentFactory*)new InfantryFactory());
 	component_factories_->AddFactory("Player", (ComponentFactory*)new PlayerFactory(input_device_));
-	component_factories_->AddFactory("Rock", (ComponentFactory*)new RockFactory());
 
 	// ContactListener* contact_listener = new ContactListener();
 	// world_->SetContactListener(contact_listener);
@@ -69,7 +68,7 @@ bool Game::LoadLevel(std::string file) {
 		std::string name;
 		for (pugi::xml_node child : Level.children("Component")) {
 			name = child.attribute("name").value();
-			objects.push_back((Component*)component_factories_->Search(name)->Create(child));
+			components_.push_back((Component*)component_factories_->Search(name)->Create(child));
 		}
 	}
 	return true;
@@ -78,7 +77,7 @@ bool Game::LoadLevel(std::string file) {
 void Game::Run() {
 	timer_->Update();
 	Update(timer_->DeltaTime());
-	graphcis_device_->Render();
+	graphics_device_->Render();
 }
 
 void Game::Update(float32 delta_time) {

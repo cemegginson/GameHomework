@@ -15,18 +15,19 @@ class GraphicsDevice;
 
 class Actor : public std::enable_shared_from_this<Actor> {
 protected:
-	std::vector<std::shared_ptr<Component>> components_;
-	std::map<ActorEvent, bool> actor_events_;
+	std::string name_;
     Vector2 position_;
 	Vector2 dimensions_;
     float32 angle_;
     bool is_circle_;
 	bool is_square_;
+	std::vector<std::shared_ptr<Component>> components_;
+	std::map<ActorEvent, bool> actor_events_;
 
 public:
 	Actor();
 	~Actor();
-	bool Initialize(GraphicsDevice*, std::string);
+	bool Initialize(std::string, Vector2, uint32);
 	void AddComponent(std::shared_ptr<Component>);
 
 	template<class T>

@@ -8,8 +8,10 @@ Actor::~Actor() {
     ;
 }
 
-void Actor::Initialize() {
-
+void Actor::Initialize(std::string name, Vector2 position, uint32 angle) {
+    name_ = name;
+    position_ = position;
+    angle_ = angle;
 
     actor_events_[MOVE_UP] = false;
     actor_events_[MOVE_DOWN] = false;
@@ -23,20 +25,9 @@ void Actor::AddComponent(std::shared_ptr<Component> component) {
     components_.insert(component);
 }
 
-std::shared_ptr<T> Actor::GetComponent() {
-   for(auto comp : components_) {
-       std::shared_ptr<T> target;
-       if((target = std::dynamic_pointer_cast<T>(comp))) {
-           return(target);
-       }
-   }
-   //Return NULL;
-   return(std::shared_ptr<T>());
-}
-
 void Actor::Update(float32 delta_time) {
     ResetEvents();
-    
+
     for(auto iter = components_.begin(); iter != components_.end(); ++iter) {
         (*iter)->Update(delta_time);
     }

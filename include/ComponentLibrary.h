@@ -18,7 +18,7 @@ public:
 		return;
 	}
 
-	ComponentFactory* Search(std::string obj) {
-		return component_factories_.at(obj);
+	ComponentFactory* Search(std::string component_type) {
+		return component_factories_.at(component_type);
 	}
 };
