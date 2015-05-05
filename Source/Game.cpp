@@ -28,7 +28,7 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 
 	view_ = new View();
 	view_->Initialize(input_device_, 0, 0);
-	
+
 	// Load sprites
 	art_library_ = new ArtAssetLibrary();
 	art_library_->LoadAssets(graphics_device_, view_);
@@ -46,7 +46,8 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	component_factories_->AddFactory("Infantry", (ComponentFactory*)new InfantryFactory());
 	component_factories_->AddFactory("Player", (ComponentFactory*)new PlayerFactory(input_device_));
 	component_factories_->AddFactory("Sprite", (ComponentFactory*)new SpriteFactory(graphics_device_, art_library_));
-	component_factories_->AddFactory("Rigidbody", (ComponentFactory*)new RigidbodyFactory(world_));
+	component_factories_->AddFactory("RigidCircle", (ComponentFactory*)new RigidCircleFactory(world_));
+	component_factories_->AddFactory("RigidRectangle", (ComponentFactory*)new RigidRectangleFactory(world_));
 
 	// ContactListener* contact_listener = new ContactListener();
 	// world_->SetContactListener(contact_listener);

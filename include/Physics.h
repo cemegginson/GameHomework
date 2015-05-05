@@ -7,38 +7,54 @@
 #include "Definitions.h"
 
 // Base Rigidbody class
-class Rigidbody : public Component{
+class Rigidbody {
 protected:
 	std::string type_;
 	std::string shape_;
     b2World* world_;
     b2Body* body_;
 
-    bool physics_movable;
+    bool physics_movable_;
+	bool physics_turnable_;
 
 public:
-    Rigidbody(std::shared_ptr<Actor>);
+    Rigidbody();
     ~Rigidbody();
-    void Initialize(b2World*);
-    void Update(float32);
-    void ExportPosition();
-    void ExportAngle();
+    virtual void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool) = 0;
+    // void Update(float32);
+    // void ExportPosition();
+    // void ExportAngle();
+	// void ImportPosition();
+	// void ImportAngle();
+};
+
+// Physics Circles
+class RigidCircle : public Rigidbody, public Component{
+protected:
+	float32 radius;
+
+public:
+	RigidCircle(std::shared_ptr<Actor>);
+	~RigidCircle();
+	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
+	void Update(float32);
+	void ExportPosition();
+	void ExportAngle();
 	void ImportPosition();
 	void ImportAngle();
 };
 
-// Physics Circles
-class RigidCircle : public Rigidbody {
-protected:
-    b2Shape
-public:
-
-}
-
 // Physics Rectangles
-class RigidRectangle : public Rigidbody {
+class RigidRectangle : public Rigidbody, public Component {
 protected:
 
 public:
-
-}
+	RigidRectangle(std::shared_ptr<Actor>);
+	~RigidRectangle();
+	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
+	void Update(float32);
+	void ExportPosition();
+	void ExportAngle();
+	void ImportPosition();
+	void ImportAngle();
+};

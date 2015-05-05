@@ -13,7 +13,7 @@
 #include "Infantry.h"
 #include "InputDevice.h"
 #include "Player.h"
-#include "Rigidbody.h"
+#include "Physics.h"
 #include "Sprite.h"
 
 class ComponentFactory {
@@ -51,14 +51,24 @@ public:
 	Player* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
-class RigidbodyFactory : ComponentFactory {
+class RigidCircleFactory : ComponentFactory {
 protected:
 	b2World* world_;
 
 public:
-	RigidbodyFactory(b2World*);
-	~RigidbodyFactory();
-	Rigidbody* Create(std::shared_ptr<Actor>, pugi::xml_node);
+	RigidCircleFactory(b2World*);
+	~RigidCircleFactory();
+	RigidCircle* Create(std::shared_ptr<Actor>, pugi::xml_node);
+};
+
+class RigidRectangleFactory : ComponentFactory {
+protected:
+	b2World* world_;
+
+public:
+	RigidRectangleFactory(b2World*);
+	~RigidRectangleFactory();
+	RigidRectangle* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
 class SpriteFactory : ComponentFactory {

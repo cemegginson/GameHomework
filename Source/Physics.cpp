@@ -1,7 +1,7 @@
 #include "GameFunctions.h"
-#include "Rigidbody.h"
+#include "Physics.h"
 
-Rigidbody::Rigidbody(std::shared_ptr<Actor> owner) : Component(owner) {
+Rigidbody::Rigidbody() {
     ;
 }
 
@@ -9,53 +9,105 @@ Rigidbody::~Rigidbody() {
     world_->DestroyBody(body_);
 }
 
-void Rigidbody::Initialize(b2World* world) {
-    world_ = world;
-    // Gotta work on this
-    // bdef.type = b2_dynamicBody;
-	// bdef.position.Set(RW2PW(position.x), RW2PW(position.y));
-	// bdef.angle = RW2PWAngle(angle);
-	// bdef.bullet = true;
-	// bdef.angularDamping = 0.1;
-	// bdef.linearDamping = 0.1;
-	// bdef.linearVelocity = velocity;
-	// body_ = world_->CreateBody(&bdef);
-    //
-	// texture->GetDimensions(&w, &h);
-	// shape.m_radius = RW2PW(w/1.5f);
-	// shapefd.shape = &shape;
-	// shapefd.density = 10.0f;
-	// shapefd.friction = 0.0f;
-	// shapefd.restitution = 1.1f;
-	// body_->CreateFixture(&shapefd);
+
+// RigidCircle methods
+
+RigidCircle::RigidCircle(std::shared_ptr<Actor> owner) : Component(owner), Rigidbody() {
+    ;
 }
 
-void Rigidbody::Update(float32 delta_time) {
-    if(physics_movable) {
+RigidCircle::~RigidCircle() {
+    ;
+}
+
+void RigidCircle::Initialize(b2World* world, b2BodyDef body_definition, b2FixtureDef shape_fixture_definition, bool movable, bool turnable) {
+    world_ = world;
+    body_ = world->CreateBody(&body_definition);
+    body_->CreateFixture(&shape_fixture_definition);
+    physics_movable_ = movable;
+    physics_turnable_ = turnable;
+}
+
+void RigidCircle::Update(float32 delta_time) {
+    if(physics_movable_) {
         ExportPosition();
-        ExportAngle();
     } else {
         ImportPosition();
+    }
+    if(physics_turnable_) {
+        ExportAngle();
+    } else {
         ImportAngle();
     }
 }
 
-void Rigidbody::ExportPosition() {
-    b2Vec2 physPos = body_->GetPosition();
+void RigidCircle::ExportPosition() {
+    b2Vec2 physics_position = body_->GetPosition();
     Vector2 position;
-    position.x = PW2RW(physPos.x);
-    position.y = PW2RW(physPos.y);
+    position.x = PW2RW(physics_position.x);
+    position.y = PW2RW(physics_position.y);
     owner_->SetPosition(position);
 }
 
-void Rigidbody::ExportAngle() {
+void RigidCircle::ExportAngle() {
     owner_->SetAngle(PW2RWAngle(body_->GetAngle()));
 }
 
-void Rigidbody::ImportPosition() {
+void RigidCircle::ImportPosition() {
     ;
 }
 
-void Rigidbody::ImportAngle() {
+void RigidCircle::ImportAngle() {
+    ;
+}
+
+// RigidRectangle methods
+
+RigidRectangle::RigidRectangle(std::shared_ptr<Actor> owner) : Component(owner), Rigidbody() {
+    ;
+}
+
+RigidRectangle::~RigidRectangle() {
+    ;
+}
+
+void RigidRectangle::Initialize(b2World* world, b2BodyDef body_definition, b2FixtureDef shape_fixture_definition, bool movable, bool turnable) {
+    world_ = world;
+    body_ = world->CreateBody(&body_definition);
+    body_->CreateFixture(&shape_fixture_definition);
+    physics_movable_ = movable;
+    physics_turnable_ = turnable;
+}
+
+void RigidRectangle::Update(float32 delta_time) {
+    if(physics_movable_) {
+        ExportPosition();
+    } else {
+        ImportPosition();
+    }
+    if(physics_turnable_) {
+        ExportAngle();
+    } else {
+        ImportAngle();
+    }
+}
+
+void RigidRectangle::ExportPosition() {
+    b2Vec2 physics_position = body_->GetPosition();
+    Vector2 position;
+    position.x = PW2RW(physics_position.x);
+    position.y = PW2RW(physics_position.y);
+    owner_->SetPosition(position);
+}
+
+void RigidRectangle::ExportAngle() {
+    owner_->SetAngle(PW2RWAngle(body_->GetAngle()));
+}
+
+void RigidRectangle::ImportPosition() {
+    ;
+}
+
+void RigidRectangle::ImportAngle() {
     ;
 }

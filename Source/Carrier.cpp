@@ -15,8 +15,6 @@ void Carrier::Update(float32 delta_time) {
 	} else if(angle < 0) {
 		angle += 360;
 	}
-	std::cout << delta_time << std::endl;
-	std::cout << angle << std::endl;
 
 	float32 radian_angle = (angle * (PI / 180.0)) - PI;
 	Vector2 temp_position;

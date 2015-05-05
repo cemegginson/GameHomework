@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <string>
 
-#include "ComponentFactories.h"
 #include "pugixml.hpp"
+
+#include "ComponentFactories.h"
+#include "GameFunctions.h"
 
 // Raw ComponentFactory stuff
 ComponentFactory::ComponentFactory() {}
@@ -48,33 +50,89 @@ Player* PlayerFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node)
 
 
 // RigidbodyFactory stuff
-RigidbodyFactory::RigidbodyFactory(b2World* world) : ComponentFactory() {
+RigidCircleFactory::RigidCircleFactory(b2World* world) : ComponentFactory() {
 	world_ = world;
 }
 
-RigidbodyFactory::~RigidbodyFactory() {}
+RigidCircleFactory::~RigidCircleFactory() {}
 
-Rigidbody* RigidbodyFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
-	Rigidbody* rigidbody = new Rigidbody(owner);
+RigidCircle* RigidCircleFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	RigidCircle* rigid_circle = new RigidCircle(owner);
+	Vector2 position = owner->GetPosition();
+	b2BodyDef body_definition;
+	b2CircleShape circle_shape;
+	b2FixtureDef shape_fixture_definition;
 
-		// bdef.type = b2_dynamicBody;
-		// bdef.position.Set(RW2PW(position.x), RW2PW(position.y));
-		// bdef.angle = RW2PWAngle(angle);
-		// bdef.bullet = true;
-		// bdef.angularDamping = 0.1;
-		// bdef.linearDamping = 0.1;
-		// bdef.linearVelocity = velocity;
-		// body = world->CreateBody(&bdef);
-		//
-		// texture->GetDimensions(&w, &h);
-		// shape.m_radius = RW2PW(w/1.5f);
-		// shapefd.shape = &shape;
-		// shapefd.density = 10.0f;
-		// shapefd.friction = 0.0f;
-		// shapefd.restitution = 1.1f;
-		// body->CreateFixture(&shapefd);
+	if(std::stof(node.attribute("dynamic").value())) {
+		body_definition.type = b2_dynamicBody;
+	} else {
+		body_definition.type = b2_staticBody;
+	}
 
-	return rigidbody;
+	// body_definition.bullet = true;
+	body_definition.position.Set(RW2PW(position.x), RW2PW(position.y));
+	body_definition.angle = RW2PWAngle(owner->GetAngle());
+	body_definition.angularDamping = std::stof(node.attribute("angular_damping").value());
+	body_definition.linearDamping = std::stof(node.attribute("linear_damping").value());
+
+	circle_shape.m_radius = RW2PW(std::stof(node.attribute("radius").value()));
+	shape_fixture_definition.shape = &circle_shape;
+	shape_fixture_definition.density = std::stof(node.attribute("density").value());
+	shape_fixture_definition.friction = std::stof(node.attribute("friction").value());
+	shape_fixture_definition.restitution = std::stof(node.attribute("restitution").value());
+
+	bool movable, turnable;
+	movable = std::stof(node.attribute("movable").value());
+	turnable = std::stof(node.attribute("turnable").value());
+
+	rigid_circle->Initialize(world_, body_definition, shape_fixture_definition, movable, turnable);
+
+	return rigid_circle;
+}
+
+
+// RigidbodyFactory stuff
+RigidRectangleFactory::RigidRectangleFactory(b2World* world) : ComponentFactory() {
+	world_ = world;
+}
+
+RigidRectangleFactory::~RigidRectangleFactory() {}
+
+RigidRectangle* RigidRectangleFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	RigidRectangle* rigid_rectangle = new RigidRectangle(owner);
+	Vector2 position = owner->GetPosition();
+	b2BodyDef body_definition;
+	b2PolygonShape polygon_shape;
+	b2FixtureDef shape_fixture_definition;
+
+	if(std::stof(node.attribute("dynamic").value())) {
+		body_definition.type = b2_dynamicBody;
+	} else {
+		body_definition.type = b2_staticBody;
+	}
+
+	// body_definition.bullet = true;
+	body_definition.position.Set(RW2PW(position.x), RW2PW(position.y));
+	body_definition.angle = RW2PWAngle(owner->GetAngle());
+	body_definition.angularDamping = std::stof(node.attribute("angular_damping").value());
+	body_definition.linearDamping = std::stof(node.attribute("linear_damping").value());
+
+	Vector2 dimensions;
+	dimensions.x = std::stof(node.attribute("width").value());
+	dimensions.y = std::stof(node.attribute("height").value());
+	polygon_shape.SetAsBox(RW2PW(dimensions.x), RW2PW(dimensions.y));
+	shape_fixture_definition.shape = &polygon_shape;
+	shape_fixture_definition.density = std::stof(node.attribute("density").value());
+	shape_fixture_definition.friction = std::stof(node.attribute("friction").value());
+	shape_fixture_definition.restitution = std::stof(node.attribute("restitution").value());
+
+	bool movable, turnable;
+	movable = std::stof(node.attribute("movable").value());
+	turnable = std::stof(node.attribute("turnable").value());
+
+	rigid_rectangle->Initialize(world_, body_definition, shape_fixture_definition, movable, turnable);
+
+	return rigid_rectangle;
 }
 
 
