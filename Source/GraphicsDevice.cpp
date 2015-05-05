@@ -54,8 +54,8 @@ SDL_Renderer* GraphicsDevice::GetRenderer() {
 	return renderer_;
 }
 
-bool GraphicsDevice::AddSprite(std::shared_ptr<Sprite>) {
-	;
+bool GraphicsDevice::AddSprite(Sprite* sprite) {
+	sprites_.push_back(sprite);
 }
 
 void GraphicsDevice::Render() {

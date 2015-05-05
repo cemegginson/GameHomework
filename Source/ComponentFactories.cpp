@@ -16,7 +16,7 @@ CarrierFactory::CarrierFactory() : ComponentFactory() {}
 
 CarrierFactory::~CarrierFactory() {}
 
-std::shared_ptr<Carrier> CarrierFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
+Carrier* CarrierFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
 
 
 // InfantryFactory stuff
@@ -24,7 +24,7 @@ InfantryFactory::InfantryFactory() : ComponentFactory() {}
 
 InfantryFactory::~InfantryFactory() {}
 
-std::shared_ptr<Infantry> InfantryFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
+Infantry* InfantryFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
 
 
 // PlayerFactory stuff
@@ -34,7 +34,7 @@ PlayerFactory::PlayerFactory(InputDevice* input_device) : ComponentFactory() {
 
 PlayerFactory::~PlayerFactory() {}
 
-std::shared_ptr<Player> PlayerFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+Player* PlayerFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
 	// Player* obj = new Player();
 	// Vector2 vec;
 	// float32 ang;
@@ -58,7 +58,7 @@ RigidbodyFactory::RigidbodyFactory(b2World* world) : ComponentFactory() {
 
 RigidbodyFactory::~RigidbodyFactory() {}
 
-std::shared_ptr<Rigidbody> RigidbodyFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+Rigidbody* RigidbodyFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
 
 }
 
@@ -71,8 +71,8 @@ SpriteFactory::SpriteFactory(GraphicsDevice* graphics_device, ArtAssetLibrary* a
 
 SpriteFactory::~SpriteFactory() {}
 
-std::shared_ptr<Sprite> SpriteFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
-	std::shared_ptr<Sprite> new_sprite = new Sprite(std::shared_ptr<Actor> owner);
-	std::string texture = node.attribute("texture");
-	new_sprite->Initialize(graphics_device_, art_library_->at("texture"));
+Sprite* SpriteFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	Sprite* new_sprite = new Sprite(owner);
+	std::string texture = node.attribute("texture").value();
+	new_sprite->Initialize(graphics_device_, art_library_->Search(texture));
 }

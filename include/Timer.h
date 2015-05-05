@@ -13,7 +13,7 @@ private:
 	uint32 last_time_;
 
 	// The ticks stored when the timer was paused
-	uint32 pausedTicks;
+	uint32 paused_ticks_;
 
 	// The timer status
 	bool paused_;

@@ -6,8 +6,7 @@
 #include "GraphicsDevice.h"
 #include "Texture.h"
 
-// class GraphicsDevice;
-
+// class Sprite : public Component, public std::enable_shared_from_this<Sprite> {
 class Sprite : public Component, public std::enable_shared_from_this<Sprite> {
 protected:
     Texture* texture_;

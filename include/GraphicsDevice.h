@@ -1,6 +1,6 @@
 #pragma once
 
-#include <list>
+#include <vector>
 #include <memory>
 
 #include "SDL.h"
@@ -18,7 +18,7 @@ protected:
 	int height_;
 	SDL_Window* window_;
 	SDL_Renderer* renderer_;
-	std::list<std::shared_ptr<Sprite>> sprites_;
+	std::vector<Sprite*> sprites_;
 
 public:
 	GraphicsDevice();
@@ -28,6 +28,6 @@ public:
 	int GetWidth();
 	int GetHeight();
 	SDL_Renderer* GetRenderer();
-	bool AddSprite(std::shared_ptr<Sprite>);
+	bool AddSprite(Sprite*);
 	void Render();
 };

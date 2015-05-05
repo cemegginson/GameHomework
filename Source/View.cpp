@@ -6,7 +6,7 @@ View::~View() {}
 
 bool View::Initialize(InputDevice* input, float32 x, float32 y) {
 	iDevice = input;
-	velocity_ = 400
+	velocity_ = 400;
 	position.x = x;
 	position.y = y;
 	return true;

@@ -21,7 +21,7 @@ void Actor::Initialize(std::string name, Vector2 position, uint32 angle) {
     actor_events_[TURN_RIGHT] = false;
 }
 
-void Actor::AddComponent(std::shared_ptr<Component> component) {
+void Actor::AddComponent(Component* component) {
     components_.push_back(component);
 }
 

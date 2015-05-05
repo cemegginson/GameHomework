@@ -20,17 +20,14 @@ protected:
     float32 angle_;
     bool is_circle_;
 	bool is_square_;
-	std::vector<std::shared_ptr<Component>> components_;
+	std::vector<Component*> components_;
 	std::map<ActorEvent, bool> actor_events_;
 
 public:
 	Actor();
 	~Actor();
 	void Initialize(std::string, Vector2, uint32);
-	void AddComponent(std::shared_ptr<Component>);
-
-	template<class T>
-	std::shared_ptr<T> GetComponent();
+	void AddComponent(Component*);
 
 	void Update(float32);
 

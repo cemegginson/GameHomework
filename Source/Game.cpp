@@ -76,7 +76,7 @@ bool Game::LoadLevel(std::string file) {
 		float32 angle;
 
 		// Temporary variables for Component creation
-		std::shared_ptr<Component> new_component;
+		Component* new_component;
 		std::string type;
 
 		// Loop through Actor XML nodes
@@ -91,7 +91,7 @@ bool Game::LoadLevel(std::string file) {
 			// Loop through Component XML nodes
 			for (pugi::xml_node component_node : actor_node.children("Component")) {
 				type = component_node.attribute("type").value();
-				new_component.reset((Component*)component_factories_->Search(type)->Create(new_actor, component_node));
+				new_component = component_factories_->Search(type)->Create(new_actor, component_node);
 				new_actor->AddComponent(new_component);
 			}
 			actors_.push_back(new_actor);
