@@ -29,36 +29,44 @@ void RigidCircle::Initialize(b2World* world, b2BodyDef body_definition, b2Fixtur
 }
 
 void RigidCircle::Update(float32 delta_time) {
+    b2Vec2 new_position;
+    float32 new_angle;
+
     if(physics_movable_) {
-        ExportPosition();
+        new_position = ExportPosition();
     } else {
-        ImportPosition();
+        new_position = ImportPosition();
     }
     if(physics_turnable_) {
-        ExportAngle();
+        new_angle = ExportAngle();
     } else {
-        ImportAngle();
+        new_angle = ImportAngle();
     }
+    body_->SetTransform(new_position, new_angle);
 }
 
-void RigidCircle::ExportPosition() {
+b2Vec2 RigidCircle::ExportPosition() {
     b2Vec2 physics_position = body_->GetPosition();
-    Vector2 position;
-    position.x = PW2RW(physics_position.x);
-    position.y = PW2RW(physics_position.y);
-    owner_->SetPosition(position);
+    Vector2 render_position;
+    render_position.x = PW2RW(physics_position.x);
+    render_position.y = PW2RW(physics_position.y);
+    owner_->SetPosition(render_position);
 }
 
-void RigidCircle::ExportAngle() {
+float32 RigidCircle::ExportAngle() {
     owner_->SetAngle(PW2RWAngle(body_->GetAngle()));
 }
 
-void RigidCircle::ImportPosition() {
-    ;
+b2Vec2 RigidCircle::ImportPosition() {
+    Vector2 render_position = owner_->GetPosition();
+    b2Vec2 physics_position;
+    physics_position.x = RW2PW(render_position.x);
+    physics_position.y = RW2PW(render_position.y);
+
 }
 
-void RigidCircle::ImportAngle() {
-    ;
+float32 RigidCircle::ImportAngle() {
+    return RW2PWAngle(owner_->GetAngle());
 }
 
 // RigidRectangle methods
@@ -80,34 +88,42 @@ void RigidRectangle::Initialize(b2World* world, b2BodyDef body_definition, b2Fix
 }
 
 void RigidRectangle::Update(float32 delta_time) {
+    b2Vec2 new_position;
+    float32 new_angle;
+
     if(physics_movable_) {
-        ExportPosition();
+        new_position = ExportPosition();
     } else {
-        ImportPosition();
+        new_position = ImportPosition();
     }
     if(physics_turnable_) {
-        ExportAngle();
+        new_angle = ExportAngle();
     } else {
-        ImportAngle();
+        new_angle = ImportAngle();
     }
+    body_->SetTransform(new_position, new_angle);
 }
 
-void RigidRectangle::ExportPosition() {
+b2Vec2 RigidRectangle::ExportPosition() {
     b2Vec2 physics_position = body_->GetPosition();
-    Vector2 position;
-    position.x = PW2RW(physics_position.x);
-    position.y = PW2RW(physics_position.y);
-    owner_->SetPosition(position);
+    Vector2 render_position;
+    render_position.x = PW2RW(physics_position.x);
+    render_position.y = PW2RW(physics_position.y);
+    owner_->SetPosition(render_position);
 }
 
-void RigidRectangle::ExportAngle() {
+float32 RigidRectangle::ExportAngle() {
     owner_->SetAngle(PW2RWAngle(body_->GetAngle()));
 }
 
-void RigidRectangle::ImportPosition() {
-    ;
+b2Vec2 RigidRectangle::ImportPosition() {
+    Vector2 render_position = owner_->GetPosition();
+    b2Vec2 physics_position;
+    physics_position.x = RW2PW(render_position.x);
+    physics_position.y = RW2PW(render_position.y);
+
 }
 
-void RigidRectangle::ImportAngle() {
-    ;
+float32 RigidRectangle::ImportAngle() {
+    return RW2PWAngle(owner_->GetAngle());
 }

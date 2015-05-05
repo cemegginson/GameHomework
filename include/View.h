@@ -5,7 +5,7 @@
 
 class View {
 protected:
-	InputDevice* iDevice;
+	InputDevice* input_device;
 	Vector2 position;
 	uint32 velocity_;
 

@@ -3,74 +3,74 @@
     <!-- NPC Layout for Game 	-->
     <Actor name="Carrier" x="30.0f" y="140.0f" angle="0.0f">
         <Component type="Carrier" />
-        <!--<Component type="Rigidbody" />-->
+        <!--<Component type="RigidRectangle" />-->
         <Component type="Sprite" texture="Carrier" />
     </Actor>
     <Actor name="Infantry" x="0.0f" y="200.0f" angle="-180.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="100.0f" y="50.0f" angle="0.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="200.0f" y="200.0f" angle="270.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="-75.0f" y="0.0f" angle="270.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="35.0f" y="100.0f" angle="270.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="125.0f" y="40.0f" angle="270.0f">
         <Component type="Infantry" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="0"density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Player" x="400.0f" y="300.0f" angle="0.0f">
         <Component type="Player" />
-        <Component type="RigidCircle" radius="27" linear_dampening=".1f" angular_dampening=".1f" dynamic="1" movable="1" turnable="1" density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="1" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Player" />
     </Actor>
     <Actor name="Rock" x="300.0f" y="50.0f" angle="0.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="300.0f" y="80.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="320.0f" y="110.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="320.0f" y="140.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="360.0f" y="50.0f" angle="0.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="360.0f" y="80.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="380.0f" y="110.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
     <Actor name="Rock" x="380.0f" y="140.0f" angle="90.0f">
-        <Component type="RigidCircle" radius="50" linear_dampening=".1f" angular_dampening=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
+        <Component type="RigidCircle" radius="50" linear_damping=".1f" angular_damping=".1f" dynamic="0" movable="0" turnable="0" density="100f" friction=".1f" restitution=".9f"/>
         <Component type="Sprite" texture="Rock" />
     </Actor>
 </Level>

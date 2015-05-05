@@ -38,10 +38,10 @@ public:
 	~RigidCircle();
 	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
 	void Update(float32);
-	void ExportPosition();
-	void ExportAngle();
-	void ImportPosition();
-	void ImportAngle();
+	b2Vec2 ExportPosition();
+	float32 ExportAngle();
+	b2Vec2 ImportPosition();
+	float32 ImportAngle();
 };
 
 // Physics Rectangles
@@ -53,8 +53,8 @@ public:
 	~RigidRectangle();
 	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
 	void Update(float32);
-	void ExportPosition();
-	void ExportAngle();
-	void ImportPosition();
-	void ImportAngle();
+	b2Vec2 ExportPosition();
+	float32 ExportAngle();
+	b2Vec2 ImportPosition();
+	float32 ImportAngle();
 };
