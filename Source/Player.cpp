@@ -16,20 +16,33 @@ Player::~Player() {
 }
 
 void Player::Update(float32 delta_time) {
-	GameEvent event = input_device_->GetEvent();
+	// GameEvent event = input_device_->GetEvent();
+	float32 angle = owner_->GetAngle();
+	Vector2 new_position = owner_->GetPosition();
+
+	float32 theta = RW2PWAngle(angle);
+	float32 tcos = cos(theta);
+	float32 tsin = sin(theta);
 
 	if(input_device_->IsPressed(GAME_A)) {
-		owner_->SetEvent(TURN_LEFT);
+		angle = owner_->GetAngle() - rotation_ * delta_time;
 	}
 	if(input_device_->IsPressed(GAME_D)) {
-		owner_->SetEvent(TURN_RIGHT);
+		angle = owner_->GetAngle() + rotation_ * delta_time;
 	}
 	if(input_device_->IsPressed(GAME_W)) {
-		owner_->SetEvent(MOVE_UP);
+		// physPosition.x += RW2PW(travel * tcos) * delta_time;
+		// physPosition.y += RW2PW(travel * tsin) * delta_time;
+		new_position.x += travel_ * tcos * delta_time;
+		new_position.y += travel_ * tsin * delta_time;
 	}
 	if(input_device_->IsPressed(GAME_S)) {
-		owner_->SetEvent(MOVE_DOWN);
+		new_position.x -= travel_ * tcos * delta_time;
+		new_position.y -= travel_ * tsin * delta_time;
 	}
+
+	owner_->SetAngle(angle);
+	owner_->SetPosition(new_position);
 
 	last_fire_time_ += delta_time;
 	// Create bullet if spacebar pressed

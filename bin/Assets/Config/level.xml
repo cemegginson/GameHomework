@@ -38,7 +38,7 @@
     </Actor>
     <Actor name="Player" x="400.0f" y="300.0f" angle="0.0f">
         <Component type="Player" />
-        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="1" turnable="1" density="80" friction=".1" restitution=".1"/>
+        <Component type="RigidCircle" radius="27" linear_damping=".1f" angular_damping=".1f" dynamic="1" movable="0" turnable="0" density="80" friction=".1" restitution=".1"/>
         <Component type="Sprite" texture="Player" />
     </Actor>
     <Actor name="Rock" x="300.0f" y="50.0f" angle="0.0f">

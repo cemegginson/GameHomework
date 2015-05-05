@@ -17,11 +17,11 @@ protected:
 	std::string name_;
     Vector2 position_;
 	Vector2 dimensions_;
+	Vector2 movement_;
     float32 angle_;
     bool is_circle_;
 	bool is_square_;
 	std::vector<Component*> components_;
-	std::map<ActorEvent, bool> actor_events_;
 
 public:
 	Actor();
@@ -37,7 +37,6 @@ public:
     float32 GetAngle();
     void SetAngle(float32);
 
-	bool CheckEvent(ActorEvent);
-	void SetEvent(ActorEvent);
-	void ResetEvents();
+	Vector2 CheckMovement();
+	void SetMovement(Vector2);
 };
