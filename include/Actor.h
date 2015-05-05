@@ -6,7 +6,6 @@
 
 #include "Component.h"
 #include "Definitions.h"
-#include "GraphicsDevice.h"
 #include "InputDevice.h"
 #include "View.h"
 
@@ -27,7 +26,7 @@ protected:
 public:
 	Actor();
 	~Actor();
-	bool Initialize(std::string, Vector2, uint32);
+	void Initialize(std::string, Vector2, uint32);
 	void AddComponent(std::shared_ptr<Component>);
 
 	template<class T>
@@ -43,4 +42,5 @@ public:
 
 	bool CheckEvent(ActorEvent);
 	void SetEvent(ActorEvent);
+	void ResetEvents();
 };

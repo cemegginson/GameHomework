@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite() : Component() {
+Sprite::Sprite(std::shared_ptr<Actor> owner) : Component(owner) {
     texture_ = nullptr;
 }
 
@@ -13,7 +13,7 @@ void Sprite::Initialize(GraphicsDevice* graphics_device, Texture* texture) {
     texture_ = texture;
 
 	//Add Sprite to graphics_device_
-	graphics_device_->AddSprite(std::shared_from_this());
+	graphics_device_->AddSprite(shared_from_this());
 }
 
 void Sprite::Update(float32 delta_time) {
@@ -21,8 +21,9 @@ void Sprite::Update(float32 delta_time) {
 }
 
 void Render() {
-    Vector2 position = owner->GetPosition();
-    float32 angle = owner->GetAngle();
+    Vector2 position = owner_->GetPosition();
+    float32 angle = owner_->GetAngle();
     // Not finished here
-    texture_->Render(position, angle, clip);
+    // texture_->Render(position, angle, clip);
+    texture_->Render(position, angle);
 }

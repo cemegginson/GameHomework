@@ -31,8 +31,8 @@ bool Texture::Initialize(SDL_Renderer* renderer, View* view, std::string image_p
 	return true;
 }
 
-void Texture::Render(Vector2 position, float32 angle, SDL_Rect* clip) {
-
+// void Texture::Render(Vector2 position, float32 angle, SDL_Rect* clip) {
+void Texture::Render(Vector2 position, float32 angle) {
 	Vector2 view_position = view_->GetPosition();
 
 	SDL_Rect dst;

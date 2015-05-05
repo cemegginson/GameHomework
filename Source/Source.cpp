@@ -46,10 +46,10 @@ int main(int argc, char* argv[]) {
 	//========================================
 	// Construct Graphical Device
 	//========================================
-	GraphicsDevice* gDevice =
+	GraphicsDevice* graphics_device =
 	    new GraphicsDevice(SCREEN_WIDTH, SCREEN_HEIGHT);
 	// if (!gDevice->Initialize(true)) { Not sure what this true is about
-	if (!gDevice->Initialize()) {
+	if (!graphics_device->Initialize()) {
 		printf("Graphics Device could not initialize!");
 		exit(1);
 	}
@@ -57,8 +57,8 @@ int main(int argc, char* argv[]) {
 	//========================================
 	// Construct Event System
 	//========================================
-	SDL_Event* event_ = new SDL_Event();
-	if (!event_) {
+	SDL_Event* event = new SDL_Event();
+	if (!event) {
 		printf("SDL Event could not initialize!");
 		exit(1);
 	}
@@ -66,8 +66,8 @@ int main(int argc, char* argv[]) {
 	//========================================
 	// Construct Input Device
 	//========================================
-	InputDevice* iDevice = new InputDevice();
-	if (!iDevice->Initialize(event)) {
+	InputDevice* input_device = new InputDevice();
+	if (!input_device->Initialize()) {
 		printf("Input Device could not initialize!");
 		exit(1);
 	}
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 	// Construct Game
 	//========================================
 	Game* game = new Game();
-	if (!game->Initialize(gDevice, iDevice)) {
+	if (!game->Initialize(graphics_device, input_device)) {
 		printf("Game could not Initialize!");
 		exit(1);
 	}
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
 				quit = true;
 			}
 			// Update the Input Device with the Event
-			input_device_->Update(event);
+			input_device->Update(event);
 		}
 		game->Run();
 	}
@@ -113,14 +113,14 @@ int main(int argc, char* argv[]) {
 		game = nullptr;
 	}
 
-	if (iDevice) {
-		delete iDevice;
-		iDevice = nullptr;
+	if (input_device) {
+		delete input_device;
+		input_device = nullptr;
 	}
 
-	if (gDevice) {
-		delete gDevice;
-		gDevice = nullptr;
+	if (graphics_device) {
+		delete graphics_device;
+		graphics_device = nullptr;
 	}
 
 	SDL_Quit();

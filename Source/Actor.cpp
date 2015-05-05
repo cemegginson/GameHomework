@@ -22,7 +22,7 @@ void Actor::Initialize(std::string name, Vector2 position, uint32 angle) {
 }
 
 void Actor::AddComponent(std::shared_ptr<Component> component) {
-    components_.insert(component);
+    components_.push_back(component);
 }
 
 void Actor::Update(float32 delta_time) {

@@ -16,10 +16,12 @@ protected:
     bool physics_movable;
 
 public:
-    Rigidbody();
+    Rigidbody(std::shared_ptr<Actor>);
     ~Rigidbody();
     void Initialize(b2World*);
     void Update(float32);
     void ExportPosition();
     void ExportAngle();
+	void ImportPosition();
+	void ImportAngle();
 };

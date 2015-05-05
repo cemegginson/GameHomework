@@ -63,7 +63,7 @@ void GraphicsDevice::Render() {
 
 	// Cycle through every objects' Draw method
 	for (auto iter = sprites_.begin(); iter != sprites_.end(); ++iter) {
-		(*iter)->Render(view_);
+		(*iter)->Render();
 	}
 
 	SDL_RenderPresent(renderer_);

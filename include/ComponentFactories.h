@@ -13,6 +13,8 @@
 #include "Infantry.h"
 #include "InputDevice.h"
 #include "Player.h"
+#include "Rigidbody.h"
+#include "Sprite.h"
 
 class ComponentFactory {
 protected:
@@ -20,7 +22,7 @@ protected:
 public:
 	ComponentFactory();
 	~ComponentFactory();
-	virtual std::shared_ptr<Component> Create(pugi::xml_node) = 0;
+	virtual Component* Create(std::shared_ptr<Actor>, pugi::xml_node) = 0;
 };
 
 class CarrierFactory : ComponentFactory {
@@ -28,7 +30,7 @@ protected:
 public:
 	CarrierFactory();
 	~CarrierFactory();
-	std::shared_ptr<Carrier> Create(pugi::xml_node);
+	Carrier* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
 class InfantryFactory : ComponentFactory {
@@ -36,7 +38,7 @@ protected:
 public:
 	InfantryFactory();
 	~InfantryFactory();
-	std::shared_ptr<Infantry> Create(pugi::xml_node);
+	Infantry* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
 class PlayerFactory : ComponentFactory {
@@ -44,9 +46,9 @@ protected:
 	InputDevice* input_device_;
 
 public:
-	PlayerFactory();
+	PlayerFactory(InputDevice*);
 	~PlayerFactory();
-	std::shared_ptr<Player> Create(pugi::xml_node);
+	Player* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
 class RigidbodyFactory : ComponentFactory {
@@ -56,21 +58,16 @@ protected:
 public:
 	RigidbodyFactory(b2World*);
 	~RigidbodyFactory();
-	std::shared_ptr<Rigidbody> Create(pugi::xml_node);
+	Rigidbody* Create(std::shared_ptr<Actor>, pugi::xml_node);
 };
 
 class SpriteFactory : ComponentFactory {
 protected:
-public:
-	SpriteFactory();
-	~SpriteFactory();
-	std::shared_ptr<Sprite> Create(pugi::xml_node);
-};
+	GraphicsDevice* graphics_device_;
+	ArtAssetLibrary* art_library_;
 
-// class RockFactory : ComponentFactory {
-// protected:
-// public:
-// 	RockFactory();
-// 	~RockFactory();
-// 	Rock* Create(pugi::xml_node);
-// };
+public:
+	SpriteFactory(GraphicsDevice*, ArtAssetLibrary*);
+	~SpriteFactory();
+	Sprite* Create(std::shared_ptr<Actor>, pugi::xml_node);
+};

@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "Actor.h"
+#include "Definitions.h"
 
 class Actor;
 

@@ -34,7 +34,7 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	view_->Initialize(input_device_, 0, 0);
 
 	timer_ = new Timer();
-	timer_->start();
+	timer_->Start();
 
 	// Initialize Physics world
 	const b2Vec2 gravity(0, 0);
@@ -45,6 +45,8 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	component_factories_->AddFactory("Carrier", (ComponentFactory*)new CarrierFactory());
 	component_factories_->AddFactory("Infantry", (ComponentFactory*)new InfantryFactory());
 	component_factories_->AddFactory("Player", (ComponentFactory*)new PlayerFactory(input_device_));
+	component_factories_->AddFactory("Sprite", (ComponentFactory*)new SpriteFactory(graphics_device_, art_library_));
+	component_factories_->AddFactory("Rigidbody", (ComponentFactory*)new RigidbodyFactory(world_));
 
 	// ContactListener* contact_listener = new ContactListener();
 	// world_->SetContactListener(contact_listener);
@@ -53,22 +55,46 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 }
 
 void Game::Reset() {
-	if(!actors_.empty()){
-		for (auto iter = actors_.begin(); iter <= actors_.end(); iter++) {
-			delete *iter;
-		}
-	}
+	// if(!actors_.empty()){
+	// 	for (auto iter = actors_.begin(); iter != actors_.end(); iter++) {
+	// 		delete *iter;
+	// 	}
+	// }
 }
 
 bool Game::LoadLevel(std::string file) {
+	std::shared_ptr<Actor> new_actor;
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(file.c_str());
 	if (result) {
 		pugi::xml_node Level = doc.child("Level");
+
+		// Temporary variables for Actor creation
 		std::string name;
-		for (pugi::xml_node child : Level.children("Component")) {
-			name = child.attribute("name").value();
-			components_.push_back((Component*)component_factories_->Search(name)->Create(child));
+		std::shared_ptr<Actor> new_actor;
+		Vector2 position;
+		float32 angle;
+
+		// Temporary variables for Component creation
+		std::shared_ptr<Component> new_component;
+		std::string type;
+
+		// Loop through Actor XML nodes
+		for (pugi::xml_node actor_node : Level.children("Actor")) {
+			new_actor.reset(new Actor());
+			name = actor_node.attribute("name").value();
+			position.x = std::stof(actor_node.attribute("x").value());
+			position.y = std::stof(actor_node.attribute("y").value());
+			angle = std::stof(actor_node.attribute("angle").value());
+			new_actor->Initialize(name, position, angle);
+
+			// Loop through Component XML nodes
+			for (pugi::xml_node component_node : actor_node.children("Component")) {
+				type = component_node.attribute("type").value();
+				new_component.reset((Component*)component_factories_->Search(type)->Create(new_actor, component_node));
+				new_actor->AddComponent(new_component);
+			}
+			actors_.push_back(new_actor);
 		}
 	}
 	return true;
