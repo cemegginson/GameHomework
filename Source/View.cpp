@@ -13,16 +13,16 @@ bool View::Initialize(InputDevice* input, float32 x, float32 y) {
 }
 
 void View::Update(float32 delta_time) {
-	if(iDevice->IsPressed(GAME_UP)) {
+	if(input_device->IsPressed(GAME_UP)) {
 		position.y += velocity_ * delta_time;
 	}
-	if(iDevice->IsPressed(GAME_DOWN)) {
+	if(input_device->IsPressed(GAME_DOWN)) {
 		position.y -= velocity_ * delta_time;
 	}
-	if(iDevice->IsPressed(GAME_LEFT)) {
+	if(input_device->IsPressed(GAME_LEFT)) {
 		position.x += velocity_ * delta_time;
 	}
-	if(iDevice->IsPressed(GAME_RIGHT)) {
+	if(input_device->IsPressed(GAME_RIGHT)) {
 		position.x -= velocity_ * delta_time;
 	}
 	return;
