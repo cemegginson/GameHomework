@@ -54,7 +54,7 @@ SDL_Renderer* GraphicsDevice::GetRenderer() {
 	return renderer_;
 }
 
-bool GraphicsDevice::AddSprite(Sprite* sprite) {
+void GraphicsDevice::AddSprite(Sprite* sprite) {
 	sprites_.push_back(sprite);
 }
 

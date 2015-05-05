@@ -28,6 +28,6 @@ public:
 	int GetWidth();
 	int GetHeight();
 	SDL_Renderer* GetRenderer();
-	bool AddSprite(Sprite*);
+	void AddSprite(Sprite*);
 	void Render();
 };

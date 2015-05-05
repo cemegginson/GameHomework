@@ -75,4 +75,5 @@ Sprite* SpriteFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node)
 	Sprite* new_sprite = new Sprite(owner);
 	std::string texture = node.attribute("texture").value();
 	new_sprite->Initialize(graphics_device_, art_library_->Search(texture));
+	return new_sprite;
 }

@@ -26,12 +26,12 @@ bool Game::Initialize(GraphicsDevice* graphics_device, InputDevice* input_device
 	graphics_device_ = graphics_device;
 	input_device_ = input_device;
 
+	view_ = new View();
+	view_->Initialize(input_device_, 0, 0);
+	
 	// Load sprites
 	art_library_ = new ArtAssetLibrary();
 	art_library_->LoadAssets(graphics_device_, view_);
-
-	view_ = new View();
-	view_->Initialize(input_device_, 0, 0);
 
 	timer_ = new Timer();
 	timer_->Start();
