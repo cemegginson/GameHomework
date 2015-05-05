@@ -2,47 +2,49 @@
 #include "Carrier.h"
 #include "GameFunctions.h"
 
+#include <iostream>
+
 Carrier::Carrier(std::shared_ptr<Actor> owner) : Component(owner) {}
 
 Carrier::~Carrier() {}
 
 void Carrier::Update(float32 delta_time) {
-	// angle += rotation * delta_time;
-	// if(angle > 360) {
-	// 	angle -= 360;
-	// } else if(angle < 0) {
-	// 	angle += 360;
-	// }
-	// float rAngle = (angle * (PI / 180.0)) - PI;
-	// b2Vec2 physPosition;
-	// physPosition.x = RW2PW((float)((radius * cos(rAngle)) + center.x));
-	// physPosition.y = RW2PW((float)((radius * sin(rAngle)) + center.y));
-	//
-	// body->SetTransform(physPosition, rAngle);
-	//
-	// position.x = PW2RW(physPosition.x);
-	// position.y = PW2RW(physPosition.y);
+	angle += rotation * delta_time;
+	if(angle > 360) {
+		angle -= 360;
+	} else if(angle < 0) {
+		angle += 360;
+	}
+	std::cout << delta_time << std::endl;
+	std::cout << angle << std::endl;
+
+	float32 radian_angle = (angle * (PI / 180.0)) - PI;
+	Vector2 temp_position;
+	temp_position.x = RW2PW((float32)((radius * cos(radian_angle)) + center.x));
+	temp_position.y = RW2PW((float32)((radius * sin(radian_angle)) + center.y));
+
+	position.x = PW2RW(temp_position.x);
+	position.y = PW2RW(temp_position.y);
+
+	owner_->SetPosition(position);
+	owner_->SetAngle(angle);
 }
 
 void Carrier::Initialize() {
-// 	gDevice = gDev;
-// 	texture = tex;
-// 	world = wor;
-// 	position = pos;
-// 	angle = ang;
-// 	rotation = 60;
-// 	texture->GetDimensions(&w, &h);
-// 	center = position;
-// 	radius = rand() % 100;
-// 	center.x += radius;
+	position = owner_->GetPosition();
+	angle = owner_->GetAngle();
+	rotation = 120;
+	center = position;
+	radius = rand() % 100;
+	center.x += radius;
 //
 // 	// Physics stuff
-// 	bdef.type = b2_dynamicBody;
-// 	bdef.position.Set(RW2PW((int)position.x), RW2PW((int)position.y));
-// 	bdef.angle = RW2PWAngle(angle);
-// 	bdef.angularDamping = 10.0;
-// 	bdef.linearDamping = 10.0;
-// 	body = world->CreateBody(&bdef);
+// 	body_definition.type = b2_dynamicBody;
+// 	body_definition.position.Set(RW2PW((int)position.x), RW2PW((int)position.y));
+// 	body_definition.angle = RW2PWAngle(angle);
+// 	body_definition.angularDamping = 10.0;
+// 	body_definition.linearDamping = 10.0;
+// 	body = world->CreateBody(&body_definition);
 //
 // 	shape.SetAsBox(RW2PW(w/2), RW2PW(h/2));
 // 	shapefd.shape = &shape;

@@ -16,7 +16,10 @@ CarrierFactory::CarrierFactory() : ComponentFactory() {}
 
 CarrierFactory::~CarrierFactory() {}
 
-Carrier* CarrierFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
+Carrier* CarrierFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	Carrier* carrier = new Carrier(owner);
+	return carrier;
+}
 
 
 // InfantryFactory stuff
@@ -24,7 +27,10 @@ InfantryFactory::InfantryFactory() : ComponentFactory() {}
 
 InfantryFactory::~InfantryFactory() {}
 
-Infantry* InfantryFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {}
+Infantry* InfantryFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	Infantry* infantry = new Infantry(owner);
+	return infantry;
+}
 
 
 // PlayerFactory stuff
@@ -35,19 +41,9 @@ PlayerFactory::PlayerFactory(InputDevice* input_device) : ComponentFactory() {
 PlayerFactory::~PlayerFactory() {}
 
 Player* PlayerFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
-	// Player* obj = new Player();
-	// Vector2 vec;
-	// float32 ang;
-	// std::string name = tag.attribute("name").value();
-	// std::string x = tag.attribute("x").value();
-	// std::string y = tag.attribute("y").value();
-	// std::string a = tag.attribute("angle").value();
-	// vec.x = stof(x);
-	// vec.y = stof(y);
-	// ang = stof(a);
-	// obj->Initialize();
-	// obj->SetInput(iDevice);
-	// return obj;
+	Player* player = new Player(owner);
+	player->SetInput(input_device_);
+	return player;
 }
 
 
@@ -59,7 +55,26 @@ RigidbodyFactory::RigidbodyFactory(b2World* world) : ComponentFactory() {
 RigidbodyFactory::~RigidbodyFactory() {}
 
 Rigidbody* RigidbodyFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_node node) {
+	Rigidbody* rigidbody = new Rigidbody(owner);
 
+		// bdef.type = b2_dynamicBody;
+		// bdef.position.Set(RW2PW(position.x), RW2PW(position.y));
+		// bdef.angle = RW2PWAngle(angle);
+		// bdef.bullet = true;
+		// bdef.angularDamping = 0.1;
+		// bdef.linearDamping = 0.1;
+		// bdef.linearVelocity = velocity;
+		// body = world->CreateBody(&bdef);
+		//
+		// texture->GetDimensions(&w, &h);
+		// shape.m_radius = RW2PW(w/1.5f);
+		// shapefd.shape = &shape;
+		// shapefd.density = 10.0f;
+		// shapefd.friction = 0.0f;
+		// shapefd.restitution = 1.1f;
+		// body->CreateFixture(&shapefd);
+
+	return rigidbody;
 }
 
 

@@ -6,6 +6,7 @@
 #include "Component.h"
 #include "Definitions.h"
 
+// Base Rigidbody class
 class Rigidbody : public Component{
 protected:
 	std::string type_;
@@ -25,3 +26,19 @@ public:
 	void ImportPosition();
 	void ImportAngle();
 };
+
+// Physics Circles
+class RigidCircle : public Rigidbody {
+protected:
+    b2Shape
+public:
+
+}
+
+// Physics Rectangles
+class RigidRectangle : public Rigidbody {
+protected:
+
+public:
+
+}

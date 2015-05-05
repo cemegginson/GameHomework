@@ -2,34 +2,42 @@
 <Level>
     <!-- NPC Layout for Game 	-->
     <Actor name="Carrier" x="30.0f" y="140.0f" angle="0.0f">
+        <Component type="Carrier" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Carrier" />
     </Actor>
     <Actor name="Infantry" x="0.0f" y="200.0f" angle="-180.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="100.0f" y="50.0f" angle="0.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="200.0f" y="200.0f" angle="270.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="-75.0f" y="0.0f" angle="270.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="35.0f" y="100.0f" angle="270.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Infantry" x="125.0f" y="40.0f" angle="270.0f">
+        <Component type="Infantry" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Infantry" />
     </Actor>
     <Actor name="Player" x="400.0f" y="300.0f" angle="0.0f">
+        <Component type="Player" />
         <!--<Component type="Rigidbody" />-->
         <Component type="Sprite" texture="Player" />
     </Actor>
