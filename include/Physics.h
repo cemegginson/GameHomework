@@ -14,13 +14,12 @@ protected:
     b2World* world_;
     b2Body* body_;
 
-    bool physics_movable_;
-	bool physics_turnable_;
+    bool controllable_;
 
 public:
     Rigidbody();
     ~Rigidbody();
-    virtual void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool) = 0;
+    virtual void Initialize(b2World*, b2BodyDef, b2FixtureDef) = 0;
     // void Update(float32);
     // void ExportPosition();
     // void ExportAngle();
@@ -36,7 +35,7 @@ protected:
 public:
 	RigidCircle(std::shared_ptr<Actor>);
 	~RigidCircle();
-	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
+	void Initialize(b2World*, b2BodyDef, b2FixtureDef);
 	void Update(float32);
 	b2Vec2 ExportPosition();
 	float32 ExportAngle();
@@ -51,7 +50,7 @@ protected:
 public:
 	RigidRectangle(std::shared_ptr<Actor>);
 	~RigidRectangle();
-	void Initialize(b2World*, b2BodyDef, b2FixtureDef, bool, bool);
+	void Initialize(b2World*, b2BodyDef, b2FixtureDef);
 	void Update(float32);
 	b2Vec2 ExportPosition();
 	float32 ExportAngle();

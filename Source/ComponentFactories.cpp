@@ -82,10 +82,10 @@ RigidCircle* RigidCircleFactory::Create(std::shared_ptr<Actor> owner, pugi::xml_
 	shape_fixture_definition.restitution = std::stof(node.attribute("restitution").value());
 
 	bool movable, turnable;
-	movable = std::stof(node.attribute("movable").value());
-	turnable = std::stof(node.attribute("turnable").value());
+	// movable = std::stof(node.attribute("movable").value());
+	// turnable = std::stof(node.attribute("turnable").value());
 
-	rigid_circle->Initialize(world_, body_definition, shape_fixture_definition, movable, turnable);
+	rigid_circle->Initialize(world_, body_definition, shape_fixture_definition);
 
 	return rigid_circle;
 }
@@ -127,10 +127,10 @@ RigidRectangle* RigidRectangleFactory::Create(std::shared_ptr<Actor> owner, pugi
 	shape_fixture_definition.restitution = std::stof(node.attribute("restitution").value());
 
 	bool movable, turnable;
-	movable = std::stof(node.attribute("movable").value());
-	turnable = std::stof(node.attribute("turnable").value());
+	// movable = std::stof(node.attribute("movable").value());
+	// turnable = std::stof(node.attribute("turnable").value());
 
-	rigid_rectangle->Initialize(world_, body_definition, shape_fixture_definition, movable, turnable);
+	rigid_rectangle->Initialize(world_, body_definition, shape_fixture_definition);
 
 	return rigid_rectangle;
 }

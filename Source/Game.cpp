@@ -12,6 +12,9 @@ Game::Game() {
 	input_device_ = nullptr;
 	timer_ = nullptr;
 	view_ = nullptr;
+	physics_delta_time_ = 1.0/100.0;
+	velocity_iterations_ = 25;
+	position_iterations_ = 10;
 }
 
 Game::~Game() {
@@ -75,6 +78,7 @@ bool Game::LoadLevel(std::string file) {
 		std::shared_ptr<Actor> new_actor;
 		Vector2 position;
 		float32 angle;
+		bool controllable;
 
 		// Temporary variables for Component creation
 		Component* new_component;
@@ -84,10 +88,11 @@ bool Game::LoadLevel(std::string file) {
 		for (pugi::xml_node actor_node : Level.children("Actor")) {
 			new_actor.reset(new Actor());
 			name = actor_node.attribute("name").value();
+			controllable = std::stoi(actor_node.attribute("controllable").value());
 			position.x = std::stof(actor_node.attribute("x").value());
 			position.y = std::stof(actor_node.attribute("y").value());
 			angle = std::stof(actor_node.attribute("angle").value());
-			new_actor->Initialize(name, position, angle);
+			new_actor->Initialize(name, position, angle, controllable);
 
 			// Loop through Component XML nodes
 			for (pugi::xml_node component_node : actor_node.children("Component")) {
@@ -116,5 +121,5 @@ void Game::Update(float32 delta_time) {
 		(*iter)->Update(delta_time);
 	}
 
-	world_->Step(.01, 8, 3);
+	world_->Step(physics_delta_time_, velocity_iterations_, position_iterations_);
 }

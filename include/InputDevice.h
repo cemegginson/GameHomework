@@ -20,5 +20,4 @@ public:
 	bool Initialize();
 	void Update(SDL_Event*);
 	bool IsPressed(GameEvent);
-	GameEvent GetEvent();
 };

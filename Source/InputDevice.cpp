@@ -40,7 +40,3 @@ void InputDevice::Update(SDL_Event* event) {
 bool InputDevice::IsPressed(GameEvent event) {
 	return keystates_.at(event);
 }
-
-GameEvent InputDevice::GetEvent() {
-	return game_event_;
-}
